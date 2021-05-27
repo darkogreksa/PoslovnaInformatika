@@ -11,7 +11,7 @@ public class TrafficDocument {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "trafficDocument_id")
     private int id;
 
     @Column(name = "documentType", nullable = false)
@@ -33,15 +33,15 @@ public class TrafficDocument {
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "businessPartner_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "businessPartner_id", referencedColumnName = "businessPartner_id", nullable = false)
     private BusinessPartner businessPartner;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "businessYear_id", referencedColumnName = "id")
+    @JoinColumn(name = "businessYear_id", referencedColumnName = "businessYear_id")
     private BusinessYear businessYear;
 
     @ManyToOne
-    @JoinColumn(name = "warehouse_id", referencedColumnName = "id")
+    @JoinColumn(name = "warehouse_id", referencedColumnName = "warehouse_id")
     private Warehouse warehouse;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "trafficDocument")

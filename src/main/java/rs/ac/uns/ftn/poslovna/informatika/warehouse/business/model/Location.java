@@ -10,7 +10,7 @@ public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "location_id")
     private Integer id;
 
     @Column(name = "name", columnDefinition = "VARCHAR(50)", length = 50, unique = true, nullable = false)

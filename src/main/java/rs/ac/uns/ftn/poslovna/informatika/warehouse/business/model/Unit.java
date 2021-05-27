@@ -11,22 +11,22 @@ public class Unit implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(name = "unit_id", unique = true, nullable = false)
     private Integer id;
 
     @Column(name = "name", columnDefinition = "VARCHAR(20)", length = 20, nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "unit")
-    private List<Merchandise> merchandise = new ArrayList<>();
+    private List<Goods> goods = new ArrayList<>();
 
     public Unit() {
     }
 
-    public Unit(Integer id, String name, List<Merchandise> merchandise) {
+    public Unit(Integer id, String name, List<Goods> goods) {
         this.id = id;
         this.name = name;
-        this.merchandise = merchandise;
+        this.goods = goods;
     }
 
     public Integer getId() {
@@ -45,12 +45,12 @@ public class Unit implements Serializable {
         this.name = name;
     }
 
-    public List<Merchandise> getMerchandise() {
-        return merchandise;
+    public List<Goods> getMerchandise() {
+        return goods;
     }
 
-    public void setMerchandise(List<Merchandise> merchandise) {
-        this.merchandise = merchandise;
+    public void setMerchandise(List<Goods> goods) {
+        this.goods = goods;
     }
 
     @Override
@@ -58,7 +58,7 @@ public class Unit implements Serializable {
         return "Unit{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", merchandise=" + merchandise +
+                ", merchandise=" + goods +
                 '}';
     }
 }

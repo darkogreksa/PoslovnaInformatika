@@ -26,23 +26,23 @@ public class BusinessYear implements Serializable {
 
     //veza sa robnom karticom
     @OneToMany(mappedBy = "businessYear")
-//	@JoinColumn(name = "merchandiseCard_id", referencedColumnName = "id")
-    private List<MerchandiseCard> merchandiseCards = new ArrayList<>();
+//	@JoinColumn(name = "goodsCard_id", referencedColumnName = "id")
+    private List<GoodsCard> goodsCards = new ArrayList<>();
 
     //veza sa prometnim dokumentom
     @OneToMany(mappedBy = "businessYear")
-//	@JoinColumn(name = "trafficDocument_id", referencedColumnName = "id")
+//	@JoinColumn(name = "trafficDocument_id", referencedColumnName = "trafficDocument_id")
     private List<TrafficDocument> trafficDocuments = new ArrayList<>();
 
     public BusinessYear() {
     }
 
-    public BusinessYear(Integer id, String year, boolean closed, Company company, List<MerchandiseCard> merchandiseCards, List<TrafficDocument> trafficDocuments) {
+    public BusinessYear(Integer id, String year, boolean closed, Company company, List<GoodsCard> goodsCards, List<TrafficDocument> trafficDocuments) {
         this.id = id;
         this.year = year;
         this.closed = closed;
         this.company = company;
-        this.merchandiseCards = merchandiseCards;
+        this.goodsCards = goodsCards;
         this.trafficDocuments = trafficDocuments;
     }
 
@@ -78,12 +78,12 @@ public class BusinessYear implements Serializable {
         this.company = company;
     }
 
-    public List<MerchandiseCard> getMerchandiseCards() {
-        return merchandiseCards;
+    public List<GoodsCard> getMerchandiseCards() {
+        return goodsCards;
     }
 
-    public void setMerchandiseCards(List<MerchandiseCard> merchandiseCards) {
-        this.merchandiseCards = merchandiseCards;
+    public void setMerchandiseCards(List<GoodsCard> goodsCards) {
+        this.goodsCards = goodsCards;
     }
 
     public List<TrafficDocument> getTrafficDocuments() {
@@ -101,7 +101,7 @@ public class BusinessYear implements Serializable {
                 ", year='" + year + '\'' +
                 ", closed=" + closed +
                 ", company=" + company +
-                ", merchandiseCards=" + merchandiseCards +
+                ", merchandiseCards=" + goodsCards +
                 ", trafficDocuments=" + trafficDocuments +
                 '}';
     }

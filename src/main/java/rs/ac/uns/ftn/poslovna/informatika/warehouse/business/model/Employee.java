@@ -8,7 +8,7 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "employee_id", unique = true, nullable = false)
     private int id;
 
     @Column(name = "fullName")
@@ -21,7 +21,7 @@ public class Employee {
     private String password;
 
     @ManyToOne
-    @JoinColumn(name = "company_id", referencedColumnName = "id")
+    @JoinColumn(name = "company_id", referencedColumnName = "company_id")
     private Company company;
 
     @Column(nullable = false)

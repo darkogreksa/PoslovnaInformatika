@@ -10,7 +10,7 @@ public class DocumentItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(name = "documentItem_id", unique = true, nullable = false)
     private Integer id;
 
     @Column(name = "quantity", nullable = false)
@@ -23,12 +23,12 @@ public class DocumentItem {
     private Double value;
 
     @ManyToOne
-    @JoinColumn(name = "trafficDocument_id", referencedColumnName = "id")
+    @JoinColumn(name = "trafficDocument_id", referencedColumnName = "trafficDocument_id")
     private TrafficDocument trafficDocument;
 
     @ManyToOne
-    @JoinColumn(name = "merchandise_id", referencedColumnName = "id")
-    private Merchandise merchandise;
+    @JoinColumn(name = "goods_id", referencedColumnName = "goods_id")
+    private Goods goods;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "documentItem")
     private Set<WarehouseCardAnalytics> warehouseCardAnalytics = new HashSet<>();
@@ -36,13 +36,13 @@ public class DocumentItem {
     public DocumentItem() {
     }
 
-    public DocumentItem(Integer id, Double quantity, Double price, Double value, TrafficDocument trafficDocument, Merchandise merchandise, Set<WarehouseCardAnalytics> warehouseCardAnalytics) {
+    public DocumentItem(Integer id, Double quantity, Double price, Double value, TrafficDocument trafficDocument, Goods goods, Set<WarehouseCardAnalytics> warehouseCardAnalytics) {
         this.id = id;
         this.quantity = quantity;
         this.price = price;
         this.value = value;
         this.trafficDocument = trafficDocument;
-        this.merchandise = merchandise;
+        this.goods = goods;
         this.warehouseCardAnalytics = warehouseCardAnalytics;
     }
 
@@ -86,12 +86,12 @@ public class DocumentItem {
         this.trafficDocument = trafficDocument;
     }
 
-    public Merchandise getMerchandise() {
-        return merchandise;
+    public Goods getMerchandise() {
+        return goods;
     }
 
-    public void setMerchandise(Merchandise merchandise) {
-        this.merchandise = merchandise;
+    public void setMerchandise(Goods goods) {
+        this.goods = goods;
     }
 
     public Set<WarehouseCardAnalytics> getWarehouseCardAnalytics() {
@@ -110,7 +110,7 @@ public class DocumentItem {
                 ", price=" + price +
                 ", value=" + value +
                 ", trafficDocument=" + trafficDocument +
-                ", merchandise=" + merchandise +
+                ", merchandise=" + goods +
                 ", warehouseCardAnalytics=" + warehouseCardAnalytics +
                 '}';
     }

@@ -11,7 +11,7 @@ public class Warehouse implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(name = "warehouse_id", unique = true, nullable = false)
     private Integer id;
 
     @Column(name = "name", columnDefinition = "VARCHAR(50)", length = 50, nullable = false)
@@ -19,7 +19,7 @@ public class Warehouse implements Serializable {
 
     //radnici u magacinu
     @ManyToOne
-    @JoinColumn(name = "employee_id", referencedColumnName = "id")
+    @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
     private Employee employee;
 
     @ManyToOne
@@ -27,8 +27,8 @@ public class Warehouse implements Serializable {
     private Company company;
 
     @OneToMany(mappedBy = "warehouse")
-//	@JoinColumn(name = "merchandiseCard_id", referencedColumnName = "id")
-    private List<MerchandiseCard> merchandiseCards = new ArrayList<>();
+//	@JoinColumn(name = "goodsCard_id", referencedColumnName = "id")
+    private List<GoodsCard> goodsCards = new ArrayList<>();
 
     @OneToMany(mappedBy = "warehouse")
 //	@JoinColumn(name = "trafficDocument_id", referencedColumnName = "id")
@@ -37,12 +37,12 @@ public class Warehouse implements Serializable {
     public Warehouse() {
     }
 
-    public Warehouse(Integer id, String name, Employee employee, Company company, List<MerchandiseCard> merchandiseCards, List<TrafficDocument> trafficDocuments) {
+    public Warehouse(Integer id, String name, Employee employee, Company company, List<GoodsCard> goodsCards, List<TrafficDocument> trafficDocuments) {
         this.id = id;
         this.name = name;
         this.employee = employee;
         this.company = company;
-        this.merchandiseCards = merchandiseCards;
+        this.goodsCards = goodsCards;
         this.trafficDocuments = trafficDocuments;
     }
 
@@ -78,12 +78,12 @@ public class Warehouse implements Serializable {
         this.company = company;
     }
 
-    public List<MerchandiseCard> getMerchandiseCards() {
-        return merchandiseCards;
+    public List<GoodsCard> getMerchandiseCards() {
+        return goodsCards;
     }
 
-    public void setMerchandiseCards(List<MerchandiseCard> merchandiseCards) {
-        this.merchandiseCards = merchandiseCards;
+    public void setMerchandiseCards(List<GoodsCard> goodsCards) {
+        this.goodsCards = goodsCards;
     }
 
     public List<TrafficDocument> getTrafficDocuments() {
@@ -101,7 +101,7 @@ public class Warehouse implements Serializable {
                 ", name='" + name + '\'' +
                 ", employee=" + employee +
                 ", company=" + company +
-                ", merchandiseCards=" + merchandiseCards +
+                ", merchandiseCards=" + goodsCards +
                 ", trafficDocuments=" + trafficDocuments +
                 '}';
     }

@@ -6,12 +6,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "merchandiseCard")
-public class MerchandiseCard {
+@Table(name = "goodsCard")
+public class GoodsCard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(name = "goodsCard_id", unique = true, nullable = false)
     private Integer id;
 
     @Column(name = "price", unique = false, nullable = false, columnDefinition = "Decimal(10,2)")
@@ -50,20 +50,20 @@ public class MerchandiseCard {
     private BusinessYear businessYear;
 
     @ManyToOne()
-    @JoinColumn(name = "merchandise_id", nullable = true, referencedColumnName = "id")
-    private Merchandise merchandise;
+    @JoinColumn(name = "goods_id", nullable = true, referencedColumnName = "goods_id")
+    private Goods goods;
 
     @ManyToOne()
-    @JoinColumn(name = "warehouse_id", nullable = true, referencedColumnName = "id")
+    @JoinColumn(name = "warehouse_id", nullable = true, referencedColumnName = "warehouse_id")
     private Warehouse warehouse;
 
-    @OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY, mappedBy = "merchandiseCard")
+    @OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY, mappedBy = "goodsCard")
     private Set<WarehouseCardAnalytics> warehouseCardAnalytics = new HashSet<WarehouseCardAnalytics>();
 
-    public MerchandiseCard() {
+    public GoodsCard() {
     }
 
-    public MerchandiseCard(Integer id, BigInteger price, Integer initialStateQuantity, double initialStateValue, Integer inboundTrafficQuantity, double inboundTrafficValue, Integer outgoingTrafficQuantity, double outgoingTrafficValue, double totalAmount, double totalValue, BusinessYear businessYear, Merchandise merchandise, Warehouse warehouse, Set<WarehouseCardAnalytics> warehouseCardAnalytics) {
+    public GoodsCard(Integer id, BigInteger price, Integer initialStateQuantity, double initialStateValue, Integer inboundTrafficQuantity, double inboundTrafficValue, Integer outgoingTrafficQuantity, double outgoingTrafficValue, double totalAmount, double totalValue, BusinessYear businessYear, Goods goods, Warehouse warehouse, Set<WarehouseCardAnalytics> warehouseCardAnalytics) {
         this.id = id;
         this.price = price;
         this.initialStateQuantity = initialStateQuantity;
@@ -75,7 +75,7 @@ public class MerchandiseCard {
         this.totalAmount = totalAmount;
         this.totalValue = totalValue;
         this.businessYear = businessYear;
-        this.merchandise = merchandise;
+        this.goods = goods;
         this.warehouse = warehouse;
         this.warehouseCardAnalytics = warehouseCardAnalytics;
     }
@@ -168,12 +168,12 @@ public class MerchandiseCard {
         this.businessYear = businessYear;
     }
 
-    public Merchandise getMerchandise() {
-        return merchandise;
+    public Goods getMerchandise() {
+        return goods;
     }
 
-    public void setMerchandise(Merchandise merchandise) {
-        this.merchandise = merchandise;
+    public void setMerchandise(Goods goods) {
+        this.goods = goods;
     }
 
     public Warehouse getWarehouse() {
@@ -206,7 +206,7 @@ public class MerchandiseCard {
                 ", totalAmount=" + totalAmount +
                 ", totalValue=" + totalValue +
                 ", businessYear=" + businessYear +
-                ", merchandise=" + merchandise +
+                ", merchandise=" + goods +
                 ", warehouse=" + warehouse +
                 ", warehouseCardAnalytics=" + warehouseCardAnalytics +
                 '}';

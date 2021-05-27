@@ -29,26 +29,26 @@ public class Company {
     private Set<Employee> employees = new HashSet<Employee>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
-    private Set<GroupOfMerchandise> groupOfMerchandises = new HashSet<GroupOfMerchandise>();
+    private Set<GroupOfGoods> groupOfGoods = new HashSet<GroupOfGoods>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
     private Set<BusinessPartner> businessPartners = new HashSet<BusinessPartner>();
 
     @ManyToOne
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    @JoinColumn(name = "location_id", referencedColumnName = "location_id")
     private Location location;
 
     public Company() {
     }
 
-    public Company(Integer id, String name, String PIB, String address, Set<Warehouse> warehouses, Set<Employee> employees, Set<GroupOfMerchandise> groupOfMerchandises, Set<BusinessPartner> businessPartners, Location location) {
+    public Company(Integer id, String name, String PIB, String address, Set<Warehouse> warehouses, Set<Employee> employees, Set<GroupOfGoods> groupOfGoods, Set<BusinessPartner> businessPartners, Location location) {
         this.id = id;
         this.name = name;
         this.PIB = PIB;
         this.address = address;
         this.warehouses = warehouses;
         this.employees = employees;
-        this.groupOfMerchandises = groupOfMerchandises;
+        this.groupOfGoods = groupOfGoods;
         this.businessPartners = businessPartners;
         this.location = location;
     }
@@ -101,12 +101,12 @@ public class Company {
         this.employees = employees;
     }
 
-    public Set<GroupOfMerchandise> getGroupOfMerchandises() {
-        return groupOfMerchandises;
+    public Set<GroupOfGoods> getGroupOfMerchandises() {
+        return groupOfGoods;
     }
 
-    public void setGroupOfMerchandises(Set<GroupOfMerchandise> groupOfMerchandises) {
-        this.groupOfMerchandises = groupOfMerchandises;
+    public void setGroupOfMerchandises(Set<GroupOfGoods> groupOfGoods) {
+        this.groupOfGoods = groupOfGoods;
     }
 
     public Set<BusinessPartner> getBusinessPartners() {
@@ -134,7 +134,7 @@ public class Company {
                 ", address='" + address + '\'' +
                 ", warehouses=" + warehouses +
                 ", employees=" + employees +
-                ", groupOfMerchandises=" + groupOfMerchandises +
+                ", groupOfMerchandises=" + groupOfGoods +
                 ", businessPartners=" + businessPartners +
                 ", location=" + location +
                 '}';

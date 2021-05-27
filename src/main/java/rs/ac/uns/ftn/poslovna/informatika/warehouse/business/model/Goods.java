@@ -7,41 +7,42 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "merchandise")
-public class Merchandise {
+@Table(name = "goods")
+public class Goods {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "goods_id", unique = true, nullable = false)
     private Integer id;
 
     @Column(name = "name", columnDefinition = "VARCHAR(60)", length = 60, nullable = false)
     private String name;
 
-    @ManyToOne // Merchandise 0..n -> 1..1 Group of merchandise
-    @JoinColumn(name = "groupOfMerchandise_id", referencedColumnName = "id")
-    private GroupOfMerchandise groupOfMerchandise;
+    @ManyToOne // Goods 0..n -> 1..1 Group of goods
+    @JoinColumn(name = "groupOfGoods_id", referencedColumnName = "groupOfGoods_id")
+    private GroupOfGoods groupOfGoods;
 
-    @ManyToOne // Merchandise 0..n -> 1..1 Unit
-    @JoinColumn(name = "unit_id", referencedColumnName = "id")
+    @ManyToOne // Goods 0..n -> 1..1 Unit
+    @JoinColumn(name = "unit_id", referencedColumnName = "unit_id")
     private Unit unit;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "merchandise") // Merchandise 1..1  -> 0..n Merchandise card
-    private Set<MerchandiseCard> merchandiseCards = new HashSet<MerchandiseCard>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "goods") // Goods 1..1  -> 0..n Goods card
+    private Set<GoodsCard> goodsCards = new HashSet<GoodsCard>();
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "merchandise") // Merchandise 1..1 -> 0..n Document items
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "goods") // Goods 1..1 -> 0..n Document items
     private Set<DocumentItem> documentItems = new HashSet<DocumentItem>();
 
-    public Merchandise() {
+    public Goods() {
     }
 
-    public Merchandise(Integer id, String name, GroupOfMerchandise groupOfMerchandise, Unit unit, Set<MerchandiseCard> merchandiseCards, Set<DocumentItem> documentItems) {
+    public Goods(Integer id, String name, GroupOfGoods groupOfGoods, Unit unit, Set<GoodsCard> goodsCards, Set<DocumentItem> documentItems) {
         this.id = id;
         this.name = name;
-        this.groupOfMerchandise = groupOfMerchandise;
+        this.groupOfGoods = groupOfGoods;
         this.unit = unit;
-        this.merchandiseCards = merchandiseCards;
+        this.goodsCards = goodsCards;
         this.documentItems = documentItems;
     }
 
@@ -61,12 +62,12 @@ public class Merchandise {
         this.name = name;
     }
 
-    public GroupOfMerchandise getGroupOfMerchandise() {
-        return groupOfMerchandise;
+    public GroupOfGoods getGroupOfMerchandise() {
+        return groupOfGoods;
     }
 
-    public void setGroupOfMerchandise(GroupOfMerchandise groupOfMerchandise) {
-        this.groupOfMerchandise = groupOfMerchandise;
+    public void setGroupOfMerchandise(GroupOfGoods groupOfGoods) {
+        this.groupOfGoods = groupOfGoods;
     }
 
     public Unit getUnit() {
@@ -77,12 +78,12 @@ public class Merchandise {
         this.unit = unit;
     }
 
-    public Set<MerchandiseCard> getMerchandiseCards() {
-        return merchandiseCards;
+    public Set<GoodsCard> getMerchandiseCards() {
+        return goodsCards;
     }
 
-    public void setMerchandiseCards(Set<MerchandiseCard> merchandiseCards) {
-        this.merchandiseCards = merchandiseCards;
+    public void setMerchandiseCards(Set<GoodsCard> goodsCards) {
+        this.goodsCards = goodsCards;
     }
 
     public Set<DocumentItem> getDocumentItems() {
@@ -98,9 +99,9 @@ public class Merchandise {
         return "Merchandise{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", groupOfMerchandise=" + groupOfMerchandise +
+                ", groupOfMerchandise=" + groupOfGoods +
                 ", unit=" + unit +
-                ", merchandiseCards=" + merchandiseCards +
+                ", merchandiseCards=" + goodsCards +
                 ", documentItems=" + documentItems +
                 '}';
     }

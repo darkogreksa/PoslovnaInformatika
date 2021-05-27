@@ -12,7 +12,7 @@ public class BusinessPartner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(name = "businessPartner_id", unique = true, nullable = false)
     private Integer id;
 
     @Column(name = "name", unique = false, nullable = false, columnDefinition = "VARCHAR(50)", length = 50)
@@ -25,11 +25,11 @@ public class BusinessPartner {
     private String address;
 
     @ManyToOne()
-    @JoinColumn(name = "company_id", referencedColumnName = "id")
+    @JoinColumn(name = "company_id", referencedColumnName = "company_id")
     private Company company;
 
     @ManyToOne()
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    @JoinColumn(name = "location_id", referencedColumnName = "location_id")
     private Location location;
 
     @JsonIgnore

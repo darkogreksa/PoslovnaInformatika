@@ -3,24 +3,25 @@ package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "groupOfMerchandise")
-public class GroupOfMerchandise {
+@Table(name = "groupOfGoods")
+public class GroupOfGoods {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "groupOfGoods_id", nullable = false, unique = true)
     private int id;
 
     @Column(name = "name", nullable = false)
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "company_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "company_id", referencedColumnName = "company_id", nullable = false)
     private Company company;
 
-    public GroupOfMerchandise() {
+    public GroupOfGoods() {
     }
 
-    public GroupOfMerchandise(int id, String name, Company company) {
+    public GroupOfGoods(int id, String name, Company company) {
         this.id = id;
         this.name = name;
         this.company = company;

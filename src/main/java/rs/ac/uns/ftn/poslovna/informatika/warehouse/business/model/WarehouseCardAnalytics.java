@@ -9,6 +9,7 @@ public class WarehouseCardAnalytics {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "warehouseCardAnalytics_id", unique = true, nullable = false)
     private Integer id;
 
     @Column(name = "ordinalNumber", nullable = true)
@@ -31,18 +32,18 @@ public class WarehouseCardAnalytics {
     @Column(name = "value", nullable = false, columnDefinition = "Decimal(19,2)")
     private BigDecimal value;
 
-    @ManyToOne() // Warehouse card analytics 0..n -> 1..1 Merchandise card
-    @JoinColumn(name = "merchandiseCard_id", referencedColumnName = "id", nullable = false)
-    private MerchandiseCard merchandiseCard;
+    @ManyToOne() // Warehouse card analytics 0..n -> 1..1 Goods card
+    @JoinColumn(name = "goodsCard_id", referencedColumnName = "goodsCard_id", nullable = false)
+    private GoodsCard goodsCard;
 
     @ManyToOne()
-    @JoinColumn(name = "documentItem_id", referencedColumnName = "id", nullable = true)
+    @JoinColumn(name = "documentItem_id", referencedColumnName = "documentItem_id", nullable = true)
     private DocumentItem documentItem;
 
     public WarehouseCardAnalytics() {
     }
 
-    public WarehouseCardAnalytics(Integer id, Integer ordinalNumber, TrafficType trafficType, TrafficDirection trafficDirection, Integer quantity, BigDecimal price, BigDecimal value, MerchandiseCard merchandiseCard, DocumentItem documentItem) {
+    public WarehouseCardAnalytics(Integer id, Integer ordinalNumber, TrafficType trafficType, TrafficDirection trafficDirection, Integer quantity, BigDecimal price, BigDecimal value, GoodsCard goodsCard, DocumentItem documentItem) {
         this.id = id;
         this.ordinalNumber = ordinalNumber;
         this.trafficType = trafficType;
@@ -50,7 +51,7 @@ public class WarehouseCardAnalytics {
         this.quantity = quantity;
         this.price = price;
         this.value = value;
-        this.merchandiseCard = merchandiseCard;
+        this.goodsCard = goodsCard;
         this.documentItem = documentItem;
     }
 
@@ -110,12 +111,12 @@ public class WarehouseCardAnalytics {
         this.value = value;
     }
 
-    public MerchandiseCard getMerchandiseCard() {
-        return merchandiseCard;
+    public GoodsCard getMerchandiseCard() {
+        return goodsCard;
     }
 
-    public void setMerchandiseCard(MerchandiseCard merchandiseCard) {
-        this.merchandiseCard = merchandiseCard;
+    public void setMerchandiseCard(GoodsCard goodsCard) {
+        this.goodsCard = goodsCard;
     }
 
     public DocumentItem getDocumentItem() {
@@ -136,7 +137,7 @@ public class WarehouseCardAnalytics {
                 ", quantity=" + quantity +
                 ", price=" + price +
                 ", value=" + value +
-                ", merchandiseCard=" + merchandiseCard +
+                ", merchandiseCard=" + goodsCard +
                 ", documentItem=" + documentItem +
                 '}';
     }
