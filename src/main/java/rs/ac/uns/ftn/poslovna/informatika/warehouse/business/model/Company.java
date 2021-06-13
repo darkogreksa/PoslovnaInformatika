@@ -29,7 +29,7 @@ public class Company {
     private Set<Employee> employees = new HashSet<Employee>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
-    private Set<GroupOfGoods> groupOfGoods = new HashSet<GroupOfGoods>();
+    private Set<GroupOfProducts> groupOfProducts = new HashSet<GroupOfProducts>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
     private Set<BusinessPartner> businessPartners = new HashSet<BusinessPartner>();
@@ -41,14 +41,14 @@ public class Company {
     public Company() {
     }
 
-    public Company(Integer id, String name, String PIB, String address, Set<Warehouse> warehouses, Set<Employee> employees, Set<GroupOfGoods> groupOfGoods, Set<BusinessPartner> businessPartners, Location location) {
+    public Company(Integer id, String name, String PIB, String address, Set<Warehouse> warehouses, Set<Employee> employees, Set<GroupOfProducts> groupOfProducts, Set<BusinessPartner> businessPartners, Location location) {
         this.id = id;
         this.name = name;
         this.PIB = PIB;
         this.address = address;
         this.warehouses = warehouses;
         this.employees = employees;
-        this.groupOfGoods = groupOfGoods;
+        this.groupOfProducts = groupOfProducts;
         this.businessPartners = businessPartners;
         this.location = location;
     }
@@ -101,12 +101,12 @@ public class Company {
         this.employees = employees;
     }
 
-    public Set<GroupOfGoods> getGroupOfMerchandises() {
-        return groupOfGoods;
+    public Set<GroupOfProducts> getGroupOfProducts() {
+        return groupOfProducts;
     }
 
-    public void setGroupOfMerchandises(Set<GroupOfGoods> groupOfGoods) {
-        this.groupOfGoods = groupOfGoods;
+    public void setGroupOfProducts(Set<GroupOfProducts> groupOfProducts) {
+        this.groupOfProducts = groupOfProducts;
     }
 
     public Set<BusinessPartner> getBusinessPartners() {
@@ -134,7 +134,7 @@ public class Company {
                 ", address='" + address + '\'' +
                 ", warehouses=" + warehouses +
                 ", employees=" + employees +
-                ", groupOfMerchandises=" + groupOfGoods +
+                ", groupOfProducts=" + groupOfProducts +
                 ", businessPartners=" + businessPartners +
                 ", location=" + location +
                 '}';

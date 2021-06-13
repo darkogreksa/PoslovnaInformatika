@@ -34,12 +34,12 @@ public class BusinessPartner {
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "businessPartner")
-    private Set<TrafficDocument> documents = new HashSet<TrafficDocument>();
+    private Set<Invoice> documents = new HashSet<Invoice>();
 
     public BusinessPartner() {
     }
 
-    public BusinessPartner(Integer id, String name, String PIB, String address, Company company, Location location, Set<TrafficDocument> documents) {
+    public BusinessPartner(Integer id, String name, String PIB, String address, Company company, Location location, Set<Invoice> documents) {
         this.id = id;
         this.name = name;
         this.PIB = PIB;
@@ -97,11 +97,11 @@ public class BusinessPartner {
         this.location = location;
     }
 
-    public Set<TrafficDocument> getDocuments() {
+    public Set<Invoice> getDocuments() {
         return documents;
     }
 
-    public void setDocuments(Set<TrafficDocument> documents) {
+    public void setDocuments(Set<Invoice> documents) {
         this.documents = documents;
     }
 

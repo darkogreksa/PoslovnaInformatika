@@ -18,15 +18,15 @@ public class Unit implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "unit")
-    private List<Goods> goods = new ArrayList<>();
+    private List<Product> products = new ArrayList<>();
 
     public Unit() {
     }
 
-    public Unit(Integer id, String name, List<Goods> goods) {
+    public Unit(Integer id, String name, List<Product> products) {
         this.id = id;
         this.name = name;
-        this.goods = goods;
+        this.products = products;
     }
 
     public Integer getId() {
@@ -45,12 +45,12 @@ public class Unit implements Serializable {
         this.name = name;
     }
 
-    public List<Goods> getMerchandise() {
-        return goods;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setMerchandise(List<Goods> goods) {
-        this.goods = goods;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     @Override
@@ -58,7 +58,7 @@ public class Unit implements Serializable {
         return "Unit{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", merchandise=" + goods +
+                ", products=" + products +
                 '}';
     }
 }

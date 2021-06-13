@@ -3,12 +3,12 @@ package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "groupOfGoods")
-public class GroupOfGoods {
+@Table(name = "groupOfProducts")
+public class GroupOfProducts {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "groupOfGoods_id", nullable = false, unique = true)
+    @Column(name = "groupOfProducts_id", nullable = false, unique = true)
     private int id;
 
     @Column(name = "name", nullable = false)
@@ -18,10 +18,10 @@ public class GroupOfGoods {
     @JoinColumn(name = "company_id", referencedColumnName = "company_id", nullable = false)
     private Company company;
 
-    public GroupOfGoods() {
+    public GroupOfProducts() {
     }
 
-    public GroupOfGoods(int id, String name, Company company) {
+    public GroupOfProducts(int id, String name, Company company) {
         this.id = id;
         this.name = name;
         this.company = company;
@@ -53,7 +53,7 @@ public class GroupOfGoods {
 
     @Override
     public String toString() {
-        return "GroupOfMerchandise{" +
+        return "GroupOfProducts{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", company=" + company +

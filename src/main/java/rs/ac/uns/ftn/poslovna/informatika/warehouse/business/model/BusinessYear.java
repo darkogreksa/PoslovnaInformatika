@@ -26,24 +26,22 @@ public class BusinessYear implements Serializable {
 
     //veza sa robnom karticom
     @OneToMany(mappedBy = "businessYear")
-//	@JoinColumn(name = "goodsCard_id", referencedColumnName = "id")
-    private List<GoodsCard> goodsCards = new ArrayList<>();
+    private List<ProductCard> productCards = new ArrayList<>();
 
     //veza sa prometnim dokumentom
     @OneToMany(mappedBy = "businessYear")
-//	@JoinColumn(name = "trafficDocument_id", referencedColumnName = "trafficDocument_id")
-    private List<TrafficDocument> trafficDocuments = new ArrayList<>();
+    private List<Invoice> invoices = new ArrayList<>();
 
     public BusinessYear() {
     }
 
-    public BusinessYear(Integer id, String year, boolean closed, Company company, List<GoodsCard> goodsCards, List<TrafficDocument> trafficDocuments) {
+    public BusinessYear(Integer id, String year, boolean closed, Company company, List<ProductCard> productCards, List<Invoice> invoices) {
         this.id = id;
         this.year = year;
         this.closed = closed;
         this.company = company;
-        this.goodsCards = goodsCards;
-        this.trafficDocuments = trafficDocuments;
+        this.productCards = productCards;
+        this.invoices = invoices;
     }
 
     public Integer getId() {
@@ -78,20 +76,20 @@ public class BusinessYear implements Serializable {
         this.company = company;
     }
 
-    public List<GoodsCard> getMerchandiseCards() {
-        return goodsCards;
+    public List<ProductCard> getProductCards() {
+        return productCards;
     }
 
-    public void setMerchandiseCards(List<GoodsCard> goodsCards) {
-        this.goodsCards = goodsCards;
+    public void setProductCards(List<ProductCard> productCards) {
+        this.productCards = productCards;
     }
 
-    public List<TrafficDocument> getTrafficDocuments() {
-        return trafficDocuments;
+    public List<Invoice> getInvoices() {
+        return invoices;
     }
 
-    public void setTrafficDocuments(List<TrafficDocument> trafficDocuments) {
-        this.trafficDocuments = trafficDocuments;
+    public void setInvoices(List<Invoice> invoices) {
+        this.invoices = invoices;
     }
 
     @Override
@@ -101,8 +99,8 @@ public class BusinessYear implements Serializable {
                 ", year='" + year + '\'' +
                 ", closed=" + closed +
                 ", company=" + company +
-                ", merchandiseCards=" + goodsCards +
-                ", trafficDocuments=" + trafficDocuments +
+                ", productCards=" + productCards +
+                ", invoices=" + invoices +
                 '}';
     }
 }

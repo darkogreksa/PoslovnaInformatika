@@ -5,12 +5,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "documentItem")
-public class DocumentItem {
+@Table(name = "invoiceLineItem")
+public class InvoiceLineItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "documentItem_id", unique = true, nullable = false)
+    @Column(name = "invoiceLineItem_id", unique = true, nullable = false)
     private Integer id;
 
     @Column(name = "quantity", nullable = false)
@@ -23,26 +23,26 @@ public class DocumentItem {
     private Double value;
 
     @ManyToOne
-    @JoinColumn(name = "trafficDocument_id", referencedColumnName = "trafficDocument_id")
-    private TrafficDocument trafficDocument;
+    @JoinColumn(name = "invoice_id", referencedColumnName = "invoice_id")
+    private Invoice invoice;
 
     @ManyToOne
-    @JoinColumn(name = "goods_id", referencedColumnName = "goods_id")
-    private Goods goods;
+    @JoinColumn(name = "product_id", referencedColumnName = "product_id")
+    private Product product;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "documentItem")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "invoiceLineItem")
     private Set<WarehouseCardAnalytics> warehouseCardAnalytics = new HashSet<>();
 
-    public DocumentItem() {
+    public InvoiceLineItem() {
     }
 
-    public DocumentItem(Integer id, Double quantity, Double price, Double value, TrafficDocument trafficDocument, Goods goods, Set<WarehouseCardAnalytics> warehouseCardAnalytics) {
+    public InvoiceLineItem(Integer id, Double quantity, Double price, Double value, Invoice invoice, Product product, Set<WarehouseCardAnalytics> warehouseCardAnalytics) {
         this.id = id;
         this.quantity = quantity;
         this.price = price;
         this.value = value;
-        this.trafficDocument = trafficDocument;
-        this.goods = goods;
+        this.invoice = invoice;
+        this.product = product;
         this.warehouseCardAnalytics = warehouseCardAnalytics;
     }
 
@@ -78,20 +78,20 @@ public class DocumentItem {
         this.value = value;
     }
 
-    public TrafficDocument getTrafficDocument() {
-        return trafficDocument;
+    public Invoice getInvoice() {
+        return invoice;
     }
 
-    public void setTrafficDocument(TrafficDocument trafficDocument) {
-        this.trafficDocument = trafficDocument;
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
     }
 
-    public Goods getMerchandise() {
-        return goods;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setMerchandise(Goods goods) {
-        this.goods = goods;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public Set<WarehouseCardAnalytics> getWarehouseCardAnalytics() {
@@ -104,13 +104,13 @@ public class DocumentItem {
 
     @Override
     public String toString() {
-        return "DocumentItem{" +
+        return "InvoiceLineItem{" +
                 "id=" + id +
                 ", quantity=" + quantity +
                 ", price=" + price +
                 ", value=" + value +
-                ", trafficDocument=" + trafficDocument +
-                ", merchandise=" + goods +
+                ", invoice=" + invoice +
+                ", product=" + product +
                 ", warehouseCardAnalytics=" + warehouseCardAnalytics +
                 '}';
     }

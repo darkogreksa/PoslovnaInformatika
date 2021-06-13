@@ -27,23 +27,21 @@ public class Warehouse implements Serializable {
     private Company company;
 
     @OneToMany(mappedBy = "warehouse")
-//	@JoinColumn(name = "goodsCard_id", referencedColumnName = "id")
-    private List<GoodsCard> goodsCards = new ArrayList<>();
+    private List<ProductCard> productCards = new ArrayList<>();
 
     @OneToMany(mappedBy = "warehouse")
-//	@JoinColumn(name = "trafficDocument_id", referencedColumnName = "id")
-    private List<TrafficDocument> trafficDocuments = new ArrayList<>();
+    private List<Invoice> invoices = new ArrayList<>();
 
     public Warehouse() {
     }
 
-    public Warehouse(Integer id, String name, Employee employee, Company company, List<GoodsCard> goodsCards, List<TrafficDocument> trafficDocuments) {
+    public Warehouse(Integer id, String name, Employee employee, Company company, List<ProductCard> productCards, List<Invoice> invoices) {
         this.id = id;
         this.name = name;
         this.employee = employee;
         this.company = company;
-        this.goodsCards = goodsCards;
-        this.trafficDocuments = trafficDocuments;
+        this.productCards = productCards;
+        this.invoices = invoices;
     }
 
     public Integer getId() {
@@ -78,20 +76,20 @@ public class Warehouse implements Serializable {
         this.company = company;
     }
 
-    public List<GoodsCard> getMerchandiseCards() {
-        return goodsCards;
+    public List<ProductCard> getProductCards() {
+        return productCards;
     }
 
-    public void setMerchandiseCards(List<GoodsCard> goodsCards) {
-        this.goodsCards = goodsCards;
+    public void setProductCards(List<ProductCard> productCards) {
+        this.productCards = productCards;
     }
 
-    public List<TrafficDocument> getTrafficDocuments() {
-        return trafficDocuments;
+    public List<Invoice> getInvoices() {
+        return invoices;
     }
 
-    public void setTrafficDocuments(List<TrafficDocument> trafficDocuments) {
-        this.trafficDocuments = trafficDocuments;
+    public void setInvoices(List<Invoice> invoices) {
+        this.invoices = invoices;
     }
 
     @Override
@@ -101,8 +99,8 @@ public class Warehouse implements Serializable {
                 ", name='" + name + '\'' +
                 ", employee=" + employee +
                 ", company=" + company +
-                ", merchandiseCards=" + goodsCards +
-                ", trafficDocuments=" + trafficDocuments +
+                ", productCards=" + productCards +
+                ", invoices=" + invoices +
                 '}';
     }
 }

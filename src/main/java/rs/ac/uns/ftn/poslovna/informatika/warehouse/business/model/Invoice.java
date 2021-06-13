@@ -6,20 +6,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "trafficDocument")
-public class TrafficDocument {
+@Table(name = "invoice")
+public class Invoice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "trafficDocument_id")
+    @Column(name = "invoice_id")
     private int id;
 
     @Column(name = "documentType", nullable = false)
     private String documentType;
 
     //redni broj dokumenta
-    @Column(name = "ordinalNumberOfDocument")
-    private Integer ordinalNumberOfDocument;
+    @Column(name = "ordinalInvoiceNumber")
+    private Integer ordinalInvoiceNumber;
 
     //datum formiranja
     @Column(name = "dateOfFormation")
@@ -44,23 +44,23 @@ public class TrafficDocument {
     @JoinColumn(name = "warehouse_id", referencedColumnName = "warehouse_id")
     private Warehouse warehouse;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "trafficDocument")
-    private Set<DocumentItem> documentItems = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "invoice")
+    private Set<InvoiceLineItem> invoiceLineItems = new HashSet<>();
 
-    public TrafficDocument() {
+    public Invoice() {
     }
 
-    public TrafficDocument(int id, String documentType, Integer ordinalNumberOfDocument, Date dateOfFormation, Date postingDate, String status, BusinessPartner businessPartner, BusinessYear businessYear, Warehouse warehouse, Set<DocumentItem> documentItems) {
+    public Invoice(int id, String documentType, Integer ordinalInvoiceNumber, Date dateOfFormation, Date postingDate, String status, BusinessPartner businessPartner, BusinessYear businessYear, Warehouse warehouse, Set<InvoiceLineItem> invoiceLineItems) {
         this.id = id;
         this.documentType = documentType;
-        this.ordinalNumberOfDocument = ordinalNumberOfDocument;
+        this.ordinalInvoiceNumber = ordinalInvoiceNumber;
         this.dateOfFormation = dateOfFormation;
         this.postingDate = postingDate;
         this.status = status;
         this.businessPartner = businessPartner;
         this.businessYear = businessYear;
         this.warehouse = warehouse;
-        this.documentItems = documentItems;
+        this.invoiceLineItems = invoiceLineItems;
     }
 
     public int getId() {
@@ -79,12 +79,12 @@ public class TrafficDocument {
         this.documentType = documentType;
     }
 
-    public Integer getOrdinalNumberOfDocument() {
-        return ordinalNumberOfDocument;
+    public Integer getOrdinalInvoiceNumber() {
+        return ordinalInvoiceNumber;
     }
 
-    public void setOrdinalNumberOfDocument(Integer ordinalNumberOfDocument) {
-        this.ordinalNumberOfDocument = ordinalNumberOfDocument;
+    public void setOrdinalInvoiceNumber(Integer ordinalInvoiceNumber) {
+        this.ordinalInvoiceNumber = ordinalInvoiceNumber;
     }
 
     public Date getDateOfFormation() {
@@ -135,27 +135,27 @@ public class TrafficDocument {
         this.warehouse = warehouse;
     }
 
-    public Set<DocumentItem> getDocumentItems() {
-        return documentItems;
+    public Set<InvoiceLineItem> getInvoiceLineItems() {
+        return invoiceLineItems;
     }
 
-    public void setDocumentItems(Set<DocumentItem> documentItems) {
-        this.documentItems = documentItems;
+    public void setInvoiceLineItems(Set<InvoiceLineItem> invoiceLineItems) {
+        this.invoiceLineItems = invoiceLineItems;
     }
 
     @Override
     public String toString() {
-        return "TrafficDocument{" +
+        return "Invoice{" +
                 "id=" + id +
                 ", documentType='" + documentType + '\'' +
-                ", ordinalNumberOfDocument=" + ordinalNumberOfDocument +
+                ", ordinalInvoiceNumber=" + ordinalInvoiceNumber +
                 ", dateOfFormation=" + dateOfFormation +
                 ", postingDate=" + postingDate +
                 ", status='" + status + '\'' +
                 ", businessPartner=" + businessPartner +
                 ", businessYear=" + businessYear +
                 ", warehouse=" + warehouse +
-                ", documentItems=" + documentItems +
+                ", invoiceLineItems=" + invoiceLineItems +
                 '}';
     }
 }

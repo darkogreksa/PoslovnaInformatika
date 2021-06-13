@@ -32,18 +32,18 @@ public class WarehouseCardAnalytics {
     @Column(name = "value", nullable = false, columnDefinition = "Decimal(19,2)")
     private BigDecimal value;
 
-    @ManyToOne() // Warehouse card analytics 0..n -> 1..1 Goods card
-    @JoinColumn(name = "goodsCard_id", referencedColumnName = "goodsCard_id", nullable = false)
-    private GoodsCard goodsCard;
+    @ManyToOne()
+    @JoinColumn(name = "productCard_id", referencedColumnName = "productCard_id", nullable = false)
+    private ProductCard productCard;
 
     @ManyToOne()
-    @JoinColumn(name = "documentItem_id", referencedColumnName = "documentItem_id", nullable = true)
-    private DocumentItem documentItem;
+    @JoinColumn(name = "invoiceLineItem_id", referencedColumnName = "invoiceLineItem_id", nullable = true)
+    private InvoiceLineItem invoiceLineItem;
 
     public WarehouseCardAnalytics() {
     }
 
-    public WarehouseCardAnalytics(Integer id, Integer ordinalNumber, TrafficType trafficType, TrafficDirection trafficDirection, Integer quantity, BigDecimal price, BigDecimal value, GoodsCard goodsCard, DocumentItem documentItem) {
+    public WarehouseCardAnalytics(Integer id, Integer ordinalNumber, TrafficType trafficType, TrafficDirection trafficDirection, Integer quantity, BigDecimal price, BigDecimal value, ProductCard productCard, InvoiceLineItem invoiceLineItem) {
         this.id = id;
         this.ordinalNumber = ordinalNumber;
         this.trafficType = trafficType;
@@ -51,8 +51,8 @@ public class WarehouseCardAnalytics {
         this.quantity = quantity;
         this.price = price;
         this.value = value;
-        this.goodsCard = goodsCard;
-        this.documentItem = documentItem;
+        this.productCard = productCard;
+        this.invoiceLineItem = invoiceLineItem;
     }
 
     public Integer getId() {
@@ -111,20 +111,20 @@ public class WarehouseCardAnalytics {
         this.value = value;
     }
 
-    public GoodsCard getMerchandiseCard() {
-        return goodsCard;
+    public ProductCard getProductCard() {
+        return productCard;
     }
 
-    public void setMerchandiseCard(GoodsCard goodsCard) {
-        this.goodsCard = goodsCard;
+    public void setProductCard(ProductCard productCard) {
+        this.productCard = productCard;
     }
 
-    public DocumentItem getDocumentItem() {
-        return documentItem;
+    public InvoiceLineItem getInvoiceLineItem() {
+        return invoiceLineItem;
     }
 
-    public void setDocumentItem(DocumentItem documentItem) {
-        this.documentItem = documentItem;
+    public void setInvoiceLineItem(InvoiceLineItem invoiceLineItem) {
+        this.invoiceLineItem = invoiceLineItem;
     }
 
     @Override
@@ -137,8 +137,8 @@ public class WarehouseCardAnalytics {
                 ", quantity=" + quantity +
                 ", price=" + price +
                 ", value=" + value +
-                ", merchandiseCard=" + goodsCard +
-                ", documentItem=" + documentItem +
+                ", productCard=" + productCard +
+                ", invoiceLineItem=" + invoiceLineItem +
                 '}';
     }
 }
