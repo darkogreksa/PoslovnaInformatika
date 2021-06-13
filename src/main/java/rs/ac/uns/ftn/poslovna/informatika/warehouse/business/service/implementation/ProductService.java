@@ -1,12 +1,14 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.service.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Product;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.repository.ProductRepository;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.service.ProductServiceInterface;
 
 import java.util.List;
 
+@Service
 public class ProductService implements ProductServiceInterface {
 
     @Autowired
