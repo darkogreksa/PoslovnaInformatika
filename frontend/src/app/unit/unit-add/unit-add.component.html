@@ -1,0 +1,24 @@
+<app-nav></app-nav>
+<div class="row justify-content-center">
+  <h4 class="display-4">Add unit</h4>
+</div>
+<form
+  [formGroup]="addNameForm"
+  class="col-md-8 offset-md-2"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="form-group">
+    <label for="inputName" class="font-weight-bold">Name</label>
+    <input
+      formControlName="inputName"
+      type="text"
+      class="form-control"
+      id="inputName"
+      placeholder=""
+    />
+  </div>
+  <div class="row">
+    <button type="submit" class="btn btn-success btn-lg ml-3">Save</button>
+    <button class="btn btn-secondary btn-lg ml-auto mr-3">Cancel</button>
+  </div>
+</form>
