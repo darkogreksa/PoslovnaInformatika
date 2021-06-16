@@ -7,6 +7,8 @@ import { UnitComponent } from './unit/unit.component';
 import { LocationComponent } from './location/location.component';
 import { UnitAddComponent } from './unit/unit-add/unit-add.component';
 import { UnitEditComponent } from './unit/unit-edit/unit-edit.component';
+import { LocationAddComponent } from './location/location-add/location-add.component';
+import { LocationEditComponent } from './location/location-edit/location-edit.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { UnitEditComponent } from './unit/unit-edit/unit-edit.component';
     UnitComponent,
     LocationComponent,
     UnitAddComponent,
-    UnitEditComponent
+    UnitEditComponent,
+    LocationAddComponent,
+    LocationEditComponent
   ],
   imports: [
     BrowserModule,

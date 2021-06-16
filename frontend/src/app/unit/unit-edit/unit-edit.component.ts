@@ -12,10 +12,10 @@ import { UnitService } from 'src/app/services/unit.service';
 })
 export class UnitEditComponent implements OnInit {
 
-  unit!: Unit;
-  editNameForm!: FormGroup;
-  formBuilder!: FormBuilder;
-  sub!: Subscription;
+  unit: Unit;
+  editNameForm: FormGroup;
+  formBuilder: FormBuilder;
+  sub: Subscription;
 
   constructor(private unitService: UnitService, private route: ActivatedRoute, private router: Router) { }
 
@@ -26,9 +26,9 @@ export class UnitEditComponent implements OnInit {
     this.sub = this.route.params.subscribe(params =>{
       const id = params['id'];
       if(id){
-        this.unitService.getOne(id).subscribe((unit: Unit) =>{
-          if(unit){
-            this.unit = unit;
+        this.unitService.getOne(id).subscribe((u: Unit) =>{
+          if(u){
+            this.unit = u;
           }else{
             alert("Ne postoji trazena jedinica mere!")
           }
@@ -37,11 +37,11 @@ export class UnitEditComponent implements OnInit {
     });
   }
 
-  edit(unit: Unit, id: number){
+  edit(u: Unit, id: number){
     const name: string = this.editNameForm.controls.inputName.value;
 
     this.unit.name = name;
-    this.unitService.edit(unit, id).subscribe(unit => {
+    this.unitService.edit(u, id).subscribe(unit => {
       this.unit;
       this.router.navigateByUrl("/units");
     });

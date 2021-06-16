@@ -1,0 +1,52 @@
+<app-nav></app-nav>
+<div class="row justify-content-center">
+  <h4 class="display-4">Add location</h4>
+</div>
+<form
+  [formGroup]="addLocationForm"
+  class="col-md-8 offset-md-2 needs-validation"
+  (ngSubmit)="onSubmit()"
+>
+    <div class="form-group">
+        <label for="name" class="font-weight-bold">Name</label>
+        <input
+            formControlName="name"
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Name"
+            [ngClass]="
+                addLocationForm.get('name').errors && addLocationForm.get('name').touched
+                    ? 'is-invalid'
+                    : addLocationForm.get('name').errors == null && addLocationForm.get('name').touched
+                    ? 'is-valid'
+                    : ''
+            "
+        />
+        <div
+            class="invalid-feedback"
+            *ngIf="
+                addLocationForm.get('name').hasError('required') &&
+                addLocationForm.get('name').touched
+            "
+        >
+            Morate uneti naziv.
+        </div>
+    </div>
+
+    <div class="row">
+        <button
+            type="submit"
+            class="btn btn-success btn-lg ml-3"
+            [disabled]="!addLocationForm.valid"
+        >
+            Save
+        </button>
+        <button
+            class="btn btn-secondary btn-lg ml-auto mr-3"
+            [routerLink]="['/locations']"
+        >
+            Cancel
+    </button>
+  </div>
+</form>

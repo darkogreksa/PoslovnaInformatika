@@ -11,8 +11,8 @@ import { UnitService } from 'src/app/services/unit.service';
 })
 export class UnitAddComponent implements OnInit {
 
-  u!: Unit;
-  addNameForm!: FormGroup;
+  u: Unit;
+  addNameForm: FormGroup;
 
   constructor(private unitService: UnitService, private router: Router) { }
 
