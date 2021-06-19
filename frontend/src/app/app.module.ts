@@ -9,6 +9,9 @@ import { UnitAddComponent } from './unit/unit-add/unit-add.component';
 import { UnitEditComponent } from './unit/unit-edit/unit-edit.component';
 import { LocationAddComponent } from './location/location-add/location-add.component';
 import { LocationEditComponent } from './location/location-edit/location-edit.component';
+import { CompanyListComponent } from './company/company-list/company-list.component';
+import { CompanyAddComponent } from './company/company-add/company-add.component';
+import { BusinessYearComponent } from './business-year/business-year-list/business-year/business-year.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { LocationEditComponent } from './location/location-edit/location-edit.co
     UnitAddComponent,
     UnitEditComponent,
     LocationAddComponent,
-    LocationEditComponent
+    LocationEditComponent,
+    CompanyListComponent,
+    CompanyAddComponent,
+    BusinessYearComponent
   ],
   imports: [
     BrowserModule,
