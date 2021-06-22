@@ -1,6 +1,10 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+import static javax.persistence.CascadeType.ALL;
 
 @Entity
 @Table(name = "employee")
@@ -26,6 +30,9 @@ public class Employee {
 
     @Column(nullable = false)
     private Role role;
+
+    @OneToMany(cascade={ALL}, fetch=FetchType.EAGER, mappedBy = "employee")
+    private Set<UserAuthority> userAuthorities = new HashSet<UserAuthority>();
 
     public Employee() {
     }
@@ -85,6 +92,14 @@ public class Employee {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Set<UserAuthority> getUserAuthorities() {
+        return userAuthorities;
+    }
+
+    public void setUserAuthorities(Set<UserAuthority> userAuthorities) {
+        this.userAuthorities = userAuthorities;
     }
 
     @Override
