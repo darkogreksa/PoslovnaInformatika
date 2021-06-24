@@ -21,6 +21,8 @@ import { LocationService } from './services/location.service';
 import { NavComponent } from './partials/nav/nav.component';
 import { FooterComponent } from './partials/footer/footer.component';
 import { HomeComponent } from './home/home.component';
+import { BusinessYearAddComponent } from './business-year/business-year-add/business-year-add.component';
+import { BusinessYearEditComponent } from './business-year/business-year-edit/business-year-edit.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { HomeComponent } from './home/home.component';
     BusinessYearComponent,
     HomeComponent,
     NavComponent,
-    FooterComponent
+    FooterComponent,
+    BusinessYearAddComponent,
+    BusinessYearEditComponent
   ],
   imports: [
     BrowserModule,

@@ -24,9 +24,9 @@ export class LocationEditComponent implements OnInit {
     this.createForm();
     this.route.params.subscribe(params => {
       const id = params['id'];
-      if(id) {
+      if (id) {
         this.locationService.getOne(id).subscribe((l: Location) => {
-          if(l) {
+          if (l) {
             this.location = l;
             this.editLocationForm.controls['name'].setValue(l.name)
           }

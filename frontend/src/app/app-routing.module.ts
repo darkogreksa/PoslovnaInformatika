@@ -7,6 +7,8 @@ import { UnitAddComponent } from './unit/unit-add/unit-add.component';
 import { UnitEditComponent } from './unit/unit-edit/unit-edit.component';
 import { UnitComponent } from './unit/unit-list/unit.component';
 import { BusinessYearComponent } from './business-year/business-year-list/business-year/business-year.component';
+import { BusinessYearAddComponent } from './business-year/business-year-add/business-year-add.component';
+import { BusinessYearEditComponent } from './business-year/business-year-edit/business-year-edit.component';
 
 const routes: Routes = [
   {
@@ -36,6 +38,14 @@ const routes: Routes = [
   {
     path: "business-year",
     component: BusinessYearComponent
+  },
+  {
+    path: "business-year/add",
+    component: BusinessYearAddComponent
+  },
+  {
+    path: "business-year/edit/:id",
+    component: BusinessYearEditComponent
   }
 ];
 
