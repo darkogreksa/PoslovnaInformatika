@@ -1,0 +1,107 @@
+<app-nav></app-nav>
+<div class="row justify-content-center">
+  <h4 class="display-4">Add business partner</h4>
+</div>
+<form
+  [formGroup]="addBPartnerForm"
+  class="col-md-8 offset-md-2"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="form-group">
+    <label for="name" class="font-weight-bold">Name</label>
+    <input
+      formControlName="inputName"
+      type="text"
+      class="form-control"
+      id="inputName"
+      required
+      [ngClass]="
+      addBPartnerForm.get('inputName').errors &&
+      addBPartnerForm.get('inputName').touched
+          ? 'is-invalid'
+          : addBPartnerForm.get('inputName').errors == null &&
+          addBPartnerForm.get('inputName').touched
+          ? 'is-valid'
+          : ''
+      "
+    />
+    <div
+      class="invalid-feedback"
+      *ngIf="
+      addBPartnerForm.get('inputName').hasError('required') &&
+      addBPartnerForm.get('inputName').touched
+      "
+    >
+      Naziv se mora uneti!
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="name" class="font-weight-bold">PIB</label>
+    <input
+      formControlName="inputPib"
+      type="text"
+      class="form-control"
+      id="inputPib"
+      required
+      [ngClass]="
+      addBPartnerForm.get('inputPib').errors &&
+      addBPartnerForm.get('inputPib').touched
+          ? 'is-invalid'
+          : addBPartnerForm.get('inputPib').errors == null &&
+          addBPartnerForm.get('inputPib').touched
+          ? 'is-valid'
+          : ''
+      "
+    />
+    <div
+      class="invalid-feedback"
+      *ngIf="
+      addBPartnerForm.get('inputPib').hasError('required') &&
+      addBPartnerForm.get('inputPib').touched
+      "
+    >
+      PIB se mora uneti!
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="name" class="font-weight-bold">Address</label>
+    <input
+      formControlName="inputAddress"
+      type="text"
+      class="form-control"
+      id="inputAddress"
+      required
+      [ngClass]="
+      addBPartnerForm.get('inputAddress').errors &&
+      addBPartnerForm.get('inputAddress').touched
+          ? 'is-invalid'
+          : addBPartnerForm.get('inputAddress').errors == null &&
+          addBPartnerForm.get('inputAddress').touched
+          ? 'is-valid'
+          : ''
+      "
+    />
+    <div
+      class="invalid-feedback"
+      *ngIf="
+      addBPartnerForm.get('inputAddress').hasError('required') &&
+      addBPartnerForm.get('inputAddress').touched
+      "
+    >
+      Adresa se mora uneti!
+    </div>
+  </div>
+
+  <div class="row">
+    <button
+      type="submit"
+      class="btn btn-success btn-lg ml-3"
+      [disabled]="!addBPartnerForm.valid"
+    >
+      Sačuvaj
+    </button>
+    <button class="btn btn-secondary btn-lg ml-auto mr-3">Cancel</button>
+  </div>
+</form>

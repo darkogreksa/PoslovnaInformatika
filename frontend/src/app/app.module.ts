@@ -23,6 +23,9 @@ import { FooterComponent } from './partials/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { BusinessYearAddComponent } from './business-year/business-year-add/business-year-add.component';
 import { BusinessYearEditComponent } from './business-year/business-year-edit/business-year-edit.component';
+import { BusinessPartnerListComponent } from './business-partner/business-partner-list/business-partner-list.component';
+import { BusinessPartnerAddComponent } from './business-partner/business-partner-add/business-partner-add.component';
+import { BusinessPartnerEditComponent } from './business-partner/business-partner-edit/business-partner-edit.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { BusinessYearEditComponent } from './business-year/business-year-edit/bu
     NavComponent,
     FooterComponent,
     BusinessYearAddComponent,
-    BusinessYearEditComponent
+    BusinessYearEditComponent,
+    BusinessPartnerListComponent,
+    BusinessPartnerAddComponent,
+    BusinessPartnerEditComponent
   ],
   imports: [
     BrowserModule,
