@@ -30,7 +30,7 @@
           <h4 class="card-title" id="naslov"><i class="fas fa-address-card"></i> Prijava korisnickim imenom i lozinkom</h4>
       </div>
       <div class="card-body">
-        <form>
+        <form (ngSubmit)="login()">
           <div class="form-group">
             <label for="email"><i class="fas fa-user"></i> Korisnicko ime: </label>
             <input type="email" class="form-control" id="email" placeholder="Unesite korisnicko ime" name="name" [(ngModel)]="user.username">
