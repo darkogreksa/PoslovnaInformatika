@@ -1,0 +1,30 @@
+* {
+    color: aliceblue;
+}
+
+.jumbotron {
+    height: 100vh;
+    border-radius: 0%;
+    background-image: url("background1.jpg");
+    background-size: cover;
+    margin-bottom: 0%;
+}
+
+.navbar-custom {
+    background-color: #141c3b;
+}
+
+#about {
+    width: 50%;
+    float: left;
+}
+
+#login {
+    width: 35%;
+    float: right;
+    margin-right: 2%;
+}
+
+#naslov {
+    margin-bottom: 0%;
+}
