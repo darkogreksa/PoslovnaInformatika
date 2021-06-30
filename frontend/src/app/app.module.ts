@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {DatePipe} from '@angular/common';
 
@@ -13,18 +13,25 @@ import { HomeComponent } from './home/home.component';
 import {AuthenticationService} from './services/authentication/authentication.service';
 import {JwtUtilsService} from './services/authentication/jwt-utils.service';
 import {TokenInterceptorService} from './services/authentication/token-interceptor.service';
+import { LocationComponent } from './location/location-list/location-list.component';
+import { LocationAddComponent } from './location/location-add/location-add.component';
+import { LocationEditComponent } from './location/location-edit/location-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UnitComponent,
-    HomeComponent
+    HomeComponent,
+    LocationComponent,
+    LocationAddComponent,
+    LocationEditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     AuthenticationService,
