@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { BusinessPartnerAddComponent } from './business-partner/business-partner-add/business-partner-add.component';
 import { BusinessPartnerEditComponent } from './business-partner/business-partner-edit/business-partner-edit.component';
 import { BusinessPartnerListComponent } from './business-partner/business-partner-list/business-partner-list.component';
+import { CompanyAddComponent } from './company/company-add/company-add.component';
+import { CompanyListComponent } from './company/company-list/company-list.component';
 import { HomeComponent } from './home/home.component';
 import { LocationAddComponent } from './location/location-add/location-add.component';
 import { LocationEditComponent } from './location/location-edit/location-edit.component';
@@ -37,6 +39,14 @@ const routes: Routes = [
   {
     path: "business-partner/edit/:id",
     component: BusinessPartnerEditComponent
+  },
+  {
+    path: "company",
+    component: CompanyListComponent
+  },
+  {
+    path: "company/add",
+    component: CompanyAddComponent
   }
 ];
 

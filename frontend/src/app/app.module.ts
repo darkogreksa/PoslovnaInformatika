@@ -22,6 +22,8 @@ import { BusinessPartnerListComponent } from './business-partner/business-partne
 import { BusinessPartnerAddComponent } from './business-partner/business-partner-add/business-partner-add.component';
 import { BusinessPartnerEditComponent } from './business-partner/business-partner-edit/business-partner-edit.component';
 import { LocationService } from './services/location.service';
+import { CompanyListComponent } from './company/company-list/company-list.component';
+import { CompanyAddComponent } from './company/company-add/company-add.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { LocationService } from './services/location.service';
     UnitEditComponent,
     BusinessPartnerListComponent,
     BusinessPartnerAddComponent,
-    BusinessPartnerEditComponent
+    BusinessPartnerEditComponent,
+    CompanyListComponent,
+    CompanyAddComponent
   ],
   imports: [
     BrowserModule,
