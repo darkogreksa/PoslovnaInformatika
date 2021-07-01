@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { LocationService } from 'src/app/services/location.service';
 import { Location } from 'src/app/model/location';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-location-add',

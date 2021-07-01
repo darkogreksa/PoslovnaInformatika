@@ -1,5 +1,7 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.LocationDTO;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,6 +32,11 @@ public class Location {
         this.name = name;
         this.companies = companies;
         this.businessPartners = businessPartners;
+    }
+
+    public void setSimpleDataFromDTO(LocationDTO locationDTO) {
+        this.setId(locationDTO.getId());
+        this.setName(locationDTO.getName());
     }
 
     public Integer getId() {

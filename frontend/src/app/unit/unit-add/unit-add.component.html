@@ -1,5 +1,5 @@
 <div class="row justify-content-center">
-    <h4 class="display-4">Add unit</h4>
+    <h4 class="display-4">Dodaj jedinicu mere</h4>
   </div>
   <form
     [formGroup]="addNameForm"
@@ -7,7 +7,7 @@
     (ngSubmit)="onSubmit()"
   >
     <div class="form-group">
-      <label for="inputName" class="font-weight-bold">Name</label>
+      <label for="inputName" class="font-weight-bold">Naziv</label>
       <input
         formControlName="inputName"
         type="text"
@@ -17,7 +17,7 @@
       />
     </div>
     <div class="row">
-      <button type="submit" class="btn btn-success btn-lg ml-3">Save</button>
-      <button class="btn btn-secondary btn-lg ml-auto mr-3">Cancel</button>
+      <button type="submit" class="btn btn-success btn-lg ml-3">Sačuvaj</button>
+      <button class="btn btn-secondary btn-lg ml-auto mr-3">Odustani</button>
     </div>
   </form>
