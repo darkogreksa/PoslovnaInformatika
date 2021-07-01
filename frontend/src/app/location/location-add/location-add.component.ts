@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LocationService } from 'src/app/services/location.service';
+import { Location } from 'src/app/model/location';
 
 @Component({
   selector: 'app-location-add',
@@ -6,10 +9,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./location-add.component.css']
 })
 export class LocationAddComponent implements OnInit {
+  
+  addLocationForm: FormGroup;
+  location: Location;
 
-  constructor() { }
+  constructor(
+    private locationService: LocationService,
+    private formBuilder: FormBuilder
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.createForm();
+  }
+
+  createForm() {
+    this.addLocationForm = this.formBuilder.group({
+      name: ['', Validators.required]
+    });
+  }
+
+  onSubmit() {
+    const name: string = this.addLocationForm.controls.name.value;
+
+    this.location = new Location(0, name);
+
+    this.locationService.addLocation(this.location).subscribe(location => this.location);
   }
 
 }

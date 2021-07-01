@@ -1,1 +1,53 @@
-<p>location-edit works!</p>
+<div class="row justify-content-center">
+    <h4 class="display-4">Izmeni Mesto</h4>
+  </div>
+  <form
+    class="needs-validation"
+    [formGroup]="editLocationForm"
+    class="col-md-8 offset-md-2"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="form-group">
+      <label for="name" class="font-weight-bold">Name</label>
+      <input
+        formControlName="name"
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Name"
+        [ngClass]="
+          editLocationForm.get('name').errors && editLocationForm.get('name').touched
+            ? 'is-invalid'
+            : editLocationForm.get('name').errors == null &&
+            editLocationForm.get('name').touched
+            ? 'is-valid'
+            : ''
+        "
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="
+        editLocationForm.get('name').hasError('required') &&
+        editLocationForm.get('name').touched
+        "
+      >
+        Morate uneti naziv!
+      </div>
+    </div>
+  
+    <div class="row">
+      <button
+        type="submit"
+        class="btn btn-success btn-lg ml-3"
+        [disabled]="!editLocationForm.valid"
+      >
+        Save
+      </button>
+      <button
+        class="btn btn-secondary btn-lg ml-auto mr-3"
+        [routerLink]="['/locations']"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
