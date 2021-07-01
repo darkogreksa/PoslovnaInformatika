@@ -40,39 +40,34 @@ public class LocationController {
     @PostMapping(value = "/create", consumes = "application/json")
     public ResponseEntity<LocationDTO> create(@RequestBody LocationDTO locationDTO) {
         Location location = new Location();
-        location.setSimpleDataFromDTO(locationDTO);
+        location.setName(locationDTO.getName());
 
-        Location saved = locationService.create(location);
-        LocationDTO savedDTO = new LocationDTO(saved);
+        location = locationService.create(location);
 
-        return new ResponseEntity<LocationDTO>(savedDTO, HttpStatus.OK);
+        return new ResponseEntity<LocationDTO>(new LocationDTO(), HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/update/{id}", consumes = "application/json")
-    public ResponseEntity<LocationDTO> update(@RequestBody LocationDTO locationDTO) {
+    public ResponseEntity<LocationDTO> update(@PathVariable("id") Integer id, @RequestBody LocationDTO locationDTO) {
 
-        Location location = locationService.findOne(locationDTO.getId());
+        Location location = locationService.findOne(id);
 
         if (location == null) {
-            return new ResponseEntity<LocationDTO>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<LocationDTO>(HttpStatus.NOT_FOUND);
         }
 
-        location.setSimpleDataFromDTO(locationDTO);
-
-        Location updated = locationService.update(location);
-
-        LocationDTO locationDTO1 = new LocationDTO(updated);
-        return new ResponseEntity<LocationDTO>(locationDTO1, HttpStatus.OK);
+        location.setName(locationDTO.getName());
+        location = locationService.create(location);
+        return new ResponseEntity<LocationDTO>(new LocationDTO(location), HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") Integer id) {
         Location location = locationService.findOne(id);
-        if (location != null) {
-            locationService.removeById(id);
-            return new ResponseEntity<Void>(HttpStatus.OK);
-        } else {
-            return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+        if (location == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        locationService.removeById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

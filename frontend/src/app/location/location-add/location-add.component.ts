@@ -34,7 +34,7 @@ export class LocationAddComponent implements OnInit {
 
     this.location = new Location(0, name);
 
-    this.locationService.addLocation(this.location).subscribe(location => this.location);
+    this.locationService.add(this.location).subscribe(location => this.location);
   }
 
 }

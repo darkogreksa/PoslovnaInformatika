@@ -34,7 +34,7 @@ export class LocationComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.locationService.deleteLocation(id).subscribe(() => {
+    this.locationService.delete(id).subscribe(() => {
       for (let i = 0; i < this.allLocations.length; i++) {
         if (this.allLocations[i].id === id) {
           this.allLocations.splice(i, 1);

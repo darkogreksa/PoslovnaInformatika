@@ -1,6 +1,8 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Location } from 'src/app/model/location';
 import { LocationService } from 'src/app/services/location.service';
 
@@ -10,43 +12,40 @@ import { LocationService } from 'src/app/services/location.service';
   styleUrls: ['./location-edit.component.css']
 })
 export class LocationEditComponent implements OnInit {
+
   editLocationForm: FormGroup;
   location: Location;
+  sub: Subscription;
 
   constructor(
-    private locationService: LocationService,
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private route: ActivatedRoute
-  ) { }
+    private locationService: LocationService, private route: ActivatedRoute, private router: Router) { }
 
-  ngOnInit() {
-    this.createForm();
-    this.route.params.subscribe(params => {
+  ngOnInit(): void {
+    this.editLocationForm = new FormGroup({
+      inputName: new FormControl()
+    });
+    this.sub = this.route.params.subscribe(params =>{
       const id = params['id'];
-      if (id) {
-        this.locationService.getOne(id).subscribe((l: Location) => {
-          if (l) {
+      if(id){
+        this.locationService.getOne(id).subscribe((l: Location) =>{
+          if(l){
             this.location = l;
-            this.editLocationForm.controls['name'].setValue(l.name)
+          }else{
+            alert("Ne postoji traženo mesto!")
           }
         });
       }
     });
   }
 
-  createForm() {
-    this.editLocationForm = this.formBuilder.group({
-      name: ['', Validators.required]
-    });
-  }
-
-  onSubmit() {
-    const name: string = this.editLocationForm.controls.name.value;
+  edit(l: Location, id: number) {
+    const name: string = this.editLocationForm.controls.inputName.value;
 
     this.location.name = name;
-
-    this.locationService.editLocation(this.location)
+    this.locationService.edit(l, id).subscribe(location => {
+      this.location;
+      this.router.navigateByUrl("/location");
+    });
   }
 
 }

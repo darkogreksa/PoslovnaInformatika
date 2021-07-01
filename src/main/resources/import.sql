@@ -12,3 +12,9 @@ INSERT INTO authority values (1, 'ADMINISTRATOR')
 INSERT INTO authority values (2, 'EMPLOYEE')
 INSERT INTO `warehouse`.`employee` (`employee_id`, `full_name`, `password`, `role`, `username`, `company_id`) VALUES (1, 'Nikola Nikolic', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 1, '123', 1);
 INSERT INTO `warehouse`.`user_authority` (`id`, `authority_id`, `employee_employee_id`) VALUES (1, 1, 1);
+
+INSERT INTO company(pib, address, name, location_id) values ('12345', 'Bulevar Oslobodjenja 1', 'Jugodrvo', 1);
+
+INSERT INTO business_partner(pib, address, name, company_id, location_id) VALUES ('123123', 'Jevrejska 32', 'Neka firma', 1, 1);
+
+

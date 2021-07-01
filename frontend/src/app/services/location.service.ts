@@ -26,15 +26,16 @@ export class LocationService {
     return this.http.get(this.baseUrl + '/' + id);
   }
 
-  addLocation(location: Location) {
-    return this.http.post<Location>(this.baseUrl, location).pipe();
+  add(location: Location) {
+    return this.http.post<Location>(this.baseUrl + '/create', location);
   }
 
-  editLocation(location: Location) {
-    return this.http.put<Location>(this.baseUrl, location).pipe();
+  edit(location: Location, id: number) {
+    const url = `${this.baseUrl}/update/`+id;
+    return this.http.put(url, location);
   }
 
-  deleteLocation(id: number) {
-    return this.http.delete(this.baseUrl + '/' + id).pipe();
+  delete(id: number) {
+    return this.http.delete(this.baseUrl + '/' + id);
   }
 }

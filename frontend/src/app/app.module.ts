@@ -18,6 +18,10 @@ import { LocationAddComponent } from './location/location-add/location-add.compo
 import { LocationEditComponent } from './location/location-edit/location-edit.component';
 import { UnitAddComponent } from './unit/unit-add/unit-add.component';
 import { UnitEditComponent } from './unit/unit-edit/unit-edit.component';
+import { BusinessPartnerListComponent } from './business-partner/business-partner-list/business-partner-list.component';
+import { BusinessPartnerAddComponent } from './business-partner/business-partner-add/business-partner-add.component';
+import { BusinessPartnerEditComponent } from './business-partner/business-partner-edit/business-partner-edit.component';
+import { LocationService } from './services/location.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,10 @@ import { UnitEditComponent } from './unit/unit-edit/unit-edit.component';
     LocationAddComponent,
     LocationEditComponent,
     UnitAddComponent,
-    UnitEditComponent
+    UnitEditComponent,
+    BusinessPartnerListComponent,
+    BusinessPartnerAddComponent,
+    BusinessPartnerEditComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +46,7 @@ import { UnitEditComponent } from './unit/unit-edit/unit-edit.component';
   ],
   providers: [
     AuthenticationService,
+    LocationService,
     DatePipe,
     JwtUtilsService,
     {
