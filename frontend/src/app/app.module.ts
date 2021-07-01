@@ -16,6 +16,8 @@ import {TokenInterceptorService} from './services/authentication/token-intercept
 import { LocationComponent } from './location/location-list/location-list.component';
 import { LocationAddComponent } from './location/location-add/location-add.component';
 import { LocationEditComponent } from './location/location-edit/location-edit.component';
+import { UnitAddComponent } from './unit/unit-add/unit-add.component';
+import { UnitEditComponent } from './unit/unit-edit/unit-edit.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { LocationEditComponent } from './location/location-edit/location-edit.co
     HomeComponent,
     LocationComponent,
     LocationAddComponent,
-    LocationEditComponent
+    LocationEditComponent,
+    UnitAddComponent,
+    UnitEditComponent
   ],
   imports: [
     BrowserModule,
