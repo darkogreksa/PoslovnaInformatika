@@ -1,1 +1,50 @@
-<p>business-partner-edit works!</p>
+<div class="row justify-content-center">
+  <h4 class="display-4">Izmena biznis partnera</h4>
+</div>
+<form [formGroup]="editBP" class="col-md-8 offset-md-2">
+  <div class="form-group">
+    <label for="inputName" class="font-weight-bold">Naziv</label>
+    <input
+      formControlName="inputName"
+      type="text"
+      class="form-control"
+      id="inputName"
+      [ngModel]="partner?.name"
+    />
+  </div>
+  <div class="form-group">
+    <label for="inputPib" class="font-weight-bold text-center">PIB</label>
+    <input
+      formControlName="inputPib"
+      type="text"
+      class="form-control"
+      id="inputPib"
+      [ngModel]="partner?.pib"
+    />
+  </div>
+  <div class="form-group">
+    <label for="inputAddress" class="font-weight-bold text-center">Adresa</label>
+    <input
+      formControlName="inputAddress"
+      type="text"
+      class="form-control"
+      id="inputAddress"
+      [ngModel]="partner?.address"
+    />
+  </div>
+  <div class="row">
+    <button
+      type="submit"
+      class="btn btn-success btn-lg ml-3"
+      (click)="edit(partner, partner.id)"
+    >
+      Sačuvaj
+    </button>
+    <button
+      class="btn btn-secondary btn-lg ml-auto mr-3"
+      [routerLink]="['/business-partner']"
+    >
+      Odustani
+    </button>
+  </div>
+</form>
