@@ -1,6 +1,7 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto;
 
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.BusinessYear;
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Company;
 
 import java.io.Serializable;
 
@@ -9,17 +10,17 @@ public class BusinessYearDTO implements Serializable {
     private Integer id;
     private String year;
     private boolean closed;
-    private CompanyDTO companyDTO;
+    private Company company;
 
-    public BusinessYearDTO(Integer id, String year, boolean closed, CompanyDTO companyDTO) {
+    public BusinessYearDTO(Integer id, String year, boolean closed, Company company) {
         this.id = id;
         this.year = year;
         this.closed = closed;
-        this.companyDTO = companyDTO;
+        this.company = company;
     }
 
     public BusinessYearDTO(BusinessYear businessYear){
-        this(businessYear.getId(), businessYear.getYear(), businessYear.isClosed(), new CompanyDTO(businessYear.getCompany()));
+        this(businessYear.getId(), businessYear.getYear(), businessYear.isClosed(), businessYear.getCompany());
     }
 
     public Integer getId() {
@@ -46,11 +47,11 @@ public class BusinessYearDTO implements Serializable {
         this.closed = closed;
     }
 
-    public CompanyDTO getCompanyDTO() {
-        return companyDTO;
+    public Company getCompany() {
+        return company;
     }
 
-    public void setCompany(CompanyDTO companyDTO) {
-        this.companyDTO = companyDTO;
+    public void setCompany(Company company) {
+        this.company = company;
     }
 }
