@@ -12,6 +12,7 @@ import { LocationComponent } from './location/location-list/location-list.compon
 import { UnitAddComponent } from './unit/unit-add/unit-add.component';
 import { UnitEditComponent } from './unit/unit-edit/unit-edit.component';
 import { UnitComponent } from './unit/unit.component';
+import { WarehouseListComponent } from './warehouse/warehouse-list/warehouse-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
     path: "company/add",
     component: CompanyAddComponent
+  },
+  {
+    path: "warehouse",
+    component: WarehouseListComponent
   }
 ];
 

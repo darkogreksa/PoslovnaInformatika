@@ -1,0 +1,63 @@
+<div class="row  mt-3 mb-3">
+  <form class="col-md-6 offset-md-3">
+    <div class="row no-gutters align-items-center">
+      <div class="col">
+        <input
+          class="form-control form-control-lg form-control-borderless"
+          type="search"
+          placeholder="Vrednost za pretragu"
+        />
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-lg btn-primary" type="submit">
+          <i class="fa fa-search"></i> Pretraži
+        </button>
+      </div>
+    </div>
+  </form>
+  <button class="btn btn-success btn-lg ml-4" [routerLink]="['/magacin/add']">
+    <i class="fa fa-plus"></i> Dodaj magacin
+  </button>
+</div>
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Naziv</th>
+      <th>Robne kartice</th>
+      <th>Izmeni</th>
+      <th>Obriši</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let m of all">
+      <th scope="row">{{ m.id }}</th>
+      <td>{{ m.naziv }}</td>
+      <td class="h5">
+        <a
+          class="badge badge-secondary"
+          *ngIf="loggedIn() && isAdmin()"
+          [routerLink]="['/magacin/robne-kartice', m.id]"
+        >
+          <i class="fa fa-info"></i> Pogledaj robne kartice</a
+        >
+      </td>
+      <td class="h5">
+        <a class="badge badge-primary" [routerLink]="['/magacin/edit', m.id]">
+          <i class="fa fa-edit"></i> Izmeni</a
+        >
+      </td>
+      <td class="h5">
+        <a
+          class="badge badge-danger text-white"
+          *ngIf="loggedIn() && isAdmin()"
+          (click)="delete(m)"
+          style="cursor: pointer"
+        >
+          <i class="fa fa-trash"></i> Obriši</a
+        >
+      </td>
+      <!-- <td class="h5"><a class="badge badge-danger" *ngIf="loggedIn() && isAdmin()"> <i class="fa fa-trash"></i> Obriši</a></td> -->
+    </tr>
+  </tbody>
+</table>

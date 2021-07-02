@@ -24,6 +24,9 @@ import { BusinessPartnerEditComponent } from './business-partner/business-partne
 import { LocationService } from './services/location.service';
 import { CompanyListComponent } from './company/company-list/company-list.component';
 import { CompanyAddComponent } from './company/company-add/company-add.component';
+import { WarehouseListComponent } from './warehouse/warehouse-list/warehouse-list.component';
+import { WarehouseAddComponent } from './warehouse/warehouse-add/warehouse-add.component';
+import { WarehouseEditComponent } from './warehouse/warehouse-edit/warehouse-edit.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { CompanyAddComponent } from './company/company-add/company-add.component
     BusinessPartnerAddComponent,
     BusinessPartnerEditComponent,
     CompanyListComponent,
-    CompanyAddComponent
+    CompanyAddComponent,
+    WarehouseListComponent,
+    WarehouseAddComponent,
+    WarehouseEditComponent
   ],
   imports: [
     BrowserModule,

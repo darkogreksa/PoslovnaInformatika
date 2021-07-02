@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Company } from 'src/app/model/company';
+import { CompanyService } from 'src/app/services/company.service';
 
 @Component({
   selector: 'app-company-add',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyAddComponent implements OnInit {
 
-  constructor() { }
+  company: Company;
+  addCompanyForm:  FormGroup;
 
-  ngOnInit(): void {
+  constructor(private companyService: CompanyService) {}
+
+   ngOnInit() {
+    this.addCompanyForm = new FormGroup({
+      inputName: new FormControl(),
+      inputPib: new FormControl(),
+      inputAddress: new FormControl(),
+    });
   }
+ 
+  onSubmit(){
+    const name: string = this.addCompanyForm.controls.inputName.value;
+    const pib: any = this.addCompanyForm.controls.inputPib.value;
+    const address: any = this.addCompanyForm.controls.inputAddress.value;
 
+    this.company = new Company(name, pib, address);
+
+    this.companyService.add(this.company).subscribe(company => this.company);
+    window.location.replace("company");
+  }
 }
