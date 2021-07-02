@@ -16,6 +16,8 @@ import java.util.List;
 @RequestMapping(value = "/api/business-year")
 public class BusinessYearController {
 
+    //Dodati jos @GetMapping(value = "/{id}/robne-kartice")
+
     @Autowired
     BusinessYearService businessYearService;
 

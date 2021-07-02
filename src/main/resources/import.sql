@@ -22,4 +22,14 @@ INSERT INTO `warehouse`.`user_authority` (`id`, `authority_id`, `employee_employ
 
 INSERT INTO business_partner(pib, address, name, company_id, location_id) VALUES ('123123', 'Jevrejska 32', 'Neki partner', 1, 1);
 
+INSERT INTO business_year(year, closed, company_id) VALUES (2018, true, 1);
+INSERT INTO business_year(year, closed, company_id) VALUES (2019, true, 1);
+INSERT INTO business_year(year, closed, company_id) VALUES (2020, true, 2);
+
+INSERT INTO warehouse(name, company_id) VALUES ('Magacin 1', 1);
+INSERT INTO warehouse(name, company_id) VALUES ('Magacin 2', 1);
+INSERT INTO warehouse(name, company_id) VALUES ('Magacin 3', 2);
+INSERT INTO warehouse(name, company_id) VALUES ('Magacin 4', 2);
+
+
 

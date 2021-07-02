@@ -1,23 +1,25 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto;
 
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Company;
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Employee;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Warehouse;
 
 public class WarehouseDTO {
 
     private Integer id;
     private String name;
-    private EmployeeDTO employeeDTO;
-    private CompanyDTO companyDTO;
+    private Employee employee;
+    private Company company;
 
-    public WarehouseDTO(Integer id, String name, EmployeeDTO employeeDTO, CompanyDTO companyDTO) {
+    public WarehouseDTO(Integer id, String name, Employee employee, Company company) {
         this.id = id;
         this.name = name;
-        this.employeeDTO = employeeDTO;
-        this.companyDTO = companyDTO;
+        this.employee = employee;
+        this.company = company;
     }
 
     public WarehouseDTO(Warehouse warehouse) {
-        this(warehouse.getId(), warehouse.getName(), new EmployeeDTO(warehouse.getEmployee()), new CompanyDTO(warehouse.getCompany()));
+        this(warehouse.getId(), warehouse.getName(), warehouse.getEmployee(), warehouse.getCompany());
     }
 
     public Integer getId() {
@@ -36,19 +38,19 @@ public class WarehouseDTO {
         this.name = name;
     }
 
-    public EmployeeDTO getEmployeeDTO() {
-        return employeeDTO;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeDTO(EmployeeDTO employeeDTO) {
-        this.employeeDTO = employeeDTO;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
-    public CompanyDTO getCompanyDTO() {
-        return companyDTO;
+    public Company getCompany() {
+        return company;
     }
 
-    public void setCompanyDTO(CompanyDTO companyDTO) {
-        this.companyDTO = companyDTO;
+    public void setCompany(Company company) {
+        this.company = company;
     }
 }
