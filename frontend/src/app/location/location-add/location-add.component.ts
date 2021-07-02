@@ -16,7 +16,8 @@ export class LocationAddComponent implements OnInit {
 
   constructor(
     private locationService: LocationService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -35,6 +36,7 @@ export class LocationAddComponent implements OnInit {
     this.location = new Location(0, name);
 
     this.locationService.add(this.location).subscribe(location => this.location);
+    this.router.navigateByUrl("/location");
   }
 
 }

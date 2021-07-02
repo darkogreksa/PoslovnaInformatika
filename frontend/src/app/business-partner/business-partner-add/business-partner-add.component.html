@@ -1,1 +1,106 @@
-<p>business-partner-add works!</p>
+<div class="row justify-content-center">
+  <h4 class="display-4">Dodaj poslovnog partnera</h4>
+</div>
+<form
+  [formGroup]="addPartnerForm"
+  class="col-md-8 offset-md-2"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="form-group">
+    <label for="name" class="font-weight-bold">Naziv</label>
+    <input
+      formControlName="inputName"
+      type="text"
+      class="form-control"
+      id="inputName"
+      required
+      [ngClass]="
+        addPartnerForm.get('inputName').errors &&
+        addPartnerForm.get('inputName').touched
+          ? 'is-invalid'
+          : addPartnerForm.get('inputName').errors == null &&
+            addPartnerForm.get('inputName').touched
+          ? 'is-valid'
+          : ''
+      "
+    />
+    <div
+      class="invalid-feedback"
+      *ngIf="
+        addPartnerForm.get('inputName').hasError('required') &&
+        addPartnerForm.get('inputName').touched
+      "
+    >
+      Naziv se mora uneti!
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="pib" class="font-weight-bold">PIB</label>
+    <input
+      formControlName="inputPib"
+      type="text"
+      class="form-control"
+      id="inputPib"
+      required
+      [ngClass]="
+        addPartnerForm.get('inputPib').errors &&
+        addPartnerForm.get('inputPib').touched
+          ? 'is-invalid'
+          : addPartnerForm.get('inputPib').errors == null &&
+            addPartnerForm.get('inputPib').touched
+          ? 'is-valid'
+          : ''
+      "
+    />
+    <div
+      class="invalid-feedback"
+      *ngIf="
+        addPartnerForm.get('inputPib').hasError('required') &&
+        addPartnerForm.get('inputPib').touched
+      "
+    >
+      PIB se mora uneti!
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="address" class="font-weight-bold">Adresa</label>
+    <input
+      formControlName="inputAddress"
+      type="text"
+      class="form-control"
+      id="inputAddress"
+      required
+      [ngClass]="
+        addPartnerForm.get('inputAddress').errors &&
+        addPartnerForm.get('inputAddress').touched
+          ? 'is-invalid'
+          : addPartnerForm.get('inputAddress').errors == null &&
+            addPartnerForm.get('inputAddress').touched
+          ? 'is-valid'
+          : ''
+      "
+    />
+    <div
+      class="invalid-feedback"
+      *ngIf="
+        addPartnerForm.get('inputAdresa').hasError('required') &&
+        addPartnerForm.get('inputAdresa').touched
+      "
+    >
+      Adresa se mora uneti!
+    </div>
+  </div>
+
+  <div class="row">
+    <button
+      type="submit"
+      class="btn btn-success btn-lg ml-3"
+      [disabled]="!addPartnerForm.valid"
+    >
+      Sačuvaj
+    </button>
+    <button class="btn btn-secondary btn-lg ml-auto mr-3">Odustani</button>
+  </div>
+</form>
