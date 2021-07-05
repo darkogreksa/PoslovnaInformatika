@@ -1,0 +1,36 @@
+<div class="row  mt-3 mb-3">
+    <form [formGroup]="searchProductForm" class="col-md-6 offset-md-3">
+      <div class="row no-gutters align-items-center">
+        <div class="col">
+          <input class="form-control form-control-lg form-control-borderless" type="search"
+            placeholder="Vrednost za pretragu" formControlName="searchQuery">
+        </div>
+        <div class="col-auto">
+          <button class="btn btn-lg btn-primary" type="submit"><i class="fa fa-search"></i> Pretraži</button>
+        </div>
+      </div>
+    </form>
+    <button class="btn btn-success btn-lg ml-4" [routerLink]="['/product/add']"><i class="fa fa-plus"></i> Dodaj robu</button>
+  </div>
+  <table class="table table-hover table-striped">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Naziv</th>
+        <th>Grupa Robe</th>
+        <th>Jedinica Mere</th>
+        <th>Izmeni</th>
+        <th>Obriši</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of allProducts">
+        <th scope="row">{{product.id}}</th>   
+        <td>{{product.name}}</td>
+        <td>{{product.groupOfProductId}}</td>
+        <td>{{product.unitDTO.name}}</td>
+        <td class="h5"><a class="badge badge-primary" *ngIf="loggedIn() && isAdmin()" [routerLink]="['/product/edit', product.id]"> <i class="fa fa-edit"></i> Izmeni</a></td>
+        <td class="h5"><a class="badge badge-danger text-white" *ngIf="loggedIn() && isAdmin()" (click)="delete(product.id)" style="cursor: pointer"> <i class="fa fa-trash"></i> Obriši</a></td>
+    </tr>
+    </tbody>
+  </table>

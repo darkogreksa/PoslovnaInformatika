@@ -27,6 +27,9 @@ import { CompanyAddComponent } from './company/company-add/company-add.component
 import { WarehouseListComponent } from './warehouse/warehouse-list/warehouse-list.component';
 import { WarehouseAddComponent } from './warehouse/warehouse-add/warehouse-add.component';
 import { WarehouseEditComponent } from './warehouse/warehouse-edit/warehouse-edit.component';
+import { ProductListComponent } from './product/product-list/product-list.component';
+import { ProductAddComponent } from './product/product-add/product-add.component';
+import { ProductEditComponent } from './product/product-edit/product-edit.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,10 @@ import { WarehouseEditComponent } from './warehouse/warehouse-edit/warehouse-edi
     CompanyAddComponent,
     WarehouseListComponent,
     WarehouseAddComponent,
-    WarehouseEditComponent
+    WarehouseEditComponent,
+    ProductListComponent,
+    ProductAddComponent,
+    ProductEditComponent
   ],
   imports: [
     BrowserModule,
