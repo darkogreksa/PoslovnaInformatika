@@ -31,3 +31,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 `ng generate service xxx`
 `ng generate component xxx`
 `ng generate class xxx`
+
+TO DO:
+ - Lokacija izmena
+ - Warehouse backend
+ - Product dodavanje i izmena
+ - Pretrazivanje kod vise entiteta
