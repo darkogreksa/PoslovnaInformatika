@@ -1,5 +1,7 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.AnalyticsDTO;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -53,6 +55,15 @@ public class WarehouseCardAnalytics {
         this.value = value;
         this.productCard = productCard;
         this.invoiceLineItem = invoiceLineItem;
+    }
+
+    public void setSimpleDataFromDTO(AnalyticsDTO analyticsDTO) {
+        this.setOrdinalNumber(analyticsDTO.getOrdinalNumber());
+        this.setTrafficType(analyticsDTO.getTrafficType());
+        this.setTrafficDirection(analyticsDTO.getTrafficDirection());
+        this.setQuantity(analyticsDTO.getQuantity());
+        this.setPrice(analyticsDTO.getPrice());
+        this.setValue(analyticsDTO.getValue());
     }
 
     public Integer getId() {

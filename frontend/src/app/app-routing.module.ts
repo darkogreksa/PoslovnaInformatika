@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { LocationAddComponent } from './location/location-add/location-add.component';
 import { LocationEditComponent } from './location/location-edit/location-edit.component';
 import { LocationComponent } from './location/location-list/location-list.component';
+import { ProductAddComponent } from './product/product-add/product-add.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { UnitAddComponent } from './unit/unit-add/unit-add.component';
 import { UnitEditComponent } from './unit/unit-edit/unit-edit.component';
@@ -57,6 +58,10 @@ const routes: Routes = [
   {
     path: "product",
     component: ProductListComponent
+  },
+  {
+    path: "product/add",
+    component: ProductAddComponent
   }
 ];
 
