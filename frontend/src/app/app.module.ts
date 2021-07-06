@@ -30,6 +30,8 @@ import { WarehouseEditComponent } from './warehouse/warehouse-edit/warehouse-edi
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductAddComponent } from './product/product-add/product-add.component';
 import { ProductEditComponent } from './product/product-edit/product-edit.component';
+import { NavComponent } from './partials/nav/nav.component';
+import { FooterComponent } from './partials/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { ProductEditComponent } from './product/product-edit/product-edit.compon
     WarehouseEditComponent,
     ProductListComponent,
     ProductAddComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    NavComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
