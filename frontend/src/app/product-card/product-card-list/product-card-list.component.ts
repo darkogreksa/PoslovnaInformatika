@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Warehouse } from 'src/app/model/warehouse';
+import { WarehouseService } from 'src/app/services/warehouse.service';
 
 @Component({
   selector: 'app-product-card-list',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductCardListComponent implements OnInit {
 
-  constructor() { }
+  companyWarehouses: Warehouse[] = [];
+
+  constructor(private warehouseService: WarehouseService) {
+    var companyId = this.getCompanyId();
+    this.warehouseService.getAllByCompany(companyId).subscribe(
+      (warehouse: Warehouse[]) => {
+        this.companyWarehouses = warehouse;
+      },
+      (error) => console.log(error)
+    );
+    console.log('companyWarehouses:');
+    console.log(this.companyWarehouses);
+  }
 
   ngOnInit(): void {
+  }
+
+  getCompanyId(): any {
+    return localStorage.getItem('companyId') || null;
   }
 
 }

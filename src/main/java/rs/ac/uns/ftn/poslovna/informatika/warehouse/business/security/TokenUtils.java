@@ -75,6 +75,7 @@ public class TokenUtils {
         Map<String, Object> claims = new HashMap<String, Object>();
         claims.put("id", employeeService.findByUsername(userDetails.getUsername()).getId());
         claims.put("sub", userDetails.getUsername());
+        claims.put("companyId", employeeService.findByUsername(userDetails.getUsername()).getCompany().getId());
         claims.put("created", new Date(System.currentTimeMillis()));
         claims.put("role", userDetails.getAuthorities().stream().map(GrantedAuthority::toString).collect(Collectors.joining(",")));
         return Jwts.builder().setClaims(claims)

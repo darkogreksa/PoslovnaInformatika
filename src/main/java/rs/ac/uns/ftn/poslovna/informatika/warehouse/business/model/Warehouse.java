@@ -92,15 +92,15 @@ public class Warehouse implements Serializable {
         this.invoices = invoices;
     }
 
-    @Override
-    public String toString() {
-        return "Warehouse{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", employee=" + employee +
-                ", company=" + company +
-                ", productCards=" + productCards +
-                ", invoices=" + invoices +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Warehouse{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", employee=" + employee +
+//                ", company=" + company +
+//                ", productCards=" + productCards +
+//                ", invoices=" + invoices +
+//                '}';
+//    }
 }

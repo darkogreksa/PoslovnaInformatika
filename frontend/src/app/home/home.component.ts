@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
           // if (userRole.includes('ADMINISTRATOR')) {
           //   this.router.navigate(['/secretAdminPage']);
           // }
-          this.router.navigate(['/unit']);
+          this.router.navigate(['/product-card']);
         }
       }
       ,

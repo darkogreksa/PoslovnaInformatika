@@ -125,18 +125,18 @@ public class Company {
         this.location = location;
     }
 
-    @Override
-    public String toString() {
-        return "Company{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", PIB='" + PIB + '\'' +
-                ", address='" + address + '\'' +
-                ", warehouses=" + warehouses +
-                ", employees=" + employees +
-                ", groupOfProducts=" + groupOfProducts +
-                ", businessPartners=" + businessPartners +
-                ", location=" + location +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Company{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", PIB='" + PIB + '\'' +
+//                ", address='" + address + '\'' +
+//                ", warehouses=" + warehouses +
+//                ", employees=" + employees +
+//                ", groupOfProducts=" + groupOfProducts +
+//                ", businessPartners=" + businessPartners +
+//                ", location=" + location +
+//                '}';
+//    }
 }

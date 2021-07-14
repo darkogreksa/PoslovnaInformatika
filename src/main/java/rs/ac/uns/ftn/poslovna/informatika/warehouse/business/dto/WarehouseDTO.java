@@ -4,7 +4,9 @@ import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Company;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Employee;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Warehouse;
 
-public class WarehouseDTO {
+import java.io.Serializable;
+
+public class WarehouseDTO implements Serializable {
 
     private Integer id;
     private String name;

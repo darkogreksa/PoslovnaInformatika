@@ -76,17 +76,6 @@ public class WarehouseController {
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{id}/product-card")
-    public ResponseEntity<List<ProductCardDTO>> getProductCardsByWarehouse(@PathVariable("id") Integer id){
-        Warehouse w = warehouseService.findOne(id);
-        List<ProductCardDTO> productCardDTOS = new ArrayList<>();
-        List<ProductCard> productCards = productCardService.findByWarehouse_Id(id);
-        for(ProductCard productCard : productCards) {
-            productCardDTOS.add(new ProductCardDTO(productCard));
-        }
-        return new ResponseEntity<List<ProductCardDTO>>(productCardDTOS, HttpStatus.OK);
-    }
-
     @GetMapping(value = "/company/{id}/warehouse")
     public ResponseEntity<List<WarehouseDTO>> getAllByCompany(@PathVariable("id") Integer id){
         Company c = companyService.findOne(id);

@@ -21,6 +21,7 @@ export class AuthenticationService {
         let token = res && res['token'];
         if (token) {
           localStorage.setItem('accessToken', token);
+          localStorage.setItem('companyId', this.getTokenInfo().companyId);
           return true;
         } else {
           return false;

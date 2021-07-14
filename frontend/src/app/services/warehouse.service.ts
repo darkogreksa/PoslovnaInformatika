@@ -19,6 +19,12 @@ export class WarehouseService {
       return this.http.get<Warehouse[]>(url).pipe();
   }
 
+  getAllByCompany(id): Observable<Warehouse[]>{
+    const url = this.baseURL + '/company/' + id + '/warehouse';
+    console.log(url);
+    return this.http.get<Warehouse[]>(url).pipe();
+  }
+
   getOne(id){
       return this.http.get<Warehouse>(this.baseURL + '/' + id);
   }

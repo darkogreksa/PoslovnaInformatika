@@ -31,5 +31,4 @@ INSERT INTO warehouse(name, company_id) VALUES ('Magacin 2', 1);
 INSERT INTO warehouse(name, company_id) VALUES ('Magacin 3', 2);
 INSERT INTO warehouse(name, company_id) VALUES ('Magacin 4', 2);
 
-
-
+INSERT INTO `warehouse`.`product_card` (`product_card_id`, `inbound_traffic_quantity`, `inbound_traffic_value`, `initial_state_quantity`, `initial_state_value`, `outgoing_traffic_quantity`, `outgoing_traffic_value`, `price`, `total_amount`, `total_value`, `business_year_id`, `product_id`, `warehouse_id`) VALUES ('1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '1', '1');
