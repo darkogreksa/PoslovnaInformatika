@@ -1,6 +1,8 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -26,14 +28,16 @@ public class BusinessPartner {
 
     @ManyToOne()
     @JoinColumn(name = "company_id", referencedColumnName = "company_id")
+    @JsonBackReference
     private Company company;
 
     @ManyToOne()
     @JoinColumn(name = "location_id", referencedColumnName = "location_id")
+    @JsonBackReference
     private Location location;
 
-    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "businessPartner")
+    @JsonManagedReference
     private Set<Invoice> documents = new HashSet<Invoice>();
 
     public BusinessPartner() {

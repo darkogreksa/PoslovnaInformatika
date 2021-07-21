@@ -1,5 +1,7 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,6 +20,7 @@ public class Unit implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "unit")
+    @JsonManagedReference
     private List<Product> products = new ArrayList<>();
 
     public Unit() {

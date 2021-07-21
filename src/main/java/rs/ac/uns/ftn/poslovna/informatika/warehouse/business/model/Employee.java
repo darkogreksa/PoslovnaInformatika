@@ -1,5 +1,8 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -26,12 +29,14 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name = "company_id", referencedColumnName = "company_id")
+    @JsonBackReference
     private Company company;
 
     @Column(nullable = false)
     private Role role;
 
     @OneToMany(cascade={ALL}, fetch=FetchType.EAGER, mappedBy = "employee")
+    @JsonManagedReference
     private Set<UserAuthority> userAuthorities = new HashSet<UserAuthority>();
 
     public Employee() {

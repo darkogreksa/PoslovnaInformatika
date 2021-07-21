@@ -1,5 +1,7 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +18,7 @@ public class GroupOfProducts {
 
     @ManyToOne
     @JoinColumn(name = "company_id", referencedColumnName = "company_id", nullable = false)
+    @JsonBackReference
     private Company company;
 
     public GroupOfProducts() {

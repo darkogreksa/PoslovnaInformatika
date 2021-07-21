@@ -1,5 +1,8 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -24,13 +27,16 @@ public class InvoiceLineItem {
 
     @ManyToOne
     @JoinColumn(name = "invoice_id", referencedColumnName = "invoice_id")
+    @JsonBackReference
     private Invoice invoice;
 
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "product_id")
+    @JsonBackReference
     private Product product;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "invoiceLineItem")
+    @JsonManagedReference
     private Set<WarehouseCardAnalytics> warehouseCardAnalytics = new HashSet<>();
 
     public InvoiceLineItem() {

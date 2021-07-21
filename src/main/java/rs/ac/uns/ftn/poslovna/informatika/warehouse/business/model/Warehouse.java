@@ -1,5 +1,9 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,16 +24,21 @@ public class Warehouse implements Serializable {
     //radnici u magacinu
     @ManyToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
+    @JsonBackReference
     private Employee employee;
 
+    //
     @ManyToOne
     @JoinColumn(name = "company_id", referencedColumnName = "company_id")
+    @JsonBackReference
     private Company company;
 
     @OneToMany(mappedBy = "warehouse")
+    @JsonManagedReference
     private List<ProductCard> productCards = new ArrayList<>();
 
     @OneToMany(mappedBy = "warehouse")
+    @JsonManagedReference
     private List<Invoice> invoices = new ArrayList<>();
 
     public Warehouse() {
@@ -92,15 +101,15 @@ public class Warehouse implements Serializable {
         this.invoices = invoices;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Warehouse{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                ", employee=" + employee +
-//                ", company=" + company +
-//                ", productCards=" + productCards +
-//                ", invoices=" + invoices +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "Warehouse{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", employee=" + employee +
+                ", company=" + company +
+                ", productCards=" + productCards +
+                ", invoices=" + invoices +
+                '}';
+    }
 }

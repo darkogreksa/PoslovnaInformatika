@@ -1,6 +1,8 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.ProductDTO;
 
 import javax.persistence.*;
@@ -21,18 +23,22 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "groupOfProducts_id", referencedColumnName = "groupOfProducts_id")
+    @JsonBackReference
     private GroupOfProducts groupOfProducts;
 
     @ManyToOne
     @JoinColumn(name = "unit_id", referencedColumnName = "unit_id")
+    @JsonBackReference
     private Unit unit;
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+    @JsonManagedReference
     private Set<ProductCard> productCards = new HashSet<ProductCard>();
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+    @JsonManagedReference
     private Set<InvoiceLineItem> invoiceLineItems = new HashSet<InvoiceLineItem>();
 
     public Product() {

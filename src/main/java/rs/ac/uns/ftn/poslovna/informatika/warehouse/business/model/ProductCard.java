@@ -1,5 +1,8 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.math.BigInteger;
 import java.util.HashSet;
@@ -47,17 +50,21 @@ public class ProductCard {
 
     @ManyToOne()
     @JoinColumn(name = "businessYear_id", nullable = true, referencedColumnName = "businessYear_id")
+    @JsonBackReference
     private BusinessYear businessYear;
 
     @ManyToOne()
     @JoinColumn(name = "product_id", nullable = true, referencedColumnName = "product_id")
+    @JsonBackReference
     private Product product;
 
     @ManyToOne()
     @JoinColumn(name = "warehouse_id", nullable = true, referencedColumnName = "warehouse_id")
+    @JsonBackReference
     private Warehouse warehouse;
 
     @OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY, mappedBy = "productCard")
+    @JsonManagedReference
     private Set<WarehouseCardAnalytics> warehouseCardAnalytics = new HashSet<WarehouseCardAnalytics>();
 
     public ProductCard() {

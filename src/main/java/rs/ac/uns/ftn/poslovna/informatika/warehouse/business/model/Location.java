@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.LocationDTO;
 
 import javax.persistence.*;
@@ -19,9 +20,11 @@ public class Location {
     private String name;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "location") // Mesto 1..1 -> 0..n Preduzece
+    @JsonManagedReference
     private Set<Company> companies = new HashSet<Company>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "location") // Mesto 0..1 -> 0..n Poslovni partner
+    @JsonManagedReference
     private Set<BusinessPartner> businessPartners = new HashSet<BusinessPartner>();
 
     public Location() {

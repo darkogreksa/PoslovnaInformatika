@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.AnalyticsDTO;
 
 import javax.persistence.*;
@@ -36,10 +37,12 @@ public class WarehouseCardAnalytics {
 
     @ManyToOne()
     @JoinColumn(name = "productCard_id", referencedColumnName = "productCard_id", nullable = false)
+    @JsonBackReference
     private ProductCard productCard;
 
     @ManyToOne()
     @JoinColumn(name = "invoiceLineItem_id", referencedColumnName = "invoiceLineItem_id", nullable = true)
+    @JsonBackReference
     private InvoiceLineItem invoiceLineItem;
 
     public WarehouseCardAnalytics() {

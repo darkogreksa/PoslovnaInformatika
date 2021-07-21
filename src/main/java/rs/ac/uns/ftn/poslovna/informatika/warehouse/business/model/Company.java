@@ -1,12 +1,17 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "company")
-public class Company {
+public class Company implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,20 +27,27 @@ public class Company {
     @Column(name = "address", unique = false, nullable = false,  columnDefinition = "VARCHAR(50)", length = 50)
     private String address;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
+    //
+    @JsonIgnore
+    @OneToMany(mappedBy = "company")
+    @JsonManagedReference
     private Set<Warehouse> warehouses = new HashSet<Warehouse>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
+    @JsonManagedReference
     private Set<Employee> employees = new HashSet<Employee>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
+    @JsonManagedReference
     private Set<GroupOfProducts> groupOfProducts = new HashSet<GroupOfProducts>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
+    @JsonManagedReference
     private Set<BusinessPartner> businessPartners = new HashSet<BusinessPartner>();
 
     @ManyToOne
     @JoinColumn(name = "location_id", referencedColumnName = "location_id")
+    @JsonBackReference
     private Location location;
 
     public Company() {
@@ -125,18 +137,18 @@ public class Company {
         this.location = location;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Company{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                ", PIB='" + PIB + '\'' +
-//                ", address='" + address + '\'' +
-//                ", warehouses=" + warehouses +
-//                ", employees=" + employees +
-//                ", groupOfProducts=" + groupOfProducts +
-//                ", businessPartners=" + businessPartners +
-//                ", location=" + location +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "Company{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", PIB='" + PIB + '\'' +
+                ", address='" + address + '\'' +
+                ", warehouses=" + warehouses +
+                ", employees=" + employees +
+                ", groupOfProducts=" + groupOfProducts +
+                ", businessPartners=" + businessPartners +
+                ", location=" + location +
+                '}';
+    }
 }

@@ -1,5 +1,8 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -22,14 +25,17 @@ public class BusinessYear implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "company_id", referencedColumnName = "company_id")
+    @JsonBackReference
     private Company company;
 
     //veza sa robnom karticom
     @OneToMany(mappedBy = "businessYear")
+    @JsonManagedReference
     private List<ProductCard> productCards = new ArrayList<>();
 
     //veza sa prometnim dokumentom
     @OneToMany(mappedBy = "businessYear")
+    @JsonManagedReference
     private List<Invoice> invoices = new ArrayList<>();
 
     public BusinessYear() {
