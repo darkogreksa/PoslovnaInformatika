@@ -1,0 +1,33 @@
+<app-nav></app-nav>
+<div class="container col-lg-8">
+  <div class="card text-center">
+    <div class="card-header">
+      Robna kartica za robu: {{ productCard.product.name }} (id robe: {{productCard.product.id}}) <br />
+      Id robne kartice: {{ productCard.id }}
+    </div>
+    <div class="card-body">
+      <p class="card-text">
+        Cena: {{productCard.price}}
+        <br />
+        Početno stanje količina: {{ productCard.initialStateQuantity }}
+        <br />
+        Početno stanje vrednosti: {{ productCard.initialStateValue }}
+        <br />
+        Promet ulaz kolicina: {{ productCard.inboundTrafficQuantity }}
+        <br />
+        Promet ulaz vrednost: {{ productCard.inboundTrafficValue }}
+        <br />
+        Promet izlaz količina: {{ productCard.outgoingTrafficQuantity }}
+        <br />
+        Promet izlaz vrednost: {{ productCard.outgoingTrafficValue }}
+        <br />
+        Ukupna količina: {{ productCard.totalAmount }}
+        <br />
+        Ukupna vrednost: {{ productCard.totalValue }}
+      </p>
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+  </div>
+  <br />
+</div>

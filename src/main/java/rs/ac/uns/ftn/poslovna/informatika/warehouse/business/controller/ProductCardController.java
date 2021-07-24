@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.ProductCardDTO;
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.ProductDTO;
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Product;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.ProductCard;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Warehouse;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.service.implementation.ProductCardService;
@@ -23,6 +25,17 @@ public class ProductCardController {
 
     @Autowired
     ProductCardService productCardService;
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<ProductCardDTO> getById(@PathVariable("id") Integer id) {
+        ProductCard productCard = productCardService.findOne(id);
+        if (productCard == null) {
+            return new ResponseEntity<ProductCardDTO>(HttpStatus.NOT_FOUND);
+        }
+        ProductCardDTO productCardDTO = new ProductCardDTO(productCard);
+
+        return new ResponseEntity<ProductCardDTO>(productCardDTO, HttpStatus.OK);
+    }
 
     @GetMapping(value = "/{id}/warehouse")
     public ResponseEntity<List<ProductCardDTO>> getProductCardsByWarehouse(@PathVariable("id") Integer id){
