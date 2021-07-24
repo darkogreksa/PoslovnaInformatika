@@ -1,1 +1,32 @@
-<p>product-card-list works!</p>
+<app-nav></app-nav>
+<table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Naziv</th>
+        <!-- <th>Izmeni</th>
+        <th>Obriši</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let unit of companyWarehouses">
+        <th scope="row">{{ unit.id }}</th>
+        <td>{{ unit.name }}</td>
+        <td class="h5">
+          <!-- <a class="badge badge-primary" [routerLink]="['/unit/edit', unit.id]">
+            <i class="fa fa-edit"></i> Izmeni</a
+          > -->
+        </td>
+        <td class="h5">
+          <!-- <a
+            class="badge badge-danger text-white"
+            *ngIf="loggedIn() && isAdmin()"
+            (click)="delete(unit.id)"
+            style="cursor: pointer"
+          >
+            <i class="fa fa-trash"></i> Obriši</a
+          > -->
+        </td>
+      </tr>
+    </tbody>
+  </table>

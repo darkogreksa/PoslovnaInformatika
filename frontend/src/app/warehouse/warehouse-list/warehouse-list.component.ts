@@ -35,4 +35,13 @@ export class WarehouseListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  loggedIn(): boolean {
+    // return this.authService.loggedIn();
+    return true;
+  }
+  isAdmin(): boolean {
+    // return this.authService.isAdmin();
+    return true;
+  }
+
 }

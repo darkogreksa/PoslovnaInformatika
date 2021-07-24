@@ -16,11 +16,12 @@ export class ProductCardListComponent implements OnInit {
     this.warehouseService.getAllByCompany(companyId).subscribe(
       (warehouse: Warehouse[]) => {
         this.companyWarehouses = warehouse;
+        console.log(this.companyWarehouses);
       },
       (error) => console.log(error)
     );
     console.log('companyWarehouses:');
-    console.log(this.companyWarehouses);
+    
   }
 
   ngOnInit(): void {
