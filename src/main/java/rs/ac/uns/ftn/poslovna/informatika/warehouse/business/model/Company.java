@@ -29,7 +29,7 @@ public class Company implements Serializable {
 
     //
     @JsonIgnore
-    @OneToMany(mappedBy = "company")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
     @JsonManagedReference
     private Set<Warehouse> warehouses = new HashSet<Warehouse>();
 

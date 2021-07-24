@@ -24,7 +24,7 @@ public class ProductCardController {
     @Autowired
     ProductCardService productCardService;
 
-    @GetMapping(value = "/{id}/product-card")
+    @GetMapping(value = "/{id}/warehouse")
     public ResponseEntity<List<ProductCardDTO>> getProductCardsByWarehouse(@PathVariable("id") Integer id){
         Warehouse w = warehouseService.findOne(id);
         List<ProductCardDTO> productCardDTOS = new ArrayList<>();

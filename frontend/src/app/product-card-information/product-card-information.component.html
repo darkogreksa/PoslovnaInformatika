@@ -1,0 +1,20 @@
+<app-nav></app-nav>
+<h4 class="display-4 text-center">Robne kartice poslovne godine</h4>
+<div class="container col-lg-8" *ngFor="let card of productCards">
+  <div class="card text-center">
+    <div class="card-header">
+      Robna kartica sa id {{card.id}} za robu {{card.product.name}}
+    </div>
+    <div class="card-body">
+      <p class="card-text">
+        <br />
+        Ukupna količina: {{ card.totalAmount }}
+        <br />
+        Ukupna vrednost: {{ card.totalValue }}
+      </p>
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+  </div>
+  <br />
+</div>

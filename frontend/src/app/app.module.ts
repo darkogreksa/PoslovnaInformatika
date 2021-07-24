@@ -35,6 +35,7 @@ import { FooterComponent } from './partials/footer/footer.component';
 import { ProductCardListComponent } from './product-card/product-card-list/product-card-list.component';
 import { ProductCardAddComponent } from './product-card/product-card-add/product-card-add.component';
 import { ProductCardEditComponent } from './product-card/product-card-edit/product-card-edit.component';
+import { ProductCardInformationComponent } from './product-card-information/product-card-information.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { ProductCardEditComponent } from './product-card/product-card-edit/produ
     FooterComponent,
     ProductCardListComponent,
     ProductCardAddComponent,
-    ProductCardEditComponent
+    ProductCardEditComponent,
+    ProductCardInformationComponent
   ],
   imports: [
     BrowserModule,

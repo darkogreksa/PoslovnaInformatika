@@ -14,6 +14,12 @@ export class ProductCardService {
     return this.http.get(this.baseUrl + "/all");
   }
 
+  getAllByWarehouse(id): Observable<ProductCard[]>{
+    const url = this.baseUrl + '/' + id + '/warehouse';
+    console.log(url);
+    return this.http.get<ProductCard[]>(url).pipe();
+  }
+
   getId(id) {
     return this.http.get<ProductCard>(this.baseUrl + "/" + id);
   }

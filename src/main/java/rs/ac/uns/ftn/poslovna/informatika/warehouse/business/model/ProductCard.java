@@ -4,13 +4,14 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "productCard")
-public class ProductCard {
+public class ProductCard implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
