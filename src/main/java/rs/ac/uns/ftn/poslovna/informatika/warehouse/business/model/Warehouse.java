@@ -3,6 +3,7 @@ package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.WarehouseDTO;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -51,6 +52,17 @@ public class Warehouse implements Serializable {
         this.company = company;
         this.productCards = productCards;
         this.invoices = invoices;
+    }
+
+    public Warehouse(Integer id, String name, Employee employee, Company company) {
+        this.id = id;
+        this.name = name;
+        this.employee = employee;
+        this.company = company;
+    }
+
+    public Warehouse(WarehouseDTO warehouseDTO) {
+        this(warehouseDTO.getId(), warehouseDTO.getName(), warehouseDTO.getEmployee(), warehouseDTO.getCompany());
     }
 
     public Integer getId() {

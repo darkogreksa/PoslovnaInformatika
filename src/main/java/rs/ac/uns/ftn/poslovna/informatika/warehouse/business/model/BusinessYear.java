@@ -2,6 +2,7 @@ package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.BusinessYearDTO;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -48,6 +49,17 @@ public class BusinessYear implements Serializable {
         this.company = company;
         this.productCards = productCards;
         this.invoices = invoices;
+    }
+
+    public BusinessYear(Integer id, String year, boolean closed, Company company) {
+        this.id = id;
+        this.year = year;
+        this.closed = closed;
+        this.company = company;
+    }
+
+    public BusinessYear(BusinessYearDTO businessYearDTO) {
+        this(businessYearDTO.getId(), businessYearDTO.getYear(), businessYearDTO.isClosed(), businessYearDTO.getCompany());
     }
 
     public Integer getId() {

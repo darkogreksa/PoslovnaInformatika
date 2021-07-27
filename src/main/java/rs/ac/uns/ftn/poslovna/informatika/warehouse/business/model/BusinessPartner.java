@@ -3,6 +3,7 @@ package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.BusinessPartnerDTO;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -51,6 +52,17 @@ public class BusinessPartner {
         this.company = company;
         this.location = location;
         this.documents = documents;
+    }
+
+    public BusinessPartner(Integer id, String name, String PIB, String address) {
+        this.id = id;
+        this.name = name;
+        this.PIB = PIB;
+        this.address = address;
+    }
+
+    public BusinessPartner(BusinessPartnerDTO b) {
+        this(b.getId(), b.getName(), b.getPIB(), b.getAddress());
     }
 
     public Integer getId() {
