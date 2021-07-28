@@ -1,6 +1,7 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto;
 
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.InvoiceLineItem;
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Product;
 
 import java.io.Serializable;
 
@@ -11,23 +12,22 @@ public class InvoiceLineItemDTO  implements Serializable {
     private Double price;
     private Double value;
     private InvoiceDTO invoiceDTO;
-    private ProductDTO productDTO;
+    private Product product;
 
     public InvoiceLineItemDTO() {
     }
 
-    public InvoiceLineItemDTO(Integer id, Double quantity, Double price, Double value, InvoiceDTO invoiceDTO, ProductDTO productDTO) {
+    public InvoiceLineItemDTO(Integer id, Double quantity, Double price, Double value, InvoiceDTO invoiceDTO, Product product) {
         this.id = id;
         this.quantity = quantity;
         this.price = price;
         this.value = value;
         this.invoiceDTO = invoiceDTO;
-        this.productDTO = productDTO;
+        this.product = product;
     }
 
     public InvoiceLineItemDTO(InvoiceLineItem invoiceLineItem) {
-
-        this(invoiceLineItem.getId(), invoiceLineItem.getQuantity(), invoiceLineItem.getPrice(), invoiceLineItem.getValue(), new InvoiceDTO(invoiceLineItem.getInvoice()), new ProductDTO(invoiceLineItem.getProduct()));
+        this(invoiceLineItem.getId(), invoiceLineItem.getQuantity(), invoiceLineItem.getPrice(), invoiceLineItem.getValue(), new InvoiceDTO(invoiceLineItem.getInvoice()), invoiceLineItem.getProduct());
     }
 
     public Integer getId() {
@@ -70,11 +70,11 @@ public class InvoiceLineItemDTO  implements Serializable {
         this.invoiceDTO = invoiceDTO;
     }
 
-    public ProductDTO getProductDTO() {
-        return productDTO;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductDTO(ProductDTO productDTO) {
-        this.productDTO = productDTO;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

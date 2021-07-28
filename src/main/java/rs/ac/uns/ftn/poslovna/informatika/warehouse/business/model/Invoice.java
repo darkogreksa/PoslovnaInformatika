@@ -2,6 +2,7 @@ package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.InvoiceDTO;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -68,6 +69,23 @@ public class Invoice {
         this.businessYear = businessYear;
         this.warehouse = warehouse;
         this.invoiceLineItems = invoiceLineItems;
+    }
+
+    public Invoice(int id, String documentType, Integer ordinalInvoiceNumber, Date dateOfFormation, Date postingDate, String status, BusinessPartner businessPartner, BusinessYear businessYear, Warehouse warehouse) {
+        this.id = id;
+        this.documentType = documentType;
+        this.ordinalInvoiceNumber = ordinalInvoiceNumber;
+        this.dateOfFormation = dateOfFormation;
+        this.postingDate = postingDate;
+        this.status = status;
+        this.businessPartner = businessPartner;
+        this.businessYear = businessYear;
+        this.warehouse = warehouse;
+    }
+
+    public Invoice(InvoiceDTO invoiceDTO) {
+        this(invoiceDTO.getId(), invoiceDTO.getDocumentType(), invoiceDTO.getOrdinalInvoiceNumber(), invoiceDTO.getDateOfFormation(),
+                invoiceDTO.getPostingDate(), invoiceDTO.getStatus(), new BusinessPartner(invoiceDTO.getBusinessPartner()), new BusinessYear(invoiceDTO.getBusinessYear()), new Warehouse(invoiceDTO.getWarehouse()));
     }
 
     public int getId() {
