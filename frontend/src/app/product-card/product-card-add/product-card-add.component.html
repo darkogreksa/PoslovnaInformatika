@@ -1,1 +1,90 @@
-<p>product-card-add works!</p>
+<div class="row justify-content-center">
+    <h4 class="display-4">Dodaj robnu karticu</h4>
+  </div>
+  <form [formGroup]="addProductCardForm" class="col-md-8 offset-md-2" (ngSubmit)="onSubmit()">
+    
+    <div class="form-group">
+      <label for="price" class="font-weight-bold">Cena</label>
+      <input
+        formControlName="inputPrice"
+        type="text"
+        class="form-control"
+        id="inputPrice"
+        required
+        [ngClass]="
+        addProductCardForm.get('inputPrice').errors && addProductCardForm.get('inputPrice').touched
+            ? 'is-invalid'
+            : addProductCardForm.get('inputPrice').errors == null &&
+            addProductCardForm.get('inputPrice').touched
+            ? 'is-valid'
+            : ''
+        "
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="
+        addProductCardForm.get('inputPrice').hasError('required') &&
+        addProductCardForm.get('inputPrice').touched
+        "
+      >
+        Cena se mora uneti i mora biti veća od nule!
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="initialStateQuantity" class="font-weight-bold text-center">Početno stanje količina</label>
+      <input
+      formControlName="inputStateQuantity"
+      type="text"
+      class="form-control"
+      id="inputStateQuantity"
+      required
+      [ngClass]="
+      addProductCardForm.get('inputStateQuantity').errors && addProductCardForm.get('inputStateQuantity').touched
+          ? 'is-invalid'
+          : addProductCardForm.get('inputStateQuantity').errors == null &&
+          addProductCardForm.get('inputStateQuantity').touched
+          ? 'is-valid'
+          : ''
+      "
+    />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+          addProductCardForm.get('inputStateQuantity').hasError('required') &&
+          addProductCardForm.get('inputStateQuantity').touched
+          "
+        >
+         Količina se mora uneti i mora biti veća od nule!
+        </div>
+    </div>
+  
+  
+    <div class="form-group">
+        <label for="product" class="font-weight-bold text-center">Roba:</label>
+        <select class="productId" name="product" (change)="onChangeProduct($event.target.value)">
+          <option [value]="product.id" *ngFor="let product of products"> {{product.name}}</option>
+        </select>
+    </div>
+  
+    <div class="form-group">
+        <label for="warehouse" class="font-weight-bold text-center">Magacin: </label>
+        <select (change)="onChangeWarehouse($event.target.value)">
+          <option [value]="warehouse.id" *ngFor="let warehouse of warehouses"> {{warehouse.name}}</option>
+        </select>
+    </div>
+  
+    <div class="form-group">
+        <label for="businessYear" class="font-weight-bold text-center">Poslovna godina: </label>
+        <select>
+          <option value="5">2021</option>
+        </select>
+    </div>
+  
+    <div class="row">
+        <button type="submit" class="btn btn-success btn-lg ml-3" [disabled]="!addProductCardForm.valid">Sačuvaj</button>
+        <button class="btn btn-secondary btn-lg ml-auto mr-3"  [routerLink]="['/kartica']">Odustani</button>
+    </div>
+    
+  </form>
+  
