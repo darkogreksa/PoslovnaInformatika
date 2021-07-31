@@ -1,6 +1,7 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -91,5 +92,48 @@ public class AnalyticsController {
         } else {
             return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping(value = {"", "/"}, params = {"page", "size"})
+    public ResponseEntity<Page<AnalyticsDTO>> getAllPaged(@RequestParam("page") Integer page, @RequestParam("size") Integer size) {
+        Page<WarehouseCardAnalytics> warehouseCardAnalytics = analyticsService.findAllPaged(page, size);
+        Page<AnalyticsDTO> analyticsDTOS = warehouseCardAnalytics.map(AnalyticsDTO::new);
+
+
+        return new ResponseEntity<Page<AnalyticsDTO>>(analyticsDTOS, HttpStatus.OK);
+    }
+
+    @GetMapping(value = {"", "/"}, params = {"page", "size", "sortDir", "sort"})
+    public ResponseEntity<List<AnalyticsDTO>> getAllPaged(@RequestParam("page") Integer page, @RequestParam("size") Integer size, @RequestParam("sortDir") String sortDir, @RequestParam("sort") String sort) {
+        List<WarehouseCardAnalytics> warehouseCardAnalytics = analyticsService.findAllPagedAndSorted(page, size, sortDir, sort);
+        List<AnalyticsDTO> analyticsDTOS = new ArrayList<AnalyticsDTO>();
+
+        for (WarehouseCardAnalytics warehouseCardAnalytics1 : warehouseCardAnalytics) {
+            analyticsDTOS.add(new AnalyticsDTO(warehouseCardAnalytics1));
+        }
+        return new ResponseEntity<List<AnalyticsDTO>>(analyticsDTOS, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/product-card/{productCardId}")
+    public ResponseEntity<List<AnalyticsDTO>> getAllForProductCard(@PathVariable("productCardId") Integer pcId) {
+        List<WarehouseCardAnalytics> warehouseCardAnalytics = analyticsService.findAllForProductCardByProductCardId(pcId);
+        List<AnalyticsDTO> analyticsDTOS = new ArrayList<AnalyticsDTO>();
+
+        for (WarehouseCardAnalytics warehouseCardAnalytics1 : warehouseCardAnalytics) {
+            analyticsDTOS.add(new AnalyticsDTO(warehouseCardAnalytics1));
+        }
+
+        return new ResponseEntity<List<AnalyticsDTO>>(analyticsDTOS, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/product-card/{productCardId}", params = {"page", "size"})
+    public ResponseEntity<Page<AnalyticsDTO>> getAllForProductCardPaged(
+            @PathVariable("productCardId") Integer pcId,
+            @RequestParam("page") Integer page,
+            @RequestParam("size") Integer size) {
+        Page<WarehouseCardAnalytics> warehouseCardAnalytics = analyticsService.findAllForProductCardByProductCardIdPaged(pcId, page, size);
+        Page<AnalyticsDTO> amkDTOs = warehouseCardAnalytics.map(AnalyticsDTO::new);
+
+        return new ResponseEntity<Page<AnalyticsDTO>>(amkDTOs, HttpStatus.OK);
     }
 }
