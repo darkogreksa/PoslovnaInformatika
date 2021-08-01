@@ -19,4 +19,14 @@ public interface LocationServiceInterface {
     void removeById(Integer id);
 
     List<Location> findAll();
+
+    List<Location> findAllPaged(Integer page, Integer size);
+
+    List<Location> findAllPagedAndSorted(Integer page, Integer size, String sortDirection, String sort);
+
+    List<Location> findAllByName(String name);
+
+    List<Location> findAllByNamePaged(String name, Integer page, Integer size);
+
+    List<Location> findAllByNamePagedAndSorted(String name, Integer page, Integer size, String sortDirection, String sort);
 }

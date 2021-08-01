@@ -70,4 +70,61 @@ public class LocationController {
         locationService.removeById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping(value = {"", "/"}, params = {"page", "size"})
+    public ResponseEntity<List<LocationDTO>> getAllPaged(@RequestParam("page") Integer page, @RequestParam("size") Integer size) {
+        List<Location> locations = locationService.findAllPaged(page, size);
+        List<LocationDTO> locationDTOS = new ArrayList<LocationDTO>();
+
+        for (Location location : locations) {
+            locationDTOS.add(new LocationDTO(location));
+        }
+
+        return new ResponseEntity<List<LocationDTO>>(locationDTOS, HttpStatus.OK);
+    }
+
+    @GetMapping(value = {"", "/"}, params = {"page", "size", "sortDir", "sort"})
+    public ResponseEntity<List<LocationDTO>> getAllPagedAndSorted(@RequestParam("page") Integer page, @RequestParam("size") Integer size, @RequestParam("sortDir") String sortDir, @RequestParam("sort") String sort) {
+        List<Location> locations = locationService.findAllPagedAndSorted(page, size, sortDir, sort);
+        List<LocationDTO> locationDTOS = new ArrayList<LocationDTO>();
+
+        for (Location location : locations) {
+            locationDTOS.add(new LocationDTO(location));
+        }
+
+        return new ResponseEntity<List<LocationDTO>>(locationDTOS, HttpStatus.OK);
+    }
+
+    @GetMapping(value = {"", "/"}, params = "name")
+    public ResponseEntity<List<LocationDTO>> getByName(@RequestParam("name") String name) {
+        List<Location> locations = locationService.findAllByName(name);
+        List<LocationDTO> locationDTOS = new ArrayList<LocationDTO>();
+        for (Location location: locations) {
+            locationDTOS.add(new LocationDTO(location));
+        }
+
+        return new ResponseEntity<List<LocationDTO>>(locationDTOS, HttpStatus.OK);
+    }
+
+    @GetMapping(value = {"", "/"}, params = {"name", "page", "size"})
+    public ResponseEntity<List<LocationDTO>> getByNamePaged(@RequestParam("name") String name, @RequestParam("page") Integer page, @RequestParam("size") Integer size) {
+        List<Location> locations = locationService.findAllByNamePaged(name, page, size);
+        List<LocationDTO> locationDTOS = new ArrayList<LocationDTO>();
+        for (Location location: locations) {
+            locationDTOS.add(new LocationDTO(location));
+        }
+
+        return new ResponseEntity<List<LocationDTO>>(locationDTOS, HttpStatus.OK);
+    }
+
+    @GetMapping(value = {"", "/"}, params = {"name", "page", "size", "sortDir", "sort"})
+    public ResponseEntity<List<LocationDTO>> getByNamePagedAndSorted(@RequestParam("name") String name, @RequestParam("page") Integer page, @RequestParam("size") Integer size, @RequestParam("sortDir") String sortDir, @RequestParam("sort") String sort) {
+        List<Location> locations = locationService.findAllByNamePagedAndSorted(name, page, size, sortDir, sort);
+        List<LocationDTO> locationDTOS = new ArrayList<LocationDTO>();
+        for (Location location: locations) {
+            locationDTOS.add(new LocationDTO(location));
+        }
+
+        return new ResponseEntity<List<LocationDTO>>(locationDTOS, HttpStatus.OK);
+    }
 }
