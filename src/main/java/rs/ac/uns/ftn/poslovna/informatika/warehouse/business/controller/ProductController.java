@@ -1,6 +1,7 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -108,5 +109,43 @@ public class ProductController {
         }
 
         return new ResponseEntity<List<ProductDTO>>(productDTOList, HttpStatus.OK);
+    }
+
+    @GetMapping(value = {"", "/"}, params = {"page", "size"})
+    public ResponseEntity<Page<ProductDTO>> getAllPaged(@RequestParam("page") Integer page, @RequestParam("size") Integer size){
+        Page<Product> products = productServiceInterface.findAllPagedp(page, size);
+        Page<ProductDTO> productDTOS = products.map(ProductDTO::new);
+
+        return new ResponseEntity<Page<ProductDTO>>(productDTOS, HttpStatus.OK);
+    }
+
+    @GetMapping(value = {"", "/"}, params = {"page", "size", "sortDir","sort"})
+    public ResponseEntity<Page<ProductDTO>> getAllPagedAndSortedp(@RequestParam("page") Integer page, @RequestParam("size") Integer size, @RequestParam("sortDir") String sortDir, @RequestParam("sort") String sort){
+        Page<Product> roba = productServiceInterface.findAllPagedAndSortedp(page, size, sortDir, sort);
+        Page<ProductDTO> robaDTOs = roba.map(ProductDTO::new);
+
+        return new ResponseEntity<Page<ProductDTO>>(robaDTOs, HttpStatus.OK);
+    }
+
+    @GetMapping(value = {"", "/"}, params = {"name", "page", "size"})
+    public ResponseEntity<List<ProductDTO>> getByNamePaged(@RequestParam("name") String name, @RequestParam("page") Integer page, @RequestParam("size") Integer size) {
+        List<Product> products = productServiceInterface.findByNamePaged(name, page, size);
+        List<ProductDTO> productDTOS = new ArrayList<ProductDTO>();
+        for (Product product: products) {
+            productDTOS.add(new ProductDTO(product));
+        }
+
+        return new ResponseEntity<List<ProductDTO>>(productDTOS, HttpStatus.OK);
+    }
+
+    @GetMapping(value = {"", "/"}, params = {"name", "page", "size", "sortDir", "sort"})
+    public ResponseEntity<List<ProductDTO>> getByNamePagedAndSorted(@RequestParam("name") String name, @RequestParam("page") Integer page, @RequestParam("size") Integer size, @RequestParam("sortDir") String sortDir, @RequestParam("sort") String sort) {
+        List<Product> products = productServiceInterface.findByNamePagedAndSorted(name, page, size, sortDir, sort);
+        List<ProductDTO> productDTOS = new ArrayList<ProductDTO>();
+        for (Product product: products) {
+            productDTOS.add(new ProductDTO(product));
+        }
+
+        return new ResponseEntity<List<ProductDTO>>(productDTOS, HttpStatus.OK);
     }
 }
