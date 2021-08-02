@@ -1,6 +1,7 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -67,5 +68,12 @@ public class UnitController {
         }
         unitService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping(value = {"", "/"}, params = {"page", "size"})
+    public ResponseEntity<Page<UnitDTO>> getAllPaged(@RequestParam("page") Integer page, @RequestParam("size") Integer size){
+        Page<Unit> units = (Page<Unit>) unitService.findAllPaged(page, size);
+        Page<UnitDTO> unitDTOS = units.map(UnitDTO::new);
+        return new ResponseEntity<Page<UnitDTO>>(unitDTOS, HttpStatus.OK);
     }
 }
