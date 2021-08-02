@@ -9,6 +9,7 @@ import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.WarehouseDTO;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Company;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.ProductCard;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Warehouse;
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.service.ProductCardServiceInterface;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.service.implementation.CompanyService;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.service.implementation.ProductCardService;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.service.implementation.WarehouseService;
@@ -25,7 +26,7 @@ public class WarehouseController {
     WarehouseService warehouseService;
 
     @Autowired
-    ProductCardService productCardService;
+    ProductCardServiceInterface productCardServiceInterface;
 
     @Autowired
     CompanyService companyService;
@@ -86,5 +87,16 @@ public class WarehouseController {
             wDTO.add(new WarehouseDTO(m));
         }
         return new ResponseEntity<List<WarehouseDTO>>(wDTO, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/{id}/product-card")
+    public ResponseEntity<List<ProductCardDTO>> getKarticeByMagacin(@PathVariable("id") Integer id){
+        Warehouse w = warehouseService.findOne(id);
+        List<ProductCardDTO> productCardDTOS = new ArrayList<>();
+        List<ProductCard> productCards = productCardServiceInterface.findByBusinessYear_Id(id);
+        for(ProductCard productCard : productCards) {
+            productCardDTOS.add(new ProductCardDTO(productCard));
+        }
+        return new ResponseEntity<List<ProductCardDTO>>(productCardDTOS, HttpStatus.OK);
     }
 }
