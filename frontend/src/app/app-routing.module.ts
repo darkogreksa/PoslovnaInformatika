@@ -18,6 +18,7 @@ import { WarehouseListComponent } from './warehouse/warehouse-list/warehouse-lis
 import { ProductCardListComponent } from './product-card/product-card-list/product-card-list.component';
 import { ProductCardInformationComponent } from './product-card-information/product-card-information.component';
 import { ProductCardDetailComponent } from './product-card/product-card-detail/product-card-detail.component';
+import { EmployeeLandingPageComponent } from './employee-landing-page/employee-landing-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -77,6 +78,10 @@ const routes: Routes = [
   {
     path: "product-card/id/:id",
     component: ProductCardDetailComponent,
+  },
+  {
+    path: "employee-landing",
+    component: EmployeeLandingPageComponent,
   }
 ];
 

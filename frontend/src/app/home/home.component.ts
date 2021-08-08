@@ -16,6 +16,12 @@ export class HomeComponent implements OnInit {
   constructor(private authenticationService: AuthenticationService, private router: Router) { 
     this.user = {};
     this.wrongUsernameOrPass = false;
+
+    const isLoggedIn = this.authenticationService.isLoggedIn();
+    if (isLoggedIn) {
+      // TODO - check role here
+      this.router.navigate(['/employee-landing']);
+    }
   }
 
   ngOnInit(): void {
@@ -29,7 +35,7 @@ export class HomeComponent implements OnInit {
           // if (userRole.includes('ADMINISTRATOR')) {
           //   this.router.navigate(['/secretAdminPage']);
           // }
-          this.router.navigate(['/product-card']);
+          this.router.navigate(['/employee-landing']);
         }
       }
       ,

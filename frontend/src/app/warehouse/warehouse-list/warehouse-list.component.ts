@@ -15,6 +15,7 @@ export class WarehouseListComponent implements OnInit {
     this.warehouseService.getAll().subscribe(
       (warehouse: Warehouse[]) => {
         this.all = warehouse;
+        console.log(warehouse);
       },
       (error) => console.log(error)
     ); 

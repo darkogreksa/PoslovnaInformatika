@@ -22,6 +22,8 @@ export class AuthenticationService {
         if (token) {
           localStorage.setItem('accessToken', token);
           localStorage.setItem('companyId', this.getTokenInfo().companyId);
+          localStorage.setItem('sub', this.getTokenInfo().sub);
+          localStorage.setItem('role', this.getTokenInfo().role);
           return true;
         } else {
           return false;
@@ -46,7 +48,7 @@ export class AuthenticationService {
 
   isLoggedIn(): boolean {
     // tslint:disable-next-line:triple-equals
-    if (this.getToken() != '') { return true; } else { return false; }
+    if (this.getToken() != '' && this.getToken() != null) { return true; } else { return false; }
   }
 
   getTokenInfo() {

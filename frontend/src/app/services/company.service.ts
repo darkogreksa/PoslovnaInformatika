@@ -20,6 +20,10 @@ export class CompanyService {
     return this.http.get<Company[]>(url).pipe();
   }
 
+  getOne(id){
+    return this.http.get<Company>(this.baseUrl + '/' + id);
+  }
+
   add(company: Company){
     const url = `${this.baseUrl}/add`;
     console.log(url);

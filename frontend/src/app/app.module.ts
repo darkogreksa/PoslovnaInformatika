@@ -37,6 +37,7 @@ import { ProductCardAddComponent } from './product-card/product-card-add/product
 import { ProductCardEditComponent } from './product-card/product-card-edit/product-card-edit.component';
 import { ProductCardInformationComponent } from './product-card-information/product-card-information.component';
 import { ProductCardDetailComponent } from './product-card/product-card-detail/product-card-detail.component';
+import { EmployeeLandingPageComponent } from './employee-landing-page/employee-landing-page.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { ProductCardDetailComponent } from './product-card/product-card-detail/p
     ProductCardAddComponent,
     ProductCardEditComponent,
     ProductCardInformationComponent,
-    ProductCardDetailComponent
+    ProductCardDetailComponent,
+    EmployeeLandingPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,36 @@
+<app-nav></app-nav>
+<div class="row mt-3 mb-3">
+    <p class="ml-4">Trenutno ulogovani korisnik:</p>
+    <p class="ml-4">{{ username }}</p>
+    <p class="ml-4">Preduzece:</p>
+    <p class="ml-4">{{ company.name }}</p>
+    <p class="ml-4">PIB:</p>
+    <p class="ml-4">{{ company.pib }}</p>
+</div>
+<br>
+<div class="row mt-3 mb-3">
+    <p class="ml-4">Magacini za preduzece {{ company.name }}:</p>
+</div>
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>Naziv</th>
+      <th>Robne kartice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let m of companyWarehouses">
+      <td>{{ m.name }}</td>
+      <td class="h5">
+        <a
+          class="badge badge-secondary"
+          *ngIf="loggedIn() && isAdmin()"
+          [routerLink]="['/warehouse/product-card', m.id]"
+          
+        >
+          <i class="fa fa-info"></i> Pogledaj robne kartice</a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>
