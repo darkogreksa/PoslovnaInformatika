@@ -19,69 +19,84 @@ import { ProductCardListComponent } from './product-card/product-card-list/produ
 import { ProductCardInformationComponent } from './product-card-information/product-card-information.component';
 import { ProductCardDetailComponent } from './product-card/product-card-detail/product-card-detail.component';
 import { EmployeeLandingPageComponent } from './employee-landing-page/employee-landing-page.component';
+import { LoggedOutGuard } from 'src/guards/logged-out-guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: "unit", component: UnitComponent },
-  { path: "unit/edit/:id", component: UnitEditComponent},
-  { path: "unit/add", component: UnitAddComponent},
-  { path: "location", component: LocationComponent},
+  { path: 'home', component: HomeComponent, canActivate: [LoggedOutGuard]  },
+  { path: "unit", component: UnitComponent, canActivate: [LoggedOutGuard]  },
+  { path: "unit/edit/:id", component: UnitEditComponent, canActivate: [LoggedOutGuard] },
+  { path: "unit/add", component: UnitAddComponent, canActivate: [LoggedOutGuard] },
+  { path: "location", component: LocationComponent, canActivate: [LoggedOutGuard] },
   {
     path: "location/add",
-    component: LocationAddComponent
+    component: LocationAddComponent,
+    canActivate: [LoggedOutGuard] 
   },
   {
     path: "location/edit/:id",
-    component: LocationEditComponent
+    component: LocationEditComponent,
+    canActivate: [LoggedOutGuard] 
   },
   {
     path: "business-partner",
-    component: BusinessPartnerListComponent
+    component: BusinessPartnerListComponent,
+    canActivate: [LoggedOutGuard] 
   },
   {
     path: "business-partner/add",
-    component: BusinessPartnerAddComponent
+    component: BusinessPartnerAddComponent,
+    canActivate: [LoggedOutGuard] 
   },
   {
     path: "business-partner/edit/:id",
-    component: BusinessPartnerEditComponent
+    component: BusinessPartnerEditComponent,
+    canActivate: [LoggedOutGuard] 
   },
   {
     path: "company",
-    component: CompanyListComponent
+    component: CompanyListComponent,
+    canActivate: [LoggedOutGuard] 
   },
   {
     path: "company/add",
-    component: CompanyAddComponent
+    component: CompanyAddComponent,
+    canActivate: [LoggedOutGuard] 
   },
   {
     path: "warehouse",
-    component: WarehouseListComponent
+    component: WarehouseListComponent,
+    canActivate: [LoggedOutGuard] 
   },
   {
     path: "product",
-    component: ProductListComponent
+    component: ProductListComponent,
+    canActivate: [LoggedOutGuard] 
   },
   {
     path: "product/add",
-    component: ProductAddComponent
+    component: ProductAddComponent,
+    canActivate: [LoggedOutGuard] 
   },
   {
     path: "product-card",
-    component: ProductCardListComponent
+    component: ProductCardListComponent,
+    canActivate: [LoggedOutGuard] 
   },
   {
     path: "warehouse/product-card/:id",
     component: ProductCardInformationComponent,
+    canActivate: [LoggedOutGuard] 
   },
   {
     path: "product-card/id/:id",
     component: ProductCardDetailComponent,
+    canActivate: [LoggedOutGuard] 
   },
   {
     path: "employee-landing",
     component: EmployeeLandingPageComponent,
+    canActivate: [LoggedOutGuard] 
   }
 ];
 
