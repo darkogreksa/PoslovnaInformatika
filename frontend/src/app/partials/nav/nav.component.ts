@@ -24,6 +24,6 @@ export class NavComponent implements OnInit {
     localStorage.removeItem("userInfo");
     localStorage.removeItem("token");
     this.isUserLogged = false;
-    this.router.navigateByUrl("/login");
+    this.router.navigateByUrl("/home");
   }
 }

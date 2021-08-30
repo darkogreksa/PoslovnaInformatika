@@ -8,8 +8,8 @@ export class LoggedOutGuard implements CanActivate {
     constructor(private router: Router) {}
   
     canActivate() {
-      if (!localStorage.getItem("userInfo")) {
-        this.router.navigate(["/login"]);
+      if (!localStorage.getItem("accessToken")) {
+        this.router.navigate(["/home"]);
         return false;
       }
       return true;

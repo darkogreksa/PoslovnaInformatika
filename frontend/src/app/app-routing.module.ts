@@ -23,7 +23,7 @@ import { LoggedOutGuard } from 'src/guards/logged-out-guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent, canActivate: [LoggedOutGuard]  },
+  { path: 'home', component: HomeComponent},
   { path: "unit", component: UnitComponent, canActivate: [LoggedOutGuard]  },
   { path: "unit/edit/:id", component: UnitEditComponent, canActivate: [LoggedOutGuard] },
   { path: "unit/add", component: UnitAddComponent, canActivate: [LoggedOutGuard] },
