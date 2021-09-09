@@ -36,12 +36,12 @@ public class WarehouseCardAnalytics {
     private BigDecimal value;
 
     @ManyToOne()
-    @JoinColumn(name = "productCard_id", referencedColumnName = "productCard_id", nullable = false)
+    @JoinColumn(name = "product_Card_id", referencedColumnName = "productCard_id", nullable = false)
     @JsonBackReference
     private ProductCard productCard;
 
     @ManyToOne()
-    @JoinColumn(name = "invoiceLineItem_id", referencedColumnName = "invoiceLineItem_id", nullable = true)
+    @JoinColumn(name = "invoiceLine_Item_id", referencedColumnName = "invoiceLineItem_id", nullable = true)
     @JsonBackReference
     private InvoiceLineItem invoiceLineItem;
 
