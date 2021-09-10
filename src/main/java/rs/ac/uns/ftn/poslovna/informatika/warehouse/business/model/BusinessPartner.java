@@ -121,16 +121,16 @@ public class BusinessPartner {
         this.documents = documents;
     }
 
-    @Override
-    public String toString() {
-        return "BusinessPartner{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", PIB='" + PIB + '\'' +
-                ", address='" + address + '\'' +
-                ", company=" + company +
-                ", location=" + location +
-                ", documents=" + documents +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "BusinessPartner{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", PIB='" + PIB + '\'' +
+//                ", address='" + address + '\'' +
+//                ", company=" + company +
+//                ", location=" + location +
+//                ", documents=" + documents +
+//                '}';
+//    }
 }

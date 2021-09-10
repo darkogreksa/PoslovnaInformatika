@@ -56,12 +56,12 @@ public class Unit implements Serializable {
         this.products = products;
     }
 
-    @Override
-    public String toString() {
-        return "Unit{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", products=" + products +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Unit{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", products=" + products +
+//                '}';
+//    }
 }

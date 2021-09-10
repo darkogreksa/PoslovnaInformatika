@@ -101,17 +101,17 @@ public class Product {
         this.invoiceLineItems = invoiceLineItems;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", groupOfProducts=" + groupOfProducts +
-                ", unit=" + unit +
-                ", productCards=" + productCards +
-                ", invoiceLineItems=" + invoiceLineItems +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Product{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", groupOfProducts=" + groupOfProducts +
+//                ", unit=" + unit +
+//                ", productCards=" + productCards +
+//                ", invoiceLineItems=" + invoiceLineItems +
+//                '}';
+//    }
 
     public void setSimpleDataFromDTO(ProductDTO productDTO) {
         this.setId(productDTO.getId());

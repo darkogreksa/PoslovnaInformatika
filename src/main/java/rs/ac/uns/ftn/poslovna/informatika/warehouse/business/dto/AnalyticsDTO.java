@@ -99,18 +99,18 @@ public class AnalyticsDTO implements Serializable {
     public void setProductCard(ProductCardDTO productCard) {
         this.productCard = productCard;
     }
-
-    @Override
-    public String toString() {
-        return "AnalyticsDTO{" +
-                "id=" + id +
-                ", ordinalNumber=" + ordinalNumber +
-                ", trafficType=" + trafficType +
-                ", trafficDirection=" + trafficDirection +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                ", value=" + value +
-                ", productCard=" + productCard +
-                '}';
-    }
+//
+//    @Override
+//    public String toString() {
+//        return "AnalyticsDTO{" +
+//                "id=" + id +
+//                ", ordinalNumber=" + ordinalNumber +
+//                ", trafficType=" + trafficType +
+//                ", trafficDirection=" + trafficDirection +
+//                ", quantity=" + quantity +
+//                ", price=" + price +
+//                ", value=" + value +
+//                ", productCard=" + productCard +
+//                '}';
+//    }
 }

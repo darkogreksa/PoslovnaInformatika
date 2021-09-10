@@ -37,11 +37,11 @@ public class LocationDTO implements Serializable {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "LocationDTO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "LocationDTO{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                '}';
+//    }
 }

@@ -23,7 +23,7 @@ public class WarehouseCardAnalytics {
     private TrafficType trafficType;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "trafficDirection", nullable = false, length = 1, columnDefinition = "Char(1)")
+    @Column(name = "trafficDirection", nullable = false, length = 1, columnDefinition = "Char(2)")
     private TrafficDirection trafficDirection;
 
     @Column(name = "quantity", nullable = false)
@@ -141,18 +141,18 @@ public class WarehouseCardAnalytics {
         this.invoiceLineItem = invoiceLineItem;
     }
 
-    @Override
-    public String toString() {
-        return "WarehouseCardAnalytics{" +
-                "id=" + id +
-                ", ordinalNumber=" + ordinalNumber +
-                ", trafficType=" + trafficType +
-                ", trafficDirection=" + trafficDirection +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                ", value=" + value +
-                ", productCard=" + productCard +
-                ", invoiceLineItem=" + invoiceLineItem +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "WarehouseCardAnalytics{" +
+//                "id=" + id +
+//                ", ordinalNumber=" + ordinalNumber +
+//                ", trafficType=" + trafficType +
+//                ", trafficDirection=" + trafficDirection +
+//                ", quantity=" + quantity +
+//                ", price=" + price +
+//                ", value=" + value +
+//                ", productCard=" + productCard +
+//                ", invoiceLineItem=" + invoiceLineItem +
+//                '}';
+//    }
 }

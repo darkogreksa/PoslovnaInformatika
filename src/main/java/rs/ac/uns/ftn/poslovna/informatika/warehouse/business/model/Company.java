@@ -3,6 +3,7 @@ package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.CompanyDTO;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -63,6 +64,17 @@ public class Company implements Serializable {
         this.groupOfProducts = groupOfProducts;
         this.businessPartners = businessPartners;
         this.location = location;
+    }
+
+    public Company(CompanyDTO companyDTO) {
+        this(companyDTO.getId(), companyDTO.getName(), companyDTO.getPIB(), companyDTO.getAddress());
+    }
+
+    public Company(int id, String name, String pib, String address) {
+        this.id = id;
+        this.name = name;
+        this.PIB = PIB;
+        this.address = address;
     }
 
     public Integer getId() {
@@ -137,18 +149,18 @@ public class Company implements Serializable {
         this.location = location;
     }
 
-    @Override
-    public String toString() {
-        return "Company{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", PIB='" + PIB + '\'' +
-                ", address='" + address + '\'' +
-                ", warehouses=" + warehouses +
-                ", employees=" + employees +
-                ", groupOfProducts=" + groupOfProducts +
-                ", businessPartners=" + businessPartners +
-                ", location=" + location +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Company{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", PIB='" + PIB + '\'' +
+//                ", address='" + address + '\'' +
+//                ", warehouses=" + warehouses +
+//                ", employees=" + employees +
+//                ", groupOfProducts=" + groupOfProducts +
+//                ", businessPartners=" + businessPartners +
+//                ", location=" + location +
+//                '}';
+//    }
 }

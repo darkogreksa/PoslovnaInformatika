@@ -74,13 +74,13 @@ public class Location {
         this.businessPartners = businessPartners;
     }
 
-    @Override
-    public String toString() {
-        return "Location{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", companies=" + companies +
-                ", businessPartners=" + businessPartners +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Location{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", companies=" + companies +
+//                ", businessPartners=" + businessPartners +
+//                '}';
+//    }
 }

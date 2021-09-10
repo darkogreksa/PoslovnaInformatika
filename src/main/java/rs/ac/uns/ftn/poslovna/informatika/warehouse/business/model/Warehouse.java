@@ -62,7 +62,13 @@ public class Warehouse implements Serializable {
     }
 
     public Warehouse(WarehouseDTO warehouseDTO) {
-        this(warehouseDTO.getId(), warehouseDTO.getName(), warehouseDTO.getEmployee(), warehouseDTO.getCompany());
+        this(warehouseDTO.getId(), warehouseDTO.getName(), new Company(warehouseDTO.getCompany()));
+    }
+
+    public Warehouse(Integer id, String name, Company company) {
+        this.id = id;
+        this.name = name;
+        this.company = company;
     }
 
     public Integer getId() {
@@ -113,15 +119,15 @@ public class Warehouse implements Serializable {
         this.invoices = invoices;
     }
 
-    @Override
-    public String toString() {
-        return "Warehouse{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", employee=" + employee +
-                ", company=" + company +
-                ", productCards=" + productCards +
-                ", invoices=" + invoices +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Warehouse{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", employee=" + employee +
+//                ", company=" + company +
+//                ", productCards=" + productCards +
+//                ", invoices=" + invoices +
+//                '}';
+//    }
 }

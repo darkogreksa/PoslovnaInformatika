@@ -57,13 +57,13 @@ public class ProductDTO implements Serializable {
         this.unitDTO = unitDTO;
     }
 
-    @Override
-    public String toString() {
-        return "ProductDTO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", groupOfProductsId=" + groupOfProductsId +
-                ", unitDTO=" + unitDTO +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "ProductDTO{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", groupOfProductsId=" + groupOfProductsId +
+//                ", unitDTO=" + unitDTO +
+//                '}';
+//    }
 }

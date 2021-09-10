@@ -35,7 +35,8 @@ public class InvoiceLineItem {
     @JsonBackReference
     private Product product;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "invoiceLineItem")
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "invoiceLineItem")
+    @OneToMany(mappedBy = "invoiceLineItem")
     @JsonManagedReference
     private Set<WarehouseCardAnalytics> warehouseCardAnalytics = new HashSet<>();
 
@@ -108,16 +109,16 @@ public class InvoiceLineItem {
         this.warehouseCardAnalytics = warehouseCardAnalytics;
     }
 
-    @Override
-    public String toString() {
-        return "InvoiceLineItem{" +
-                "id=" + id +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                ", value=" + value +
-                ", invoice=" + invoice +
-                ", product=" + product +
-                ", warehouseCardAnalytics=" + warehouseCardAnalytics +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "InvoiceLineItem{" +
+//                "id=" + id +
+//                ", quantity=" + quantity +
+//                ", price=" + price +
+//                ", value=" + value +
+//                ", invoice=" + invoice +
+//                ", product=" + product +
+//                ", warehouseCardAnalytics=" + warehouseCardAnalytics +
+//                '}';
+//    }
 }

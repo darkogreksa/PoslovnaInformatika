@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.CompanyDTO;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.ProductCardDTO;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.WarehouseDTO;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Company;
@@ -52,7 +53,7 @@ public class WarehouseController {
     public ResponseEntity<WarehouseDTO> create(@RequestBody WarehouseDTO warehouseDTO){
         Warehouse warehouse = new Warehouse();
         warehouse.setName(warehouseDTO.getName());
-        warehouse.setCompany(warehouseDTO.getCompany());
+        warehouse.setCompany((companyService.findOne(warehouseDTO.getCompany().getId())));
 
         warehouse = warehouseService.save(warehouse);
         return new ResponseEntity<WarehouseDTO>(new WarehouseDTO(warehouse), HttpStatus.CREATED);
@@ -63,7 +64,7 @@ public class WarehouseController {
     public ResponseEntity<WarehouseDTO> update(@RequestBody WarehouseDTO wDTO, @PathVariable("id") Integer id){
         Warehouse w = warehouseService.findOne(id);
         w.setName(wDTO.getName());
-        w.setCompany(wDTO.getCompany());
+        w.setCompany(companyService.findOne(wDTO.getCompany().getId()));
 
         w = warehouseService.save(w);
         return new ResponseEntity<WarehouseDTO>(new WarehouseDTO(w), HttpStatus.OK);

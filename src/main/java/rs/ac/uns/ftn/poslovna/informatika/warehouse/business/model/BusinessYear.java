@@ -110,15 +110,15 @@ public class BusinessYear implements Serializable {
         this.invoices = invoices;
     }
 
-    @Override
-    public String toString() {
-        return "BusinessYear{" +
-                "id=" + id +
-                ", year='" + year + '\'' +
-                ", closed=" + closed +
-                ", company=" + company +
-                ", productCards=" + productCards +
-                ", invoices=" + invoices +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "BusinessYear{" +
+//                "id=" + id +
+//                ", year='" + year + '\'' +
+//                ", closed=" + closed +
+//                ", company=" + company +
+//                ", productCards=" + productCards +
+//                ", invoices=" + invoices +
+//                '}';
+//    }
 }

@@ -10,18 +10,22 @@ public class WarehouseDTO implements Serializable {
 
     private Integer id;
     private String name;
-    private Employee employee;
-    private Company company;
+    private EmployeeDTO employee;
+    private CompanyDTO company;
 
-    public WarehouseDTO(Integer id, String name, Employee employee, Company company) {
+    public WarehouseDTO(Integer id, String name, CompanyDTO company) {
         this.id = id;
         this.name = name;
-        this.employee = employee;
+//        this.employee = employee;
         this.company = company;
     }
 
+//    public WarehouseDTO(Warehouse warehouse) {
+//        this(warehouse.getId(), warehouse.getName(), new EmployeeDTO(warehouse.getEmployee()), new CompanyDTO(warehouse.getCompany()));
+//    }
+
     public WarehouseDTO(Warehouse warehouse) {
-        this(warehouse.getId(), warehouse.getName(), warehouse.getEmployee(), warehouse.getCompany());
+        this(warehouse.getId(), warehouse.getName(), new CompanyDTO(warehouse.getCompany()));
     }
 
     public Integer getId() {
@@ -40,19 +44,19 @@ public class WarehouseDTO implements Serializable {
         this.name = name;
     }
 
-    public Employee getEmployee() {
+    public EmployeeDTO getEmployee() {
         return employee;
     }
 
-    public void setEmployee(Employee employee) {
+    public void setEmployee(EmployeeDTO employee) {
         this.employee = employee;
     }
 
-    public Company getCompany() {
+    public CompanyDTO getCompany() {
         return company;
     }
 
-    public void setCompany(Company company) {
+    public void setCompany(CompanyDTO company) {
         this.company = company;
     }
 }

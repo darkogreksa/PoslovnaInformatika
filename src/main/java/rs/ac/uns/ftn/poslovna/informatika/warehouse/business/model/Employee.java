@@ -2,6 +2,7 @@ package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.EmployeeDTO;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -42,13 +43,16 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int id, String fullName, String username, String password, Company company, Role role) {
+    public Employee(int id, String fullName, String username, String password, Company company) {
         this.id = id;
         this.fullName = fullName;
         this.username = username;
         this.password = password;
         this.company = company;
-        this.role = role;
+    }
+
+    public Employee(EmployeeDTO employee) {
+        this(employee.getId(), employee.getFullName(), employee.getUsername(), employee.getPassword(), new Company(employee.getCompanyDTO()));
     }
 
     public int getId() {
@@ -107,15 +111,15 @@ public class Employee {
         this.userAuthorities = userAuthorities;
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", fullName='" + fullName + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", company=" + company +
-                ", role=" + role +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Employee{" +
+//                "id=" + id +
+//                ", fullName='" + fullName + '\'' +
+//                ", username='" + username + '\'' +
+//                ", password='" + password + '\'' +
+//                ", company=" + company +
+//                ", role=" + role +
+//                '}';
+//    }
 }

@@ -54,12 +54,12 @@ public class GroupOfProducts {
         this.company = company;
     }
 
-    @Override
-    public String toString() {
-        return "GroupOfProducts{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", company=" + company +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "GroupOfProducts{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", company=" + company +
+//                '}';
+//    }
 }

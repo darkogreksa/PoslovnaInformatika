@@ -168,19 +168,19 @@ public class Invoice {
         this.invoiceLineItems = invoiceLineItems;
     }
 
-    @Override
-    public String toString() {
-        return "Invoice{" +
-                "id=" + id +
-                ", documentType='" + documentType + '\'' +
-                ", ordinalInvoiceNumber=" + ordinalInvoiceNumber +
-                ", dateOfFormation=" + dateOfFormation +
-                ", postingDate=" + postingDate +
-                ", status='" + status + '\'' +
-                ", businessPartner=" + businessPartner +
-                ", businessYear=" + businessYear +
-                ", warehouse=" + warehouse +
-                ", invoiceLineItems=" + invoiceLineItems +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Invoice{" +
+//                "id=" + id +
+//                ", documentType='" + documentType + '\'' +
+//                ", ordinalInvoiceNumber=" + ordinalInvoiceNumber +
+//                ", dateOfFormation=" + dateOfFormation +
+//                ", postingDate=" + postingDate +
+//                ", status='" + status + '\'' +
+//                ", businessPartner=" + businessPartner +
+//                ", businessYear=" + businessYear +
+//                ", warehouse=" + warehouse +
+//                ", invoiceLineItems=" + invoiceLineItems +
+//                '}';
+//    }
 }

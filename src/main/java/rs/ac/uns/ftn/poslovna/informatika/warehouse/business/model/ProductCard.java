@@ -64,7 +64,8 @@ public class ProductCard implements Serializable {
     @JsonBackReference
     private Warehouse warehouse;
 
-    @OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY, mappedBy = "productCard")
+    @OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, mappedBy = "productCard")
+//    @OneToMany(mappedBy = "productCard")
     @JsonManagedReference
     private Set<WarehouseCardAnalytics> warehouseCardAnalytics = new HashSet<WarehouseCardAnalytics>();
 
@@ -200,23 +201,23 @@ public class ProductCard implements Serializable {
         this.warehouseCardAnalytics = warehouseCardAnalytics;
     }
 
-    @Override
-    public String toString() {
-        return "ProductCard{" +
-                "id=" + id +
-                ", price=" + price +
-                ", initialStateQuantity=" + initialStateQuantity +
-                ", initialStateValue=" + initialStateValue +
-                ", inboundTrafficQuantity=" + inboundTrafficQuantity +
-                ", inboundTrafficValue=" + inboundTrafficValue +
-                ", outgoingTrafficQuantity=" + outgoingTrafficQuantity +
-                ", outgoingTrafficValue=" + outgoingTrafficValue +
-                ", totalAmount=" + totalAmount +
-                ", totalValue=" + totalValue +
-                ", businessYear=" + businessYear +
-                ", product=" + product +
-                ", warehouse=" + warehouse +
-                ", warehouseCardAnalytics=" + warehouseCardAnalytics +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "ProductCard{" +
+//                "id=" + id +
+//                ", price=" + price +
+//                ", initialStateQuantity=" + initialStateQuantity +
+//                ", initialStateValue=" + initialStateValue +
+//                ", inboundTrafficQuantity=" + inboundTrafficQuantity +
+//                ", inboundTrafficValue=" + inboundTrafficValue +
+//                ", outgoingTrafficQuantity=" + outgoingTrafficQuantity +
+//                ", outgoingTrafficValue=" + outgoingTrafficValue +
+//                ", totalAmount=" + totalAmount +
+//                ", totalValue=" + totalValue +
+//                ", businessYear=" + businessYear +
+//                ", product=" + product +
+//                ", warehouse=" + warehouse +
+//                ", warehouseCardAnalytics=" + warehouseCardAnalytics +
+//                '}';
+//    }
 }
