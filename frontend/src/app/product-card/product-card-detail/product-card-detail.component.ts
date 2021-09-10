@@ -13,6 +13,9 @@ export class ProductCardDetailComponent implements OnInit {
 
   sub: Subscription;
   productCard: ProductCard;
+  triggered: boolean;
+  id: number;
+
 
   constructor(private productCardService: ProductCardService, private route: ActivatedRoute, private router: Router) { }
 
@@ -27,6 +30,26 @@ export class ProductCardDetailComponent implements OnInit {
           (error) => console.log(error)
         );
       }
+    });
+  }
+
+  refreshCard(id: number) {
+    this.productCardService.getId(id).subscribe((k: any) => {
+      if (k) {
+        console.log(k);
+        this.productCard = k;
+      }
+    });
+  }
+
+  nivelacija(){
+    this.productCardService.nivelacija(this.productCard.id).subscribe(res => {
+      if (res == true) {
+        this.refreshCard(this.id);
+        // this.ngOnInit();
+      }
+      this.triggered = true;
+      console.log(res);
     });
   }
 

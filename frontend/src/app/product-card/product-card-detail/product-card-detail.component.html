@@ -27,7 +27,8 @@
       </p>
     </div>
     <div class="card-footer text-muted">
-      <!-- <button class="btn btn-lg btn-primary" [disabled]="nivelacijaPokusana" (click)="nivelacija()">Uradi Nivelaciju</button> -->
+      <button class="btn btn-lg btn-primary" [disabled]="triggered" (click)="nivelacija()">Nivelacija</button>
+      <p *ngIf=productCard.businessYear.closed>Kartica zatvorena - Kartica za godinu {{ productCard.businessYear.year }}</p>
     </div>
   </div>
   <br />

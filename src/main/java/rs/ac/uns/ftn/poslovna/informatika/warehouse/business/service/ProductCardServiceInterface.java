@@ -23,5 +23,5 @@ public interface ProductCardServiceInterface {
 
     List<ProductCard> findByBusinessYear_Id(Integer id);
 
-//    boolean nivelacija(Integer id);
+    boolean nivelacija(Integer id);
 }

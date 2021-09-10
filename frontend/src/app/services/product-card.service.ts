@@ -38,4 +38,8 @@ export class ProductCardService {
   delete(id) {
     return this.http.delete(this.baseUrl + "/delete/" + id);
   }
+
+  nivelacija(id) {
+    return this.http.post(this.baseUrl + "/" + id + "/nivelacija", {});
+  }
 }

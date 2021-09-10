@@ -1,11 +1,13 @@
 import { DecimalPipe } from "@angular/common";
 import { Injectable } from "@angular/core";
+import { BusinessYear } from "./business-year";
 import { Product } from "./product";
 import { Warehouse } from "./warehouse";
 
 @Injectable()
 export class ProductCard {
-    constructor(    
+    constructor(
+        public businessYear: BusinessYear,
         public id : number,
         public price: DoubleRange,
         public initialStateQuantity: DecimalPipe,

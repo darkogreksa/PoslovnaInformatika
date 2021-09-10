@@ -142,4 +142,9 @@ public class ProductCardController {
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
+    @PostMapping(value = "/{id}/nivelacija")
+    public ResponseEntity<Boolean> nivelacija(@PathVariable("id") Integer id) {
+        return new ResponseEntity<Boolean>(this.productCardService.nivelacija(id), HttpStatus.OK);
+    }
+
 }
