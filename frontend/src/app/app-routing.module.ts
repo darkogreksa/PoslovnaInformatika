@@ -20,6 +20,8 @@ import { ProductCardInformationComponent } from './product-card-information/prod
 import { ProductCardDetailComponent } from './product-card/product-card-detail/product-card-detail.component';
 import { EmployeeLandingPageComponent } from './employee-landing-page/employee-landing-page.component';
 import { LoggedOutGuard } from 'src/guards/logged-out-guard';
+import { CardAnalyticsComponent } from './card-analytics/card-analytics.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -96,6 +98,18 @@ const routes: Routes = [
   {
     path: "employee-landing",
     component: EmployeeLandingPageComponent,
+    canActivate: [LoggedOutGuard] 
+  }
+  ,
+  {
+    path: "card-analytics/:id",
+    component: CardAnalyticsComponent,
+    canActivate: [LoggedOutGuard] 
+  }
+  ,
+  {
+    path: "invoice/add",
+    component: InvoiceComponent,
     canActivate: [LoggedOutGuard] 
   }
 ];

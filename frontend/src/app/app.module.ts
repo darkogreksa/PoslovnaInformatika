@@ -38,6 +38,8 @@ import { ProductCardEditComponent } from './product-card/product-card-edit/produ
 import { ProductCardInformationComponent } from './product-card-information/product-card-information.component';
 import { ProductCardDetailComponent } from './product-card/product-card-detail/product-card-detail.component';
 import { EmployeeLandingPageComponent } from './employee-landing-page/employee-landing-page.component';
+import { CardAnalyticsComponent } from './card-analytics/card-analytics.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import { EmployeeLandingPageComponent } from './employee-landing-page/employee-l
     ProductCardEditComponent,
     ProductCardInformationComponent,
     ProductCardDetailComponent,
-    EmployeeLandingPageComponent
+    EmployeeLandingPageComponent,
+    CardAnalyticsComponent,
+    InvoiceComponent
   ],
   imports: [
     BrowserModule,
