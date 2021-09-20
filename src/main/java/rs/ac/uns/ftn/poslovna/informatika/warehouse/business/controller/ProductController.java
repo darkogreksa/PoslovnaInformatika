@@ -14,6 +14,7 @@ import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.service.UnitService
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "api/product", produces = "application/json")
 public class ProductController {

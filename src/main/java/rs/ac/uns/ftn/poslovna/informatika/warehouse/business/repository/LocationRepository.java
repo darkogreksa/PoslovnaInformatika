@@ -8,6 +8,6 @@ import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Location;
 import java.util.List;
 
 public interface LocationRepository extends JpaRepository<Location, Integer> {
-    List<Location> findByNameContains(String name);
+    List<Location> findAllByNameContaining(String name);
     Page<Location> findByNameContains(String name, Pageable pageable);
 }

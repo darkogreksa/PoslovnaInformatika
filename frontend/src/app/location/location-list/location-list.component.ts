@@ -43,4 +43,15 @@ export class LocationComponent implements OnInit {
     });
   }
 
+  search(name){
+   this.locationService.getAllByName(name).subscribe(
+      (p: Location[]) =>{
+         this.allLocations = p;
+         console.log(p);
+      },
+        (error) => console.log(error)
+      );
+    console.log(name);
+  }
+
 }

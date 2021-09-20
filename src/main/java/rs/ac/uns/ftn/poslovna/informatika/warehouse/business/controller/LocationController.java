@@ -95,14 +95,17 @@ public class LocationController {
         return new ResponseEntity<List<LocationDTO>>(locationDTOS, HttpStatus.OK);
     }
 
-    @GetMapping(value = {"", "/"}, params = "name")
-    public ResponseEntity<List<LocationDTO>> getByName(@RequestParam("name") String name) {
+    @CrossOrigin
+    @GetMapping(value = "/name/{name}")
+    public ResponseEntity<List<LocationDTO>> getByName(@PathVariable("name") String name) {
         List<Location> locations = locationService.findAllByName(name);
         List<LocationDTO> locationDTOS = new ArrayList<LocationDTO>();
         for (Location location: locations) {
             locationDTOS.add(new LocationDTO(location));
         }
-
+        if (locations == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<List<LocationDTO>>(locationDTOS, HttpStatus.OK);
     }
 

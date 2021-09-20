@@ -60,7 +60,7 @@ public class LocationService implements LocationServiceInterface {
     }
 
     public List<Location> findAllByName(String name) {
-        return locationRepository.findByNameContains(name);
+        return locationRepository.findAllByNameContaining(name);
     }
 
     public List<Location> findAllByNamePaged(String name, Integer page, Integer size) {

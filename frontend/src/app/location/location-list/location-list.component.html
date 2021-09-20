@@ -1,18 +1,22 @@
 <app-nav></app-nav>
 <h4 class="display-4 text-center">Mesta</h4>
 <div class="row  mt-3 mb-3">
-  <form [formGroup]="searchLocationsForm" class="col-md-6 offset-md-3">
+  <form class="col-md-6 offset-md-3">
     <div class="row no-gutters align-items-center">
       <div class="col">
         <input
           class="form-control form-control-lg form-control-borderless"
           type="search"
-          placeholder="Search value"
-          formControlName="searchQuery"
+          placeholder="Vrednost za pretragu"
+          #searchLocation
         />
       </div>
       <div class="col-auto">
-        <button class="btn btn-lg btn-primary" type="submit">
+        <button
+          class="btn btn-lg btn-primary"
+          type="submit"
+          (click)="search(searchLocation.value)"
+        >
           <i class="fa fa-search"></i> Pretraži
         </button>
       </div>

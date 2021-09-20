@@ -38,4 +38,10 @@ export class LocationService {
   delete(id: number) {
     return this.http.delete(this.baseUrl + '/' + id);
   }
+
+  getAllByName(name: string): Observable<Location[]>{
+    const url = `${this.baseUrl}/name/`+name;
+    console.log(url);
+    return this.http.get<Location[]>(url).pipe();
+  }
 }
