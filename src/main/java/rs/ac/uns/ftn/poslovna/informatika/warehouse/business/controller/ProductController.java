@@ -101,7 +101,8 @@ public class ProductController {
         }
     }
 
-    @GetMapping(value = {"", "/"}, params = "name")
+    @CrossOrigin
+    @GetMapping(value = "/name/{name}")
     public ResponseEntity<List<ProductDTO>> getByName(@RequestParam("name") String name) {
         List<Product> goods = productServiceInterface.findByName(name);
         List<ProductDTO> productDTOList = new ArrayList<ProductDTO>();

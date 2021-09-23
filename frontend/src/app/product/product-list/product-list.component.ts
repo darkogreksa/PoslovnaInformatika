@@ -65,4 +65,15 @@ export class ProductListComponent implements OnInit {
      
     });
   }
+
+  search(name){
+   this.productService.getAllByName(name).subscribe(
+      (p: Product[]) =>{
+         this.allProducts = p;
+         console.log(p);
+      },
+        (error) => console.log(error)
+      );
+    console.log(name);
+  }
 }

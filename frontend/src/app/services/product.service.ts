@@ -53,4 +53,10 @@ export class ProductService {
   delete(id: number) {
     return this.http.delete(this.baseUrl + '/' + id).pipe();
   }
+
+  getAllByName(name: string): Observable<Product[]>{
+    const url = `${this.baseUrl}/name/`+name;
+    console.log(url);
+    return this.http.get<Product[]>(url).pipe();
+  }
 }

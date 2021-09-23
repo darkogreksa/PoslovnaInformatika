@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Company } from 'src/app/model/company';
 import { CompanyService } from 'src/app/services/company.service';
 
@@ -10,6 +11,7 @@ import { CompanyService } from 'src/app/services/company.service';
 export class CompanyListComponent implements OnInit {
 
   all: Company[] = [];
+  searchCompaniesForm: FormGroup;
 
   constructor(
     private companyService: CompanyService,
@@ -23,6 +25,9 @@ export class CompanyListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.searchCompaniesForm = new FormGroup({
+      searchQuery: new FormControl()
+    });
   }
 
   loggedIn(): boolean {
@@ -32,5 +37,16 @@ export class CompanyListComponent implements OnInit {
   isAdmin(): boolean {
     // return this.authService.isAdmin();
     return true;
+  }
+
+  search(name){
+   this.companyService.getAllByName(name).subscribe(
+      (p: Company[]) =>{
+         this.all = p;
+         console.log(p);
+      },
+        (error) => console.log(error)
+      );
+    console.log(name);
   }
 }

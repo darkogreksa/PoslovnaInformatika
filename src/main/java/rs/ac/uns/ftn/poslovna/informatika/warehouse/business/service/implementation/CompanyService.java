@@ -39,4 +39,8 @@ public class CompanyService implements CompanyServiceInterface {
         return companyRepository.findAllByOrderByNameDesc();
     }
 
+    public List<Company> findAllByName(String name) {
+        return companyRepository.findAllByNameContaining(name);
+    }
+
 }

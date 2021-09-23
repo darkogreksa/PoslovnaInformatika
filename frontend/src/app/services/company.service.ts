@@ -29,4 +29,10 @@ export class CompanyService {
     console.log(url);
     return this.http.post<Company[]>(url, company).pipe();
   }
+
+  getAllByName(name: string): Observable<Company[]>{
+    const url = `${this.baseUrl}/name/`+name;
+    console.log(url);
+    return this.http.get<Company[]>(url).pipe();
+  }
 }

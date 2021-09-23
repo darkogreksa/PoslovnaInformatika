@@ -97,5 +97,13 @@ public class CompanyController {
         return new ResponseEntity<>(companyDtos, HttpStatus.OK);
     }
 
-
+    @GetMapping(value = "/name/{name}")
+    public ResponseEntity<List<CompanyDTO>> getByName(@PathVariable("name") String name) {
+        List<Company> companies = companyService.findAllByName(name);
+        List<CompanyDTO> companyDTOS = new ArrayList<CompanyDTO>();
+        for(Company company : companies) {
+            companyDTOS.add(new CompanyDTO(company));
+        }
+        return new ResponseEntity<List<CompanyDTO>>(companyDTOS, HttpStatus.OK);
+    }
 }
