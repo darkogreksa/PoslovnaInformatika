@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Warehouse } from 'src/app/model/warehouse';
 import { WarehouseService } from 'src/app/services/warehouse.service';
 
@@ -10,6 +11,7 @@ import { WarehouseService } from 'src/app/services/warehouse.service';
 export class WarehouseListComponent implements OnInit {
 
   all: Warehouse[] = [];
+  searchWarehousesForm: FormGroup;
 
   constructor(private warehouseService: WarehouseService) {
     this.warehouseService.getAll().subscribe(
@@ -34,6 +36,9 @@ export class WarehouseListComponent implements OnInit {
  }
 
   ngOnInit(): void {
+    this.searchWarehousesForm = new FormGroup({
+      searchQuery: new FormControl()
+    });
   }
 
   loggedIn(): boolean {
@@ -43,6 +48,17 @@ export class WarehouseListComponent implements OnInit {
   isAdmin(): boolean {
     // return this.authService.isAdmin();
     return true;
+  }
+
+  search(name){
+   this.warehouseService.getAllByName(name).subscribe(
+      (p: Warehouse[]) =>{
+         this.all = p;
+         console.log(p);
+      },
+        (error) => console.log(error)
+      );
+    console.log(name);
   }
 
 }

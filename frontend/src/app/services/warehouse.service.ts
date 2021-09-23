@@ -42,4 +42,10 @@ export class WarehouseService {
   delete(id: number){
       return this.http.delete(this.baseURL + '/' + id);
   }
+
+  getAllByName(name: string): Observable<Warehouse[]>{
+    const url = `${this.baseURL}/name/`+name;
+    console.log(url);
+    return this.http.get<Warehouse[]>(url).pipe();
+  }
 }

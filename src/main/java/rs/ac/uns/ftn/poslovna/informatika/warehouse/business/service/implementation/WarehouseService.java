@@ -38,4 +38,8 @@ public class WarehouseService implements WarehouseServiceInterface {
     public List<Warehouse> findByCompany_Id(Integer id) {
         return warehouseRepository.findByCompany_Id(id);
     }
+
+    public List<Warehouse> findAllByName(String name) {
+        return warehouseRepository.findAllByNameContaining(name);
+    }
 }

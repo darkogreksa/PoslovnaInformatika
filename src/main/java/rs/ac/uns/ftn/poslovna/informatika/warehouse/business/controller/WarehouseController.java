@@ -5,9 +5,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.CompanyDTO;
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.LocationDTO;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.ProductCardDTO;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.WarehouseDTO;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Company;
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Location;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.ProductCard;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Warehouse;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.service.ProductCardServiceInterface;
@@ -99,5 +101,16 @@ public class WarehouseController {
             productCardDTOS.add(new ProductCardDTO(productCard));
         }
         return new ResponseEntity<List<ProductCardDTO>>(productCardDTOS, HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @GetMapping(value = "/name/{name}")
+    public ResponseEntity<List<WarehouseDTO>> getByName(@PathVariable("name") String name) {
+        List<Warehouse> warehouses = warehouseService.findAllByName(name);
+        List<WarehouseDTO> warehouseDTOS = new ArrayList<WarehouseDTO>();
+        for (Warehouse warehouse: warehouses) {
+            warehouseDTOS.add(new WarehouseDTO(warehouse));
+        }
+        return new ResponseEntity<List<WarehouseDTO>>(warehouseDTOS, HttpStatus.OK);
     }
 }
