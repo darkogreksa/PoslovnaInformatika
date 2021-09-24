@@ -32,7 +32,6 @@
       <th>Id</th>
       <th>Naziv</th>
       <th>Poslovni partneri</th>
-      <th>Izmeni</th>
       <th>Obriši</th>
     </tr>
   </thead>
@@ -47,15 +46,6 @@
           [routerLink]="['/locations/businessPartners', location.id]"
         >
           <i class="fa fa-info"></i> Prikaži partnere</a
-        >
-      </td>
-      <td class="h5">
-        <a
-          class="badge badge-primary"
-          *ngIf="loggedIn() && isAdmin()"
-          [routerLink]="['/location/edit', location.id]"
-        >
-          <i class="fa fa-edit"></i> Izmeni</a
         >
       </td>
       <td class="h5">

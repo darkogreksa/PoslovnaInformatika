@@ -23,6 +23,7 @@ import { LoggedOutGuard } from 'src/guards/logged-out-guard';
 import { CardAnalyticsComponent } from './card-analytics/card-analytics.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { WarehouseEditComponent } from './warehouse/warehouse-edit/warehouse-edit.component';
+import { WarehouseAddComponent } from './warehouse/warehouse-add/warehouse-add.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -69,6 +70,11 @@ const routes: Routes = [
   {
     path: "warehouse",
     component: WarehouseListComponent,
+    canActivate: [LoggedOutGuard] 
+  },
+  {
+    path: "warehouse/add",
+    component: WarehouseAddComponent,
     canActivate: [LoggedOutGuard] 
   },
   {

@@ -10,7 +10,7 @@ public interface LocationServiceInterface {
 
     Location findOne(Integer id);
 
-    Location create(Location location);
+    Location save(Location location);
 
     Location update(Location location);
 

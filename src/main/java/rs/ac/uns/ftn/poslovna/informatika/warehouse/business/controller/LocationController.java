@@ -42,22 +42,17 @@ public class LocationController {
         Location location = new Location();
         location.setName(locationDTO.getName());
 
-        location = locationService.create(location);
+        location = locationService.save(location);
 
         return new ResponseEntity<LocationDTO>(new LocationDTO(), HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/update/{id}", consumes = "application/json")
     public ResponseEntity<LocationDTO> update(@PathVariable("id") Integer id, @RequestBody LocationDTO locationDTO) {
-
         Location location = locationService.findOne(id);
 
-        if (location == null) {
-            return new ResponseEntity<LocationDTO>(HttpStatus.NOT_FOUND);
-        }
-
         location.setName(locationDTO.getName());
-        location = locationService.create(location);
+        location = locationService.save(location);
         return new ResponseEntity<LocationDTO>(new LocationDTO(location), HttpStatus.OK);
     }
 

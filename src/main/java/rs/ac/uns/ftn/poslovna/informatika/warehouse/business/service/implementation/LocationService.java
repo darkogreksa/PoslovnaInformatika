@@ -25,7 +25,7 @@ public class LocationService implements LocationServiceInterface {
         return locationRepository.getOne(id);
     }
 
-    public Location create(Location location) {
+    public Location save(Location location) {
         return locationRepository.save(location);
     }
 
