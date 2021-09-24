@@ -34,6 +34,10 @@ public class WarehouseService implements WarehouseServiceInterface {
         warehouseRepository.deleteById(id);
     }
 
+    public void removeById(Integer id) {
+        warehouseRepository.deleteById(id);
+    }
+
     //	@Override
     public List<Warehouse> findByCompany_Id(Integer id) {
         return warehouseRepository.findByCompany_Id(id);

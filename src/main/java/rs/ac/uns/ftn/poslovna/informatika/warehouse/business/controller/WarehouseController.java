@@ -66,16 +66,16 @@ public class WarehouseController {
     public ResponseEntity<WarehouseDTO> update(@RequestBody WarehouseDTO wDTO, @PathVariable("id") Integer id){
         Warehouse w = warehouseService.findOne(id);
         w.setName(wDTO.getName());
-        w.setCompany(companyService.findOne(wDTO.getCompany().getId()));
+//        w.setCompany(companyService.findOne(wDTO.getCompany().getId()));
 
         w = warehouseService.save(w);
         return new ResponseEntity<WarehouseDTO>(new WarehouseDTO(w), HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") Integer id){
         Warehouse w = warehouseService.findOne(id);
-        warehouseService.remove(id);
+        warehouseService.removeById(id);
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }

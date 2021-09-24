@@ -1,1 +1,27 @@
-<p>warehouse-edit works!</p>
+<app-nav></app-nav>
+<div class="row justify-content-center">
+  <h4 class="display-4">Izmeni magacin</h4>
+</div>
+<form [formGroup]="editWarehouseForm" class="col-md-8 offset-md-2">
+  <div class="form-group">
+    <label for="inputName" class="font-weight-bold">Naziv</label>
+    <input
+      formControlName="inputName"
+      type="text"
+      class="form-control"
+      id="inputName"
+      [ngModel]="warehouse?.name"
+      placeholder=""
+    />
+  </div>
+  <div class="row">
+    <button
+      type="submit"
+      class="btn btn-success btn-lg ml-3"
+      (click)="edit(warehouse, warehouse.id)"
+    >
+      Sačuvaj
+    </button>
+    <button class="btn btn-secondary btn-lg ml-auto mr-3">Odustani</button>
+  </div>
+</form>

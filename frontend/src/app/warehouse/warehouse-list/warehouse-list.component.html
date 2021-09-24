@@ -21,7 +21,7 @@
       </div>
     </div>
   </form>
-  <button class="btn btn-success btn-lg ml-4" [routerLink]="['/magacin/add']">
+  <button class="btn btn-success btn-lg ml-4" [routerLink]="['/warehouse/add']">
     <i class="fa fa-plus"></i> Dodaj magacin
   </button>
 </div>
@@ -50,7 +50,9 @@
         >
       </td>
       <td class="h5">
-        <a class="badge badge-primary" [routerLink]="['/magacin/edit', m.id]">
+        <a class="badge badge-primary" 
+        *ngIf="loggedIn() && isAdmin()"
+        [routerLink]="['/warehouse/edit', m.id]">
           <i class="fa fa-edit"></i> Izmeni</a
         >
       </td>
@@ -58,13 +60,12 @@
         <a
           class="badge badge-danger text-white"
           *ngIf="loggedIn() && isAdmin()"
-          (click)="delete(m)"
+          (click)="delete(m.id)"
           style="cursor: pointer"
         >
           <i class="fa fa-trash"></i> Obriši</a
         >
       </td>
-      <!-- <td class="h5"><a class="badge badge-danger" *ngIf="loggedIn() && isAdmin()"> <i class="fa fa-trash"></i> Obriši</a></td> -->
     </tr>
   </tbody>
 </table>
