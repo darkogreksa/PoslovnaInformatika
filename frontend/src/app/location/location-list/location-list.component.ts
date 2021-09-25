@@ -9,8 +9,11 @@ import { LocationService } from 'src/app/services/location.service';
   styleUrls: ['./location-list.component.css']
 })
 export class LocationComponent implements OnInit {
+
   allLocations: Location[] = [];
   searchLocationsForm!: FormGroup;
+  totalLength: any;
+  page: number = 1;
 
   constructor(private locationService: LocationService) {
     this.locationService.getAll().subscribe(
@@ -21,6 +24,8 @@ export class LocationComponent implements OnInit {
     ); }
 
   ngOnInit() {
+    this.totalLength = this.allLocations.length;
+
     this.searchLocationsForm = new FormGroup({
       searchQuery: new FormControl()
     });

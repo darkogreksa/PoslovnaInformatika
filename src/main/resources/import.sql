@@ -5,6 +5,16 @@ INSERT INTO unit(name) VALUES ('Komad');
 INSERT INTO location(name) VALUES('Novi Sad');
 INSERT INTO location(name) VALUES('Beograd');
 INSERT INTO location(name) VALUES('Niš');
+INSERT INTO location(name) VALUES('Kragujevac');
+INSERT INTO location(name) VALUES('Kruševac');
+INSERT INTO location(name) VALUES('Zrenjanin');
+INSERT INTO location(name) VALUES('Vršac');
+INSERT INTO location(name) VALUES('Šid');
+INSERT INTO location(name) VALUES('Irig');
+INSERT INTO location(name) VALUES('Sombor');
+INSERT INTO location(name) VALUES('Subotica');
+INSERT INTO location(name) VALUES('Leskovac');
+INSERT INTO location(name) VALUES('Vranje');
 
 --COMPANY
 INSERT INTO company(name, pib, address, location_id) values ('Continental', '85479658', 'Radnicka 28', 1);

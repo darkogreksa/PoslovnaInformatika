@@ -39,8 +39,8 @@ export class WarehouseAddComponent implements OnInit {
   }
 
   onSubmit() {
-    const name: string = this.addWarehouseForm.controls.name.value;
-    const company: any = this.addWarehouseForm.controls.name.value;
+    const name: string = this.addWarehouseForm.controls.inputName.value;
+    const company: any = this.addWarehouseForm.controls.inputCompany.value;
 
     this.warehouse = new Warehouse(0, name, company);
 

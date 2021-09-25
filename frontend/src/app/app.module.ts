@@ -41,6 +41,7 @@ import { EmployeeLandingPageComponent } from './employee-landing-page/employee-l
 import { CardAnalyticsComponent } from './card-analytics/card-analytics.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { InvoiceListComponent } from './invoice-list/invoice-list.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { InvoiceListComponent } from './invoice-list/invoice-list.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    NgxPaginationModule
   ],
   providers: [
     AuthenticationService,

@@ -36,7 +36,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let location of allLocations">
+    <tr *ngFor="let location of allLocations |
+    paginate: {
+       itemsPerPage: 5, 
+       currentPage: page, 
+       totalItems: totalLength}">
       <th scope="row">{{ location.id }}</th>
       <td>{{ location.name }}</td>
       <td class="h5">
@@ -60,4 +64,5 @@
       </td>
     </tr>
   </tbody>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </table>
