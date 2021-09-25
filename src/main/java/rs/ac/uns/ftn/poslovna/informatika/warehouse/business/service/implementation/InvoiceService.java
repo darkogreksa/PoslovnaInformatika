@@ -9,7 +9,9 @@ import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.InvoiceLineItem
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.*;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.repository.InvoiceLineItemRepository;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.repository.InvoiceRepository;
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.repository.ProductCardRepository;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,6 +24,12 @@ public class InvoiceService {
 
     @Autowired
     InvoiceLineItemRepository invoiceLineItemRepository;
+
+    @Autowired
+    ProductCardRepository productCardRepository;
+
+    @Autowired
+    AnalyticsService analyticsService;
 
     public List<Invoice> getInvoices() {
         return invoiceRepository.findAll();
@@ -58,7 +66,41 @@ public class InvoiceService {
         return invoice;
     }
 
+    public boolean proknjizi(InvoiceDTO invoice) {
+        List<InvoiceLineItemDTO> items = getInvoiceLineItems(invoice.getId());
 
+        if (invoice.getDocumentType().equals("Primka")) {
+            for (InvoiceLineItemDTO item : items) {
+                ProductCard productCard = null;
+                for (ProductCard pk : item.getProduct().getProductCards()) {
+                    if (!pk.getBusinessYear().isClosed()) {
+                        productCard = pk;
+                        productCard.setTotalValue(productCard.getTotalValue() + item.getPrice() * item.getPrice() / productCard.getTotalAmount() + item.getQuantity());
+                    }
+                }
+
+                if (item.getQuantity() > 0) {
+                    productCard.setTotalAmount(productCard.getTotalValue() + item.getQuantity());
+                    productCard.setTotalValue(productCard.getTotalValue() * item.getValue());
+                    productCard.setInboundTrafficValue(productCard.getInboundTrafficValue() + item.getValue());
+                    productCardRepository.save(productCard);
+
+                    WarehouseCardAnalytics warehouseCardAnalytics = new WarehouseCardAnalytics();
+                    warehouseCardAnalytics.setPrice(new BigDecimal(item.getPrice()));
+                    warehouseCardAnalytics.setQuantity(item.getQuantity().intValue());
+                    warehouseCardAnalytics.setProductCard(productCard);
+//                    warehouseCardAnalytics.setInvoiceLineItem(item);
+                    warehouseCardAnalytics.setTrafficDirection(TrafficDirection.IN);
+                    warehouseCardAnalytics.setTrafficType(TrafficType.PR);
+                    warehouseCardAnalytics.setValue(new BigDecimal(item.getValue()));
+                    analyticsService.create(warehouseCardAnalytics);
+                }
+            }
+        } else {
+            // TBD
+        }
+        return true;
+    }
 
 
 }

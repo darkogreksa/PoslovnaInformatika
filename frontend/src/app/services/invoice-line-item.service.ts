@@ -5,6 +5,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class InvoiceLineItemService {
-  private baseUrl = "http://localhost:8080/api/invoices";
+  private baseUrl = "http://localhost:8080/api/invoice-line-items"
   constructor(private http: HttpClient) { }
+
+  addInvoiceLineItem(invoiceLineItem): any {
+    return this.http.post(this.baseUrl + "/create", invoiceLineItem);
+  }
+
 }

@@ -8,6 +8,7 @@ import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.InvoiceDTO;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.InvoiceLineItemDTO;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Invoice;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.InvoiceLineItem;
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Product;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.service.InvoiceLineItemServiceInterface;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.service.implementation.InvoiceLineItemService;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.service.implementation.InvoiceService;

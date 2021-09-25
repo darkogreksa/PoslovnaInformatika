@@ -30,14 +30,11 @@ INSERT INTO group_of_products(name, company_id) VALUES('Piće', 2);
 INSERT INTO group_of_products(name, company_id) VALUES('Bela tehnika', 2);
 
 --PRODUCT
-INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Mis l', 1, 1);
-INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Kisela voda', 2, 2);
+INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Mis logiteck', 1, 1);
+INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Tastatura Dell', 2, 2);
 
-INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Brašno', 1, 1);
-INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Kisela voda', 2, 2);
-INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Mašina za pranje veša', 3, 3);
-INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Frižider', 3, 3);
-INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Šporet', 3, 3);
+INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Monitor Dell', 1, 1);
+INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('LapTop Toshiba', 2, 2);
 
 --AUTHORITY
 INSERT INTO authority values (1, 'ADMINISTRATOR')
@@ -75,8 +72,15 @@ INSERT INTO `warehouse`.`product_card` (`product_card_id`, `inbound_traffic_quan
 INSERT INTO `warehouse`.`product_card` (`product_card_id`, `inbound_traffic_quantity`, `inbound_traffic_value`, `initial_state_quantity`, `initial_state_value`, `outgoing_traffic_quantity`, `outgoing_traffic_value`, `price`, `total_amount`, `total_value`, `business_year_id`, `product_id`, `warehouse_id`) VALUES ('3', '0', '0', '1', '10', '0', '0', '100', '1', '100', '4', '1', '1');
 
 --INVOICE
-INSERT INTO `warehouse`.`invoice` (`invoice_id`, `date_of_formation`, `document_type`, `ordinal_invoice_number`, `posting_date`, `status`, `business_partner_id`, `business_year_id`, `warehouse_id`) VALUES ('1', '2018-05-08', 'Primka', '1', '2018-05-09', 'Formiranje', '1', '1', '1');
+INSERT INTO `warehouse`.`invoice` (`invoice_id`, `date_of_formation`, `document_type`, `ordinal_invoice_number`, `posting_date`, `status`, `business_partner_id`, `business_year_id`, `warehouse_id`) VALUES ('1', '2018-05-08', 'Primka', '1', '2018-05-09', 'Formiranje', '1', '3', '1');
+INSERT INTO `warehouse`.`invoice` (`invoice_id`, `date_of_formation`, `document_type`, `ordinal_invoice_number`, `posting_date`, `status`, `business_partner_id`, `business_year_id`, `warehouse_id`) VALUES ('2', '2018-05-08', 'Primka', '2', '2018-05-09', 'Formiranje', '1', '3', '1');
+INSERT INTO `warehouse`.`invoice` (`invoice_id`, `date_of_formation`, `document_type`, `ordinal_invoice_number`, `posting_date`, `status`, `business_partner_id`, `business_year_id`, `warehouse_id`) VALUES ('3', '2018-05-08', 'Primka', '3', '2018-05-09', 'Formiranje', '1', '3', '1');
 
 INSERT INTO `warehouse`.`invoice_line_item` (`invoice_line_item_id`, `price`, `quantity`, `value`, `invoice_id`, `product_id`) VALUES ('1', '10', '1', '10', '1', '1');
+INSERT INTO `warehouse`.`invoice_line_item` (`invoice_line_item_id`, `price`, `quantity`, `value`, `invoice_id`, `product_id`) VALUES ('2', '10', '2', '20', '2', '1');
+INSERT INTO `warehouse`.`invoice_line_item` (`invoice_line_item_id`, `price`, `quantity`, `value`, `invoice_id`, `product_id`) VALUES ('3', '10', '3', '30', '3', '1');
 
-INSERT INTO `warehouse`.`warehouse_card_analytics` (`warehouse_card_analytics_id`, `ordinal_number`, `price`, `quantity`, `traffic_direction`, `traffic_type`, `value`, `invoice_line_item_id`, `product_card_id`) VALUES ('1', '1', '10', '1', 'IN', 'PR', '10', '1', '1');
+INSERT INTO `warehouse`.`warehouse_card_analytics` (`warehouse_card_analytics_id`, `ordinal_number`, `price`, `quantity`, `traffic_direction`, `traffic_type`, `value`, `invoice_line_item_id`, `product_card_id`) VALUES ('1', '1', '10', '1', 'IN', 'PR', '10', '1', '3');
+INSERT INTO `warehouse`.`warehouse_card_analytics` (`warehouse_card_analytics_id`, `ordinal_number`, `price`, `quantity`, `traffic_direction`, `traffic_type`, `value`, `invoice_line_item_id`, `product_card_id`) VALUES ('2', '2', '10', '2', 'IN', 'PR', '20', '2', '3');
+INSERT INTO `warehouse`.`warehouse_card_analytics` (`warehouse_card_analytics_id`, `ordinal_number`, `price`, `quantity`, `traffic_direction`, `traffic_type`, `value`, `invoice_line_item_id`, `product_card_id`) VALUES ('3', '3', '10', '3', 'IN', 'PR', '30', '3', '3');
+

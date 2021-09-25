@@ -29,6 +29,7 @@ export class InvoiceComponent implements OnInit {
   businessPartner;
   productList;
   productsM;
+  prod;
 
   // robaIzabrana
   selectedProduct = {
@@ -51,7 +52,7 @@ export class InvoiceComponent implements OnInit {
     price: null,
     quantity: null,
     value: null,
-    invoice: null,
+    invoiceDTO: null,
     product: null
   };
 
@@ -117,7 +118,19 @@ export class InvoiceComponent implements OnInit {
     console.log(this.invoice);
     this.invoiceService.addInvoice(this.invoice).subscribe(res => {
       console.log(res);
+      console.log("Adding invoce line item");
+      this.invoice.id = res.id;
+      this.lineItem.value = this.lineItem.quantity * this.lineItem.price;
+      this.lineItem.invoiceDTO = this.invoice;
+      this.lineItem.product = this.tempProductList.filter(
+        b => b.name === this.selectRoba.nativeElement.value
+      )[0];
+      console.log(this.lineItem);
+      this.invoiceLineItemService.addInvoiceLineItem(this.lineItem).subscribe(resp => {
+        console.log(resp);
+      });
     });
+    this.router.navigate(['/invoice-list']);
   }
 
 }

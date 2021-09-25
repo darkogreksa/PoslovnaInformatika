@@ -53,6 +53,22 @@ public class Product {
         this.invoiceLineItems = invoiceLineItems;
     }
 
+    public Product(ProductDTO productDTO) {
+        this(productDTO.getId(), productDTO.getName(), productDTO.getGroupOfProductsId(), new Unit(productDTO.getUnitDTO()));
+    }
+
+    public Product(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Product(Integer id, String name, Integer groupOfProductsId, Unit unit) {
+        this.id = id;
+        this.name = name;
+        this.groupOfProducts = groupOfProducts;
+        this.unit = unit;
+    }
+
     public Integer getId() {
         return id;
     }

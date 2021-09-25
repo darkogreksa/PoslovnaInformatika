@@ -64,5 +64,16 @@ public class InvoiceController {
     }
 
 
+    @PostMapping(value = "/proknjizi")
+    public ResponseEntity<InvoiceDTO> proknjizi(@RequestBody InvoiceDTO invoiceDTO) throws IOException {
+
+        if(invoiceService.proknjizi(invoiceDTO)) {
+            return new ResponseEntity<>(HttpStatus.OK);
+
+        }
+        else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
 }

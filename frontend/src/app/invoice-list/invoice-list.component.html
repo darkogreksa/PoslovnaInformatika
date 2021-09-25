@@ -1,11 +1,11 @@
 <app-nav></app-nav>
-<button
+<!-- <button
   class="btn btn-success btn-lg ml-4"
   [routerLink]="['/invoice/add']"
   style="float: right"
 >
   <i class="fa fa-plus"></i> Dodaj dokument
-</button>
+</button> -->
 
 <br />
 <br />
@@ -24,7 +24,8 @@
     </div>
     <div class="card-footer text-muted">
       <a class="btn btn-primary"
-        >Detaljnije</a
+      (click)="proknjizi(invoice)"
+        >Proknjizi</a
       >
     </div>
   </div>

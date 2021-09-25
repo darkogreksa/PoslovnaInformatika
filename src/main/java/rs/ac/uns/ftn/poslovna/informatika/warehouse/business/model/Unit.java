@@ -1,6 +1,7 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.UnitDTO;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -30,6 +31,15 @@ public class Unit implements Serializable {
         this.id = id;
         this.name = name;
         this.products = products;
+    }
+
+    public Unit(UnitDTO unitDTO) {
+        this(unitDTO.getId(), unitDTO.getName());
+    }
+
+    public Unit(Integer id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public Integer getId() {

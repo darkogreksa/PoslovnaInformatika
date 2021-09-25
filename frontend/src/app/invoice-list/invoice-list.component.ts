@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { InvoiceService } from '../services/invoice.service';
 
 @Component({
@@ -8,8 +9,9 @@ import { InvoiceService } from '../services/invoice.service';
 })
 export class InvoiceListComponent implements OnInit {
   invoices;
+  selectedInvoice;
 
-  constructor(private invoiceService: InvoiceService) { }
+  constructor(private invoiceService: InvoiceService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -18,6 +20,13 @@ export class InvoiceListComponent implements OnInit {
       console.log(this.invoices);
     });
 
+  }
+
+  proknjizi(invoice) {
+    this.invoiceService.proknjizi(invoice).subscribe(resp => {
+      console.log(resp);
+      this.router.navigate(['/employee-landing']);
+    });
   }
 
 }

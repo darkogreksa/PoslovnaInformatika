@@ -27,4 +27,8 @@ export class InvoiceService {
     return this.http.post(this.baseUrl + "/add", invoice);
   }
 
+  proknjizi(invoice): any {
+    return this.http.post(this.baseUrl + "/proknjizi", invoice);
+  }
+
 }
