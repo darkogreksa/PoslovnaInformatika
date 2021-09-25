@@ -35,7 +35,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let product of allProducts">
+    <tr *ngFor="let product of allProducts |
+    paginate: {
+       itemsPerPage: 5, 
+       currentPage: page, 
+       totalItems: totalLength}">
         <th scope="row">{{product.id}}</th>   
         <td>{{product.name}}</td>
         <td>{{product.groupOfProductId}}</td>
@@ -44,4 +48,5 @@
         <td class="h5"><a class="badge badge-danger text-white" *ngIf="loggedIn() && isAdmin()" (click)="delete(product.id)" style="cursor: pointer"> <i class="fa fa-trash"></i> Obriši</a></td>
     </tr>
     </tbody>
+    <pagination-controls (pageChange)="page = $event" class="text-center"></pagination-controls>
   </table>

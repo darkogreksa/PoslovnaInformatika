@@ -23,9 +23,11 @@ INSERT INTO company(name, pib, address, location_id) values ('Bosch', '12334123'
 --GOROUP OF PRODUCTS
 INSERT INTO group_of_products(name, company_id) VALUES('Hrana', 1);
 INSERT INTO group_of_products(name, company_id) VALUES('Piće', 1);
+INSERT INTO group_of_products(name, company_id) VALUES('Bela tehnika', 1);
 
 INSERT INTO group_of_products(name, company_id) VALUES('Hrana', 2);
 INSERT INTO group_of_products(name, company_id) VALUES('Piće', 2);
+INSERT INTO group_of_products(name, company_id) VALUES('Bela tehnika', 2);
 
 --PRODUCT
 INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Mis l', 1, 1);
@@ -33,6 +35,9 @@ INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Kisela voda', 
 
 INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Brašno', 1, 1);
 INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Kisela voda', 2, 2);
+INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Mašina za pranje veša', 3, 3);
+INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Frižider', 3, 3);
+INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Šporet', 3, 3);
 
 --AUTHORITY
 INSERT INTO authority values (1, 'ADMINISTRATOR')
