@@ -12,11 +12,11 @@ public class UserAuthority {
     private Long id;
 
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-    @JsonBackReference
+    @JsonBackReference(value="Employee-userAuthorities")
     private Employee employee;
 
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-    @JsonBackReference
+    @JsonBackReference(value="Authority-userAuthorities")
     private Authority authority;
 
     public UserAuthority() {

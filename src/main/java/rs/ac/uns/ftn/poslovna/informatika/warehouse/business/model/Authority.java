@@ -17,7 +17,7 @@ public class Authority {
     String name;
 
     @OneToMany(mappedBy = "authority", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-    @JsonManagedReference
+    @JsonManagedReference(value="Authority-userAuthorities")
     private Set<UserAuthority> userAuthorities = new HashSet<UserAuthority>();
 
     public Authority() {

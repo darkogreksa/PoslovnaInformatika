@@ -25,21 +25,21 @@ public class Warehouse implements Serializable {
     //radnici u magacinu
     @ManyToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
-    @JsonBackReference
+    @JsonBackReference(value="Warehouse-Employee")
     private Employee employee;
 
     //
     @ManyToOne
     @JoinColumn(name = "company_id", referencedColumnName = "company_id")
-    @JsonBackReference
+    @JsonBackReference(value="Company-Warehouse")
     private Company company;
 
     @OneToMany(mappedBy = "warehouse")
-    @JsonManagedReference
+    @JsonManagedReference(value="ProductCard-Warehouse")
     private List<ProductCard> productCards = new ArrayList<>();
 
     @OneToMany(mappedBy = "warehouse")
-    @JsonManagedReference
+    @JsonManagedReference(value="Warehouse-Invoice")
     private List<Invoice> invoices = new ArrayList<>();
 
     public Warehouse() {

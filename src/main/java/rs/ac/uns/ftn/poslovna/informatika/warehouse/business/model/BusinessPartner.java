@@ -6,7 +6,9 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.BusinessPartnerDTO;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -29,17 +31,22 @@ public class BusinessPartner {
 
     @ManyToOne()
     @JoinColumn(name = "company_id", referencedColumnName = "company_id")
-    @JsonBackReference
+    @JsonBackReference(value="Company-BusinessPartner")
     private Company company;
 
     @ManyToOne()
     @JoinColumn(name = "location_id", referencedColumnName = "location_id")
-    @JsonBackReference
+    @JsonBackReference(value="BusinessPartner-Location")
     private Location location;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "businessPartner")
-    @JsonManagedReference
+    @JsonManagedReference(value="BusinessPartner-Invoice")
     private Set<Invoice> documents = new HashSet<Invoice>();
+
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "businessPartner")
+//    @JsonManagedReference(value="Invoice-BusinessPartner")
+//    private List<Invoice> invoices = new ArrayList<>();
 
     public BusinessPartner() {
     }

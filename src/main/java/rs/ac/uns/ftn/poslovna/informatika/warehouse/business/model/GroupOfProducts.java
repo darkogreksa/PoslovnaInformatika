@@ -18,7 +18,7 @@ public class GroupOfProducts {
 
     @ManyToOne
     @JoinColumn(name = "company_id", referencedColumnName = "company_id", nullable = false)
-    @JsonBackReference
+    @JsonBackReference(value="GroupOfProducts-Company")
     private Company company;
 
     public GroupOfProducts() {

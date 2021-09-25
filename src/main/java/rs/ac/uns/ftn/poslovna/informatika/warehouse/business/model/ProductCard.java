@@ -51,22 +51,22 @@ public class ProductCard implements Serializable {
 
     @ManyToOne()
     @JoinColumn(name = "businessYear_id", nullable = true, referencedColumnName = "businessYear_id")
-    @JsonBackReference
+    @JsonBackReference(value="BusinessYear-ProductCard")
     private BusinessYear businessYear;
 
     @ManyToOne()
     @JoinColumn(name = "product_id", nullable = true, referencedColumnName = "product_id")
-    @JsonBackReference
+    @JsonBackReference(value="Product-ProductCard")
     private Product product;
 
     @ManyToOne()
     @JoinColumn(name = "warehouse_id", nullable = true, referencedColumnName = "warehouse_id")
-    @JsonBackReference
+    @JsonBackReference(value="ProductCard-Warehouse")
     private Warehouse warehouse;
 
     @OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, mappedBy = "productCard")
 //    @OneToMany(mappedBy = "productCard")
-    @JsonManagedReference
+    @JsonManagedReference(value="ProductCard-WarehouseCardAnalytics")
     private Set<WarehouseCardAnalytics> warehouseCardAnalytics = new HashSet<WarehouseCardAnalytics>();
 
     public ProductCard() {

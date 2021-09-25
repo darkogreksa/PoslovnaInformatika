@@ -20,11 +20,11 @@ public class Location {
     private String name;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "location") // Mesto 1..1 -> 0..n Preduzece
-    @JsonManagedReference
+    @JsonManagedReference(value="Location-Company")
     private Set<Company> companies = new HashSet<Company>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "location") // Mesto 0..1 -> 0..n Poslovni partner
-    @JsonManagedReference
+    @JsonManagedReference(value="BusinessPartner-Location")
     private Set<BusinessPartner> businessPartners = new HashSet<BusinessPartner>();
 
     public Location() {

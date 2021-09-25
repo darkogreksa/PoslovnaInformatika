@@ -20,7 +20,7 @@ public class Unit implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "unit")
-    @JsonManagedReference
+    @JsonManagedReference(value="Product-Unit")
     private List<Product> products = new ArrayList<>();
 
     public Unit() {

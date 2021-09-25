@@ -28,6 +28,7 @@ export class InvoiceComponent implements OnInit {
   warehouses;
   businessPartner;
   productList;
+  productsM;
 
   // robaIzabrana
   selectedProduct = {
@@ -85,40 +86,38 @@ export class InvoiceComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.route.snapshot.url[1].path == "add") {
-      this.newEntry = true;
+    this.newEntry = true;
 
-      this.warehouseService.getAll().subscribe(res => {
-        this.warehouses = res;
-        console.log(this.warehouses);
-        for (let index = 0; index < this.warehouses.length; index++) {
-          const element = this.warehouses[index];
-          console.log(element.name);
-        }
-      });
-      this.businessPartnerService.getAll().subscribe(res => {
-        this.businessPartner = res;
-        console.log(this.businessPartner);
-        console.log(this.businessPartner.name);
-      });
+    this.warehouseService.getAll().subscribe(res => {
+      this.warehouses = res;
+      console.log(this.warehouses);
+    });
+    this.businessPartnerService.getAll().subscribe(res => {
+      this.businessPartner = res;
+      console.log(this.businessPartner);
+    });
+    this.productService.getAll().subscribe(res => {
+        this.tempProductList = res;
+        console.log(this.tempProductList);
+        console.log('MARKO RESPONSE:' + res);
+        console.log(res);
+    });
 
-      this.invoiceService.getInvoiceLineItems(this.route.snapshot.url[1].path)
-      .subscribe(res => {
-        this.tempProductList = res.map(r => {
-          r.naziv = r.roba.naziv;
-          r.cena = r.cena;
-          return r;
-        });
-      });
+  }
 
-
-    } else {
-
-    }
-
-
-
-
+  saveInvoice() {
+    this.invoice.warehouse = this.warehouses.filter(
+      w => w.name === this.selectWarehouse.nativeElement.value
+    )[0];
+    this.invoice.businessPartner = this.businessPartner.filter(
+      b => b.name === this.selectBusinessPartner.nativeElement.value
+    )[0];
+    this.invoice.documentType = this.selectVrsta.nativeElement.value;
+    this.invoice.status = "Formiranje";
+    console.log(this.invoice);
+    this.invoiceService.addInvoice(this.invoice).subscribe(res => {
+      console.log(res);
+    });
   }
 
 }

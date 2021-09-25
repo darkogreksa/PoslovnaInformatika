@@ -18,6 +18,9 @@ INSERT INTO group_of_products(name, company_id) VALUES('Hrana', 2);
 INSERT INTO group_of_products(name, company_id) VALUES('Piće', 2);
 
 --PRODUCT
+INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Mis l', 1, 1);
+INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Kisela voda', 2, 2);
+
 INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Brašno', 1, 1);
 INSERT INTO product(name, group_of_products_id, unit_id) VALUES ('Kisela voda', 2, 2);
 

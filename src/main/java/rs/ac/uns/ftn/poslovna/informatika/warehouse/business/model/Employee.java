@@ -30,14 +30,14 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name = "company_id", referencedColumnName = "company_id")
-    @JsonBackReference
+    @JsonBackReference(value="Employee-Company")
     private Company company;
 
     @Column(nullable = false)
     private Role role;
 
     @OneToMany(cascade={ALL}, fetch=FetchType.EAGER, mappedBy = "employee")
-    @JsonManagedReference
+    @JsonManagedReference(value="Employee-userAuthorities")
     private Set<UserAuthority> userAuthorities = new HashSet<UserAuthority>();
 
     public Employee() {

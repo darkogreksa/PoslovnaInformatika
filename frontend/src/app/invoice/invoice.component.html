@@ -74,20 +74,23 @@
       <br />
     </div>
 
-    <div class="col-lg-4" style="margin: auto">
-      <h6>Roba</h6>
-      <button
-        *ngIf="newEntry"
-        class="btn btn-primary"
-        data-toggle="modal"
-        data-target="#myModal"
-
-        >
-        Dodaj robu
-      </button>
-      <br />
+    <div class="form-group">
+        <label>Roba</label>
+        <select *ngIf="newEntry" #selectBusinessPartnerasd class="form-control">
+          <option [ngValue]="null">Izaberi robu</option>
+          <option *ngFor="let t of tempProductList" [ngValue]="t.name">{{ t.name }}</option>
+        </select>
+        <input
+          *ngIf="newEntry == false"
+          name="poslovniPartnerasd"
+          [(ngModel)]="t"
+          type="text"
+          class="form-control"
+        />
+        <br />
     </div>
-    <table class="table" style="margin: 10px">
+
+    <!-- <table class="table" style="margin: 10px">
       <thead>
         <tr>
           <th scope="col">Sifra</th>
@@ -106,7 +109,7 @@
           <td>{{ r.quantity * r.price }}</td>
         </tr>
       </tbody>
-    </table>
+    </table> -->
     <div class="col-lg-4" style="margin: 10px auto">
       <button
         *ngIf="!newEntry"
@@ -120,8 +123,7 @@
     <div class="col-lg-4" style="margin: 10px auto">
       <button
         *ngIf="newEntry"
-       
-        
+        (click)="saveInvoice()"
         class="btn btn-success"
       >
         Sacuvaj

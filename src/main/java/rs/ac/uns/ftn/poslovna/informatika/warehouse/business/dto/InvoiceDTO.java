@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto;
 
+import org.jetbrains.annotations.NotNull;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.BusinessPartner;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.BusinessYear;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model.Invoice;

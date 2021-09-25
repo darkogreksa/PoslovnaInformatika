@@ -40,6 +40,7 @@ import { ProductCardDetailComponent } from './product-card/product-card-detail/p
 import { EmployeeLandingPageComponent } from './employee-landing-page/employee-landing-page.component';
 import { CardAnalyticsComponent } from './card-analytics/card-analytics.component';
 import { InvoiceComponent } from './invoice/invoice.component';
+import { InvoiceListComponent } from './invoice-list/invoice-list.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { InvoiceComponent } from './invoice/invoice.component';
     ProductCardDetailComponent,
     EmployeeLandingPageComponent,
     CardAnalyticsComponent,
-    InvoiceComponent
+    InvoiceComponent,
+    InvoiceListComponent
   ],
   imports: [
     BrowserModule,

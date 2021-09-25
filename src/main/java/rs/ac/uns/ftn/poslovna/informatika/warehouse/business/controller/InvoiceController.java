@@ -3,6 +3,7 @@ package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.InvoiceDTO;
@@ -53,7 +54,7 @@ public class InvoiceController {
         return new ResponseEntity<List<InvoiceLineItemDTO>>(invoiceLineItems, HttpStatus.OK);
     }
 
-    @PostMapping()
+    @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Invoice addInvoice(@RequestBody InvoiceDTO invoiceDTO) throws IOException {
         Invoice invoice = invoiceService.addInvoice(invoiceDTO);
         if (invoice != null) {

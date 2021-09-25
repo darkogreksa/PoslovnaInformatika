@@ -26,17 +26,17 @@ public class BusinessYear implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "company_id", referencedColumnName = "company_id")
-    @JsonBackReference
+    @JsonBackReference(value="company-id")
     private Company company;
 
     //veza sa robnom karticom
     @OneToMany(mappedBy = "businessYear")
-    @JsonManagedReference
+    @JsonManagedReference(value="BusinessYear-ProductCard")
     private List<ProductCard> productCards = new ArrayList<>();
 
     //veza sa prometnim dokumentom
     @OneToMany(mappedBy = "businessYear")
-    @JsonManagedReference
+    @JsonManagedReference(value="BusinessYear-Invoice")
     private List<Invoice> invoices = new ArrayList<>();
 
     public BusinessYear() {

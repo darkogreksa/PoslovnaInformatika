@@ -24,6 +24,7 @@ import { CardAnalyticsComponent } from './card-analytics/card-analytics.componen
 import { InvoiceComponent } from './invoice/invoice.component';
 import { WarehouseEditComponent } from './warehouse/warehouse-edit/warehouse-edit.component';
 import { WarehouseAddComponent } from './warehouse/warehouse-add/warehouse-add.component';
+import { InvoiceListComponent } from './invoice-list/invoice-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -122,6 +123,11 @@ const routes: Routes = [
   {
     path: "invoice/add",
     component: InvoiceComponent,
+    canActivate: [LoggedOutGuard] 
+  },
+  {
+    path: "invoice-list",
+    component: InvoiceListComponent,
     canActivate: [LoggedOutGuard] 
   }
 ];

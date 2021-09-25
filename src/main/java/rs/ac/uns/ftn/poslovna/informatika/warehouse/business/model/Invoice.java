@@ -1,6 +1,7 @@
 package rs.ac.uns.ftn.poslovna.informatika.warehouse.business.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import rs.ac.uns.ftn.poslovna.informatika.warehouse.business.dto.InvoiceDTO;
 
@@ -38,21 +39,21 @@ public class Invoice {
 
     @ManyToOne
     @JoinColumn(name = "businessPartner_id", referencedColumnName = "businessPartner_id", nullable = false)
-    @JsonBackReference
+    @JsonBackReference(value="BusinessPartner-Invoice")
     private BusinessPartner businessPartner;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "businessYear_id", referencedColumnName = "businessYear_id")
-    @JsonBackReference
+    @JsonBackReference(value="BusinessYear-Invoice")
     private BusinessYear businessYear;
 
     @ManyToOne
     @JoinColumn(name = "warehouse_id", referencedColumnName = "warehouse_id")
-    @JsonBackReference
+    @JsonBackReference(value="Warehouse-Invoice")
     private Warehouse warehouse;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "invoice")
-    @JsonManagedReference
+    @JsonManagedReference(value="Invoice-InvoiceLineItem")
     private Set<InvoiceLineItem> invoiceLineItems = new HashSet<>();
 
     public Invoice() {

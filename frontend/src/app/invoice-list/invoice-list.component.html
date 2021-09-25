@@ -1,0 +1,35 @@
+<app-nav></app-nav>
+<button
+  class="btn btn-success btn-lg ml-4"
+  [routerLink]="['/invoice/add']"
+  style="float: right"
+>
+  <i class="fa fa-plus"></i> Dodaj dokument
+</button>
+
+<br />
+<br />
+<div class="container col-lg-8" *ngFor="let invoice of invoices">
+  <div class="card text-center">
+    <div class="card-header">
+      Dokument
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Dokument #{{ invoice.id }}</h5>
+      <p class="card-text">
+        Status: {{ invoice.status }}
+        <br />
+        Datum: {{ invoice.dateOfFormation }}
+      </p>
+    </div>
+    <div class="card-footer text-muted">
+      <a class="btn btn-primary"
+        >Detaljnije</a
+      >
+    </div>
+  </div>
+  <br />
+</div>
+<div class="row d-flex justify-content-center">
+
+</div>

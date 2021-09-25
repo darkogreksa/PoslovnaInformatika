@@ -27,17 +27,17 @@ public class InvoiceLineItem {
 
     @ManyToOne
     @JoinColumn(name = "invoice_id", referencedColumnName = "invoice_id")
-    @JsonBackReference
+    @JsonBackReference(value="Invoice-InvoiceLineItem")
     private Invoice invoice;
 
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "product_id")
-    @JsonBackReference
+    @JsonBackReference(value="InvoiceLineItem-product")
     private Product product;
 
 //    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "invoiceLineItem")
     @OneToMany(mappedBy = "invoiceLineItem")
-    @JsonManagedReference
+    @JsonManagedReference(value="WarehouseCardAnalytics-InvoiceLineItem")
     private Set<WarehouseCardAnalytics> warehouseCardAnalytics = new HashSet<>();
 
     public InvoiceLineItem() {

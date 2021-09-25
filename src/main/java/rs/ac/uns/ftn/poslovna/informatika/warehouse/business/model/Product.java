@@ -23,22 +23,22 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "groupOfProducts_id", referencedColumnName = "groupOfProducts_id")
-    @JsonBackReference
+    @JsonBackReference(value="Product-GroupOfProducts")
     private GroupOfProducts groupOfProducts;
 
     @ManyToOne
     @JoinColumn(name = "unit_id", referencedColumnName = "unit_id")
-    @JsonBackReference
+    @JsonBackReference(value="Product-Unit")
     private Unit unit;
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
-    @JsonManagedReference
+    @JsonManagedReference(value="Product-ProductCard")
     private Set<ProductCard> productCards = new HashSet<ProductCard>();
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
-    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
+    @JsonManagedReference(value="InvoiceLineItem-product")
     private Set<InvoiceLineItem> invoiceLineItems = new HashSet<InvoiceLineItem>();
 
     public Product() {

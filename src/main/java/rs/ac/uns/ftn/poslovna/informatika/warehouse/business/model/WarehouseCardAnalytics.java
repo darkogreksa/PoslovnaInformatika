@@ -37,12 +37,12 @@ public class WarehouseCardAnalytics {
 
     @ManyToOne()
     @JoinColumn(name = "product_Card_id", referencedColumnName = "productCard_id", nullable = false)
-    @JsonBackReference
+    @JsonBackReference(value="ProductCard-WarehouseCardAnalytics")
     private ProductCard productCard;
 
     @ManyToOne()
     @JoinColumn(name = "invoiceLine_Item_id", referencedColumnName = "invoiceLineItem_id", nullable = true)
-    @JsonBackReference
+    @JsonBackReference(value="WarehouseCardAnalytics-InvoiceLineItem")
     private InvoiceLineItem invoiceLineItem;
 
     public WarehouseCardAnalytics() {

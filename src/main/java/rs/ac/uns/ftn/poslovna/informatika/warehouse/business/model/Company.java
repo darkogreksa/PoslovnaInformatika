@@ -31,24 +31,24 @@ public class Company implements Serializable {
     //
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
-    @JsonManagedReference
+    @JsonManagedReference(value="Company-Warehouse")
     private Set<Warehouse> warehouses = new HashSet<Warehouse>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
-    @JsonManagedReference
+    @JsonManagedReference(value="Employee-Company")
     private Set<Employee> employees = new HashSet<Employee>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
-    @JsonManagedReference
+    @JsonManagedReference(value="GroupOfProducts-Company")
     private Set<GroupOfProducts> groupOfProducts = new HashSet<GroupOfProducts>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
-    @JsonManagedReference
+    @JsonManagedReference(value="Company-BusinessPartner")
     private Set<BusinessPartner> businessPartners = new HashSet<BusinessPartner>();
 
     @ManyToOne
     @JoinColumn(name = "location_id", referencedColumnName = "location_id")
-    @JsonBackReference
+    @JsonBackReference(value="Location-Company")
     private Location location;
 
     public Company() {
